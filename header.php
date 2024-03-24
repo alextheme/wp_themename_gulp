@@ -11,6 +11,7 @@
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
 
+
 <header class="header">
     <div class="header_in">
         <div class="header__row">
@@ -46,8 +47,55 @@
                     <?php } ?>
                 </a>
             </div>
-        </div>
 
+            <div class="header__hot_deals">
+                <a href="/hot-deals">
+                    <span class="icon_wrap">
+                        <svg class="icon icon_basket icon--size_mod">
+                            <use xlink:href="<?php echo get_template_directory_uri() . '/assets/images/icons/sprite.svg#percent' ?>"></use>
+                        </svg>
+                    </span>
+                    <span>Hot Deals</span>
+                </a>
+            </div>
+
+            <div class="header__wunschliste">
+                <a href="#">
+                    <span class="icon_wrap">
+                        <svg class="icon icon_basket icon--size_mod">
+                            <use xlink:href="<?php echo get_template_directory_uri() . '/assets/images/icons/sprite.svg#percent' ?>"></use>
+                        </svg>
+                    </span>
+                    <span>Wunschliste</span>
+                </a>
+            </div>
+
+            <div class="header__warenkorb">
+                <a href="#">
+                    <span class="icon_wrap">
+                        <svg class="icon icon_basket icon--size_mod">
+                            <use xlink:href="<?php echo get_template_directory_uri() . '/assets/images/icons/sprite.svg#shop' ?>"></use>
+                        </svg>
+                    </span>
+                    <span>Warenkorb</span>
+                </a>
+                <span class="header__warenkorb_cnt">
+                    <?php echo WC()->cart->get_cart_contents_count(); ?>
+                    <?php //echo count(WC()->cart->get_cart()); ?>
+                </span>
+            </div>
+
+            <div class="header__profil">
+                <a href="#">
+                    <span class="icon_wrap">
+                        <svg class="icon icon_basket icon--size_mod">
+                            <use xlink:href="<?php echo get_template_directory_uri() . '/assets/images/icons/sprite.svg#profil' ?>"></use>
+                        </svg>
+                    </span>
+                    <span>Profil</span>
+                </a>
+            </div>
+        </div>
 
         <div class="header__row">
             <?php
