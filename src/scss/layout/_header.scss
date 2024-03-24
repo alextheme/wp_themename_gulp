@@ -1,0 +1,42 @@
+//------------------------------------------------------------layout
+.header {
+	//position: absolute;
+	position: fixed;
+	top: 0;
+	left: 0;
+
+	width: 100%;
+	height: var(--height-header, 14.3rem);
+
+	font-size: 1.4rem;
+
+	background-color: $white;
+	
+	will-change: transform;
+
+	transition: box-shadow 300ms ease-in-out, transform 300ms ease-in-out;
+
+	@include z-index(header);
+
+	@include bp($point_2, min) {
+		padding: 2rem;
+	}
+
+	.body--scrolled_down & {
+		box-shadow: 6px 2px 42px 0px rgba(0,0,0,0.75);
+		-webkit-box-shadow: 6px 2px 42px 0px rgba(0,0,0,0.75);
+		-moz-box-shadow: 6px 2px 42px 0px rgba(0,0,0,0.75);
+	}
+
+	.body--go_scroll_up & {
+		transform: translateY(-200px);
+	}
+}
+
+.header_in {
+	position: relative;
+
+	width: 100%;
+	max-width: $page_width;
+	margin: 0 auto;
+}
