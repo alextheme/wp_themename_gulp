@@ -6,9 +6,9 @@ function _themename_setup() {
         register_nav_menus(
             array(
                 'header_menu' => esc_html__( 'Header menu', '_themename' ),
-                'footer_menu_1' => esc_html__( 'Footer menu 1', '_themename' ),
-                'footer_menu_2' => esc_html__( 'Footer menu 2', '_themename' ),
-                'footer_menu_3' => esc_html__( 'Footer menu 3', '_themename' ),
+                'category_menu' => esc_html__( 'Menu Category', '_themename' ),
+                'footer_category' => esc_html__( 'Footer Category', '_themename' ),
+                'footer_menu' => esc_html__( 'Footer menu', '_themename' ),
             )
         );
     }
@@ -40,6 +40,7 @@ function _themename_setup() {
     }
     add_action('wp_update_nav_menu_item', 'save_menu_icons_field', 10, 3);
 
+    // ACF Options Page
     if( function_exists('acf_add_options_page') ) {
         acf_add_options_page();
     }
@@ -67,6 +68,8 @@ function _themename_setup() {
                 'script',
             )
         );
+
+        add_theme_support( 'woocommerce' );
     }
 
     if( function_exists( 'load_theme_textdomain' ) ) {

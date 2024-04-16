@@ -6,11 +6,12 @@
 	left: 0;
 
 	width: 100%;
-	height: var(--height-header, 14.3rem);
+	height: var(--height-header);
+	padding: 0 var(--gl-indent);
 
 	font-size: 1.4rem;
 
-	background-color: $white;
+	background-color: transparent;
 	
 	will-change: transform;
 
@@ -18,14 +19,14 @@
 
 	@include z-index(header);
 
-	@include bp($point_2, min) {
-		padding: 2rem;
+	@include bp($point_2) {
+		padding: 0;
 	}
 
 	.body--scrolled_down & {
-		box-shadow: 6px 2px 42px 0px rgba(0,0,0,0.75);
-		-webkit-box-shadow: 6px 2px 42px 0px rgba(0,0,0,0.75);
-		-moz-box-shadow: 6px 2px 42px 0px rgba(0,0,0,0.75);
+		//box-shadow: 6px 2px 42px 0px rgba(0,0,0,0.75);
+		//-webkit-box-shadow: 6px 2px 42px 0px rgba(0,0,0,0.75);
+		//-moz-box-shadow: 6px 2px 42px 0px rgba(0,0,0,0.75);
 	}
 
 	.body--go_scroll_up & {
@@ -36,7 +37,248 @@
 .header_in {
 	position: relative;
 
-	width: 100%;
 	max-width: $page_width;
+	width: 100%;
 	margin: 0 auto;
 }
+
+.header__row {
+	&:nth-child(1) {
+		@extend %global_flex_block_row_wrap_flex_end_center;
+
+		height: 4rem;
+
+		.header__top_button {
+			@extend %green_btn;
+
+			margin-top: .5rem;
+		}
+
+		@include bp($point_2) {
+		  display: none;
+		}
+	}
+
+	&:nth-child(2) {
+		@extend %global_flex_block_row_wrap_flex_start_center;
+
+		padding: .8rem 3rem;
+		background-color: $blue_prime;
+		height: 6.8rem;
+		border-radius: 4rem;
+
+		@include bp(1350px) {
+			padding: .8rem 2.2rem;
+		}
+
+		@include bp($point_2) {
+			height: var(--height-header);
+			border-radius: 0;
+		}
+	}
+
+	&:nth-child(3) {
+		//height: 4rem;
+		//background-color: #b1ccab;
+	}
+}
+
+
+
+.header__col_left {
+	@extend %global_flex_block_row_nowrap_flex_start_center;
+	width: calc((100% - var(--width-logo)) / 2);
+	height: 100%;
+	padding-right: 1.2rem;
+
+	.header__link_shop {
+		@extend %global_flex_block_row_nowrap_center_center;
+
+		margin-right: 3.2rem;
+
+		@include bp(1350px) {
+			margin-right: 1.2rem;
+		}
+
+		.icon_wrap {
+			display: block;
+			width: 3.6rem;
+			height: 3.6rem;
+			margin-right: .8rem;
+
+			@include bp($point_2) {
+				width: 2.4rem;
+				height: 2.4rem;
+			}
+		}
+
+		.icon_wrap_2 {
+			display: none;
+
+			@include bp($point_2) {
+				display: block;
+				width: .6rem;
+				height: .4rem;
+				margin-left: .4rem;
+			}
+		}
+
+		.label {
+			@extend %h4;
+			color: $white;
+			white-space: nowrap;
+
+			@include bp($point_2) {
+				font-size: 1.2rem;
+			}
+		}
+	}
+
+	.header__search_form_wrap {
+		position: relative;
+		width: 100%;
+		margin-right: 2.2rem;
+		border-radius: 4rem;
+		overflow: hidden;
+		background-color: $white;
+
+		@include bp($point_1) {
+			display: none;
+		}
+
+		.icon_wrap {
+			position: absolute;
+			top: 0;
+			left: 0;
+
+			display: block;
+			width: 3.5rem;
+			height: 3.5rem;
+		}
+
+		.aws-container, .aws-search-form, .aws-wrapper, .aws-search-field {
+			width: 100%;
+		}
+
+		.aws-container .aws-search-form {
+			height: 5.2rem;
+
+			.aws-search-btn {
+				background: url("../images/icons/search.svg") no-repeat center right;
+				background-size: 30px 30px;
+				width: 56px;
+
+				.aws-search-btn_icon {
+					opacity: 0;
+				}
+			}
+		}
+
+		.aws-search-field {
+			@extend %body;
+
+			font-weight: 700;
+			padding-left: .8rem;
+			padding-right: 1.4rem;
+			border: 0;
+		}
+	}
+}
+
+.header__col_center {
+	@extend %global_flex_block_row_wrap_center_center;
+
+	width: var(--width-logo);
+	height: var(--width-logo);
+
+	.header__logo {
+		img {
+			width: 100%;
+			height: 100%;
+		}
+	}
+}
+
+.header__col_right {
+	@extend %global_flex_block_row_wrap_flex_end_center;
+	width: calc((100% - var(--width-logo)) / 2);
+	height: 100%;
+	padding-left: 1rem;
+
+	.header__link {
+		@extend %global_flex_block_row_nowrap_center_center;
+
+		position: relative;
+		margin-right: 3.2rem;
+
+		&:last-child {
+			margin-right: 1.5rem;
+		}
+
+		@include bp(1350px) {
+			margin-right: 1.2rem;
+		}
+
+		@include bp($point_5) {
+			margin-right: 1rem;
+		}
+
+		.icon_wrap {
+			display: block;
+			width: 2.5rem;
+			height: 2.5rem;
+			margin-right: .8rem;
+
+			@include bp($point_1) {
+				margin-right: 0;
+			}
+
+			@include bp($point_2) {
+				width: 2.1rem;
+				height: 2.1rem;
+			}
+		}
+
+		.label {
+			@extend %body;
+			font-weight: 700;
+			color: $white;
+
+			@include bp($point_1) {
+				display: none;
+			}
+		}
+
+		&.header__search_mob {
+			@include bp($point_1 + 1, min) {
+				display: none;
+			}
+		}
+
+		&.header__hot_deals {
+			@include bp($point_5) {
+				display: none;
+			}
+		}
+
+		.header__warenkorb_cnt {
+			@extend %add;
+			@extend %global_flex_block_row_wrap_center_center;
+
+			position: absolute;
+			bottom: -6px;
+			left: 16px;
+
+			width: 1.6rem;
+			height: 1.6rem;
+
+			background-color: $pink_prime;
+			border-radius: 2rem;
+			font-weight: 700;
+			color: $white;
+		}
+	}
+}
+
+
+

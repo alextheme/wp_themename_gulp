@@ -1,19 +1,28 @@
 //---------------------------------------------fonts
 $font_path: "../fonts/";
-$font_1: "HammersmithOne", sans-serif;
-$font_2: "NunitoSans", serif;
+$font_1: "Hammersmith One", sans-serif;
+$font_2: "Nunito", sans-serif;
 $font_size_base: 1.4rem;
 //---------------------------------------------fonts###
 
 //---------------------------------------------colors
 $white: #fff;
-$black: #000;
+$black: #1F1E33;
 
-$dark: #252525;
-$blue: #252F6C;
 
-$color_text_base: $blue;
-$color_link_base: $dark;
+$green_prime: #97C93D;
+$blue_prime: #252F6C;
+$pink_prime: #F05075;
+$light_blu: #60CBE8;
+$grey: #888888;
+$grey2: #D2D2D2;
+$red: #EE2E31;
+
+
+
+
+$color_text_base: $blue_prime;
+$color_link_base: $blue_prime;
 //---------------------------------------------colors###
 
 //---------------------------------------------z-index
@@ -25,7 +34,7 @@ $z-index: (
 //---------------------------------------------z-index###
 
 //---------------------------------------------layout
-$page_width: 122rem;
+$page_width: 152rem;
 
 //---------------------------------------------layout###
 
@@ -50,9 +59,9 @@ $point_9: 970px;
 $input_height: 4.1rem;
 $input_offset: 0 2rem;
 $input_font_size: 1.4rem;
-$input_border_color: $blue;
-$input_border_color_active: $blue;
-$input_placeholder_color: $blue;
-$input_text_color: $blue;
+$input_border_color: $blue_prime;
+$input_border_color_active: $blue_prime;
+$input_placeholder_color: $blue_prime;
+$input_text_color: $blue_prime;
 $input_radius: 2.1rem;
 //---------------------------------------------forms###

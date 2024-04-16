@@ -21,7 +21,7 @@
 @mixin font_face($file_name,$font_name:$file_name,$path:$font_path,$weight:normal,$style:normal) {
 	@font-face {
 		font-family: quote($font_name);
-		src: url($path + $file-name + ".woff2") format("woff2"), url($path + $file-name + ".woff") format("woff");
+		src: url($path + $file-name + ".ttf") format("ttf"), url($path + $file-name + ".woff2") format("woff2"), url($path + $file-name + ".woff") format("woff");
 		font-weight: $weight;
 		font-style: $style;
 		font-display: swap;

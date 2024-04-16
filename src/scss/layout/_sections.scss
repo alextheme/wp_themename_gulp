@@ -26,12 +26,3 @@
 	width: 100%;
 	margin: 0 auto;
 }
-
-// hide title pages
-.woocommerce-cart,
-.woocommerce-checkout,
-.t {
-	.section_in > h2 {
-		display: none;
-	}
-}

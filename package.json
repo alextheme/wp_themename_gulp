@@ -37,12 +37,11 @@
     "svg4everybody": "^2.1.9",
     "vinyl-named": "^1.1.0",
     "webpack-stream": "^7.0.0",
-    "yargs": "^17.7.2"
+    "yargs": "^17.7.2",
+    "gulp-fonter": "^0.3.0",
+    "gulp-ttf2woff2": "^4.0.1"
   },
   "dependencies": {
-    "gulp-fonter": "^0.3.0",
-    "gulp-ttf2woff2": "^4.0.1",
-    "ismobilejs": "^1.1.1",
-    "ttf2woff2": "^5.0.0"
+    "ismobilejs": "^1.1.1"
   }
 }

@@ -16,29 +16,28 @@ import webpack from 'webpack-stream';
 import named from 'vinyl-named';
 import browserSync from "browser-sync";
 import zip from "gulp-zip";
-import info from "./package.json" assert { type: "json" };
 import replace from "gulp-replace";
 import wpPot from "gulp-wp-pot";
-const { src, dest, watch, series, parallel } = gulp;
-const sass = gulpSass(dartSass);
 import svgSprite from "svg-sprite";
 import run from "gulp-run";
 import ttf2woff2 from "gulp-ttf2woff2";
 import fonter from "gulp-fonter";
+import info from "./package.json" assert { type: "json" };
 
+const { src, dest, watch, series, parallel } = gulp;
+const sass = gulpSass(dartSass);
 const PRODUCTION = yargs(process.argv).parse().hasOwnProperty('prod');
-
 const host = 'http://localhost/yaba/'
 
 export const font = () => {
     // https://ru.stackoverflow.com/questions/1506314/%D0%9F%D1%8B%D1%82%D0%B0%D1%8E%D1%81%D1%8C-%D1%81%D0%B4%D0%B5%D0%BB%D0%B0%D1%82%D1%8C-%D0%BA%D0%BE%D0%BD%D0%B2%D0%B5%D1%80%D1%82%D0%B5%D1%80-%D1%88%D1%80%D0%B8%D1%84%D1%82%D0%BE%D0%B2-%D0%B8%D0%B7-%D0%BF%D0%BB%D0%B0%D0%B3%D0%B8%D0%BD%D0%BE%D0%B2-gulp-%D0%BD%D0%BE-%D0%BD%D0%B5-%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0%D0%B5%D1%82-%D1%81%D0%BA%D1%80%D0%B8%D0%BF%D1%82
 
     return src('src/fonts/*.ttf')
-        .pipe(fonter({
-            subset: [66,67,68, 69, 70, 71],
-            formats: ['woff', 'ttf']
-        }))
-        .pipe(ttf2woff2())
+        // .pipe(fonter({
+        //     subset: [66,67,68, 69, 70, 71],
+        //     formats: ['woff', 'ttf']
+        // }))
+        // .pipe(ttf2woff2())
         .pipe(dest('assets/fonts'));
 }
 
@@ -133,6 +132,7 @@ export const watchForChanges = () => {
     watch(['src/**/*', '!src/images/icons/index.html', '!src/{images,js,scss}','!src/{images,js,scss}/**/*'], series(copy, reload));
     watch('src/js/**/*.js', series(scripts, reload));
     watch('src/images/icons/individual-icons', series(sprite, reload));
+    watch('src/fonts/*.ttf', series(font, reload));
     watch("**/*.php", reload);
 }
 

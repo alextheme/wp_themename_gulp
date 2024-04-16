@@ -15,28 +15,56 @@
 	}
 }
 
-// accaunt, cart, login, product
-%red_btn {
-	@extend %transition_all;
+%green_btn {
+	@extend %transition_opacity;
 
-	width: 100%;
-	font-weight: 700;
-
-	color: $white!important;
-	background-color: $blue!important;
-	border-radius: 12rem;
-	border: 1px solid $blue;
-
-	user-select: none;
+	height: 2.7rem;
+	padding: 0 20px;
+	color: $white;
+	background-color: $green_prime;
+	border-radius: 4rem;
 
 	@include st_btn();
 
 	&:active,
 	&:focus,
 	&:hover {
-		color: $blue!important;
-		box-shadow: 0 -5.5rem 0 0 inset $white;
+		opacity: .6;
 	}
+}
+
+%white_btn {
+	@extend %transition_opacity;
+	@extend %global_flex_block_row_wrap_center_center;
+	@extend %add;
+
+	min-height: 3.8rem;
+	padding: .5rem 2rem;
+
+	border-radius: 4rem;
+	border: 1px solid;
+	background-color: $white;
+
+	@include st_btn();
+
+	&:active,
+	&:focus,
+	&:hover {
+		opacity: .6;
+	}
+}
+
+%pink_border {
+	color: $pink_prime;
+	border-color: $pink_prime;
+}
+%blue_border {
+	color: $blue_prime;
+	border-color: $blue_prime;
+}
+%grey_border {
+	color: $grey;
+	border-color: $grey;
 }
 
 

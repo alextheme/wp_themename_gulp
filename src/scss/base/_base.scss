@@ -10,23 +10,20 @@
 	--height-footer: 10rem;
 	--gl-indent: 2rem;
 	--sidebar-width: 31.2rem;
+	--height-header: 10.8rem; //14.8rem;
+	--width-logo: 12.5rem;
+	--width-logo-footer: 19rem;
 
-	//@include bp($point_1 - 1) {
-	//	--sidebar-width: 28rem;
-	//}
-
-	@include bp($point_2, min) {
-		--height-header: 12rem;
-	}
-
-	@include bp($point_3) {
+	@include bp($point_2) {
 		--height-header: 6.4rem;
+		--width-logo: 5.2rem;
+		--width-logo-footer: 8rem;
 	}
 }
 
 html {
 	height: 100%;
-	font: 400 calc(100vw / 1920 * 10) / 1.33 $font_1;
+	font: 400 calc(100vw / 1920 * 10) / 1.33 $font_2;
 
 	@include bp(374px, min) {
 		font-size: 10px;
@@ -55,7 +52,7 @@ body {
 	}
 
 	&.body--open_menu_state {
-		@include bp($point_3) {
+		@include bp($point_2) {
 			overflow: hidden;
 			height: 100%;
 			width: 100%;
@@ -68,7 +65,27 @@ body {
 	}
 }
 
-.wrapper {
+//.wrapper {
+//	position: relative;
+//
+//	width: 100%;
+//	display: flex;
+//	flex-direction: column;
+//	min-height: 100%;
+//	height: auto !important;
+//
+//	overflow-x: hidden;
+//}
+//
+//.base {
+//	width: 100%;
+//	position: relative;
+//	padding: var(--height-header) var(--gl-indent) 0;
+//
+//	flex: 1 0 auto;
+//}
+
+#primary { // .content-area
 	position: relative;
 
 	width: 100%;
@@ -76,14 +93,18 @@ body {
 	flex-direction: column;
 	min-height: 100%;
 	height: auto !important;
+	padding: 0 var(--gl-indent);
 
 	overflow-x: hidden;
 }
 
-.base {
-	width: 100%;
+#main { // .site-main
 	position: relative;
+
+	width: 100%;
+	max-width: $page_width;
 	padding: var(--height-header) 0 0;
+	margin: 0 auto;
 
 	flex: 1 0 auto;
 }
@@ -94,44 +115,8 @@ a {
 
 	&:hover,
 	&:focus {
-		text-decoration: underline;
+		text-decoration: none;
 	}
 }
 
 //------------------------------------------------------------base styles###
-
-
-//------------------------------------------------------------base styles page
-h1 {
-	font-size: 6rem;
-}
-
-h2 {
-	font-size: 4.2rem;
-}
-
-h3 {
-	font-size: 3.2rem;
-}
-
-h4 {
-	font-size: 2rem;
-}
-
-h5 {
-	font-size: 1.8rem;
-}
-
-h6 {
-	font-size: 1.6rem;
-}
-
-h1, h2, h3, h4, h5, h6 {
-	margin: 2rem 0 1.4rem;
-}
-
-p {
-	line-height: 1.8;
-	margin: 1rem 0;
-}
-//------------------------------------------------------------base styles page###

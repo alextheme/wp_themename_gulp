@@ -2,7 +2,7 @@
 
 function _themename_content_width()
 {
-    $GLOBALS['content_width'] = apply_filters('_themename_content_width', 1220);
+    $GLOBALS['content_width'] = apply_filters('_themename_content_width', 1520);
 }
 
 add_action('after_setup_theme', '_themename_content_width', 0);
@@ -17,16 +17,6 @@ function _themename_widgets_init()
         'after_widget' => '</section>',
         'before_title' => '<h2 class="widget-title">',
         'after_title' => '</h2>',
-    ));
-
-    register_sidebar(array(
-        'name' => esc_html__('gTranslate', '_themename'),
-        'id' => '_themename_gtranslate_widgets',
-        'description' => __('Widget for site language switching buttons', '_themename'),
-        'before_widget' => '',
-        'after_widget' => '',
-        'before_title' => '',
-        'after_title' => '',
     ));
 }
 
