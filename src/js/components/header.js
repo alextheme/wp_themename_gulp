@@ -1,5 +1,3 @@
-console.log('this is header js')
-
 import {onWindowResize, onWindowScroll} from '../utils/index.js';
 import {css} from "../utils/functions.js";
 

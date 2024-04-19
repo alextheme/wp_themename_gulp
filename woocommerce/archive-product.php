@@ -102,12 +102,14 @@ if ( woocommerce_product_loop() ) {
 
 ?>
 
+<div class="shppb__shop_bottom_product_list_wrapper">
 	<header class="woocommerce-products-header">
 		<h1 class="woocommerce-products-header__title page-title">Angesehene Produkte</h1>
 	</header>
 
+	<?php // Show Featured Products Block ?>
 	<?php echo do_shortcode('[featured_products columns=6 limit=6]')?>
-
+</div>
 <?php
 
 /**

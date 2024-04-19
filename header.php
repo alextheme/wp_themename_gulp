@@ -116,7 +116,7 @@
 
 
                 <?php /* Profil */ ?>
-                <a class="header__link header__profil" href="#" aria-label="Profil">
+                <a class="header__link header__profil" href="<?php echo esc_url( get_permalink( wc_get_page_id( 'myaccount' ) ) )?>" aria-label="Profil">
                     <span class="icon_wrap">
                         <svg class="icon icon--size_mod">
                             <use xlink:href="<?php echo get_template_directory_uri() . '/assets/images/icons/sprite.svg#profil' ?>"></use>

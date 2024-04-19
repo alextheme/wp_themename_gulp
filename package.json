@@ -23,6 +23,7 @@
     "del": "^7.1.0",
     "gulp": "^4.0.2",
     "gulp-clean-css": "^4.3.0",
+    "gulp-fonter": "^0.3.0",
     "gulp-if": "^3.0.0",
     "gulp-imagemin": "^9.0.0",
     "gulp-postcss": "^9.0.1",
@@ -30,6 +31,7 @@
     "gulp-run": "^1.7.1",
     "gulp-sass": "^5.1.0",
     "gulp-sourcemaps": "^3.0.0",
+    "gulp-ttf2woff2": "^4.0.1",
     "gulp-wp-pot": "^2.5.0",
     "gulp-zip": "^6.0.0",
     "sass": "^1.69.5",
@@ -37,11 +39,11 @@
     "svg4everybody": "^2.1.9",
     "vinyl-named": "^1.1.0",
     "webpack-stream": "^7.0.0",
-    "yargs": "^17.7.2",
-    "gulp-fonter": "^0.3.0",
-    "gulp-ttf2woff2": "^4.0.1"
+    "yargs": "^17.7.2"
   },
   "dependencies": {
-    "ismobilejs": "^1.1.1"
+    "gsap": "^3.12.5",
+    "ismobilejs": "^1.1.1",
+    "select2": "^4.1.0-rc.0"
   }
 }

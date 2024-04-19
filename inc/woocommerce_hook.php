@@ -1,6 +1,6 @@
 <?php
 
-if ( ! defined( 'ABSPATH' ) ) {
+if (!defined('ABSPATH')) {
     exit;
 }
 
@@ -8,77 +8,62 @@ if ( ! defined( 'ABSPATH' ) ) {
 add_filter('woocommerce_style_smallscreen_breakpoint', function () { return '1024px'; });
 
 // Rating (archive)
-remove_action( 'woocommerce_after_shop_loop_item_title', 'woocommerce_template_loop_rating', 5 );
+remove_action('woocommerce_after_shop_loop_item_title', 'woocommerce_template_loop_rating', 5);
 add_action('woocommerce_before_shop_loop_item', 'woocommerce_template_loop_rating', 9);
 
 // Обрізати нулі в десяткових знаках ціни
-add_filter( 'woocommerce_price_trim_zeros', '__return_true');
+add_filter('woocommerce_price_trim_zeros', '__return_true');
 
-// Add Quantity to Product (archive)
-add_action( 'woocommerce_after_shop_loop_item', 'shbbp_woocommerce_after_shop_loop_item', 9 );
-function shbbp_woocommerce_after_shop_loop_item() { ?>
+// Move Price of Product (archive)
+remove_action('woocommerce_after_shop_loop_item_title', 'woocommerce_template_loop_price' );
+add_action('woocommerce_after_shop_loop_item', 'woocommerce_template_loop_price', 6);
 
-    <div class="product_item__quantity">
-        <div class="quantity">
-            <button aria-label="Reduce quantity of Beanie with Logo" class="minus">－</button>
-            <input class="qty"
-                   type="number" step="1" min="1" max="9999"
-                   aria-label="Quantity of Beanie with Logo in your cart."
-                   value="1">
-            <button aria-label="Increase quantity of Beanie with Logo" class="plus">＋</button>
+// Add Footer wrapper of product and Quantity of product (archive)
+add_action('woocommerce_after_shop_loop_item', '_themename_woocommerce_after_shop_loop_item', 9);
+function _themename_woocommerce_after_shop_loop_item()
+{
+    global $product; ?>
+
+    <div class="product_item__footer">
+
+    <?php if ($product->get_type() === 'simple') { ?>
+        <div class="product_item__quantity">
+            <div class="quantity">
+                <button class="minus" aria-label="Reduce quantity of product">－</button>
+                <input class="qty" type="number" step="1" min="1" max="9999" value="1"
+                       aria-label="Quantity of product in your cart.">
+                <button class="plus" aria-label="Increase quantity of product">＋</button>
+            </div>
         </div>
-    </div>
-
-    <?php
-    wc_enqueue_js( "
-      $('.product_item__quantity').on( 'click', 'button.plus, button.minus', function() {
-        console.log('abc');
-        return;
-            var qty = $( this ).closest( '.product_item__quantity' ).find( '.qty' );
-            var val   = parseFloat(qty.val());
-            var max = parseFloat(qty.attr( 'max' ));
-            var min = parseFloat(qty.attr( 'min' ));
-            var step = parseFloat(qty.attr( 'step' ));
-             console.log(val, min, max);
-             
-            if ( $( this ).is( '.plus' ) ) {
-               if ( max && ( max <= val ) ) {
-                  qty.val( max );
-               } else {
-                  qty.val( val + step );
-               }
-            } else {
-               if ( min && ( min >= val ) ) {
-                  qty.val( min );
-               } else if ( val > 1 ) {
-                  qty.val( val - step );
-               }
-            }
-         });
-   " );
+    <?php }
 }
+add_action('woocommerce_after_shop_loop_item', function () { ?>  </div><!-- .product_item__footer -->  <?php }, 11);
 
-/**
- * Sort by name function by WP Helper
- *
+/*
+ * Селектор для сортування
  * https://wphelper.io/sort-alphabetically-option-default-woocommerce-sorting/
  */
-add_filter( 'woocommerce_get_catalog_ordering_args', 'wphelper_woocommerce_get_catalog_ordering_args' );
-function wphelper_woocommerce_get_catalog_ordering_args( $args ) {
-    $orderby_value = isset( $_GET['orderby'] ) ? woocommerce_clean( $_GET['orderby'] ) : apply_filters( 'woocommerce_default_catalog_orderby', get_option( 'woocommerce_default_catalog_orderby' ) );
+add_filter('woocommerce_default_catalog_orderby_options', '_thememane_woocommerce_catalog_orderby');
+add_filter('woocommerce_catalog_orderby', '_thememane_woocommerce_catalog_orderby');
+function _thememane_woocommerce_catalog_orderby($sortby) {
+    $sortby['menu_order'] = 'Sorted by';
+    $sortby['popularity'] = 'Popularity';
+    $sortby['price'] = 'Price (Decreasing)';
+    $sortby['price-desc'] = 'Price (Increasing)';
+    unset($sortby['rating']);
+    unset($sortby['date']);
 
-    if ( 'alphabetical' == $orderby_value ) {
-        $args['orderby'] = 'title';
-        $args['order'] = 'ASC';
-    }
-
-    return $args;
-}
-
-add_filter( 'woocommerce_default_catalog_orderby_options', 'wphelper_woocommerce_catalog_orderby' );
-
-add_filter( 'woocommerce_catalog_orderby', 'wphelper_woocommerce_catalog_orderby' );
-function wphelper_woocommerce_catalog_orderby( $sortby ) {
-    $sortby['alphabetical'] = __( 'Sort by name' );
     return $sortby;
 }
+
+remove_action('woocommerce_before_shop_loop', 'woocommerce_result_count', 20);
+remove_action( 'woocommerce_sidebar', 'woocommerce_get_sidebar' );
+
+
+
+
+
+
+
+
+

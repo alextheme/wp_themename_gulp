@@ -88,6 +88,7 @@ export const copy = () => {
     ])
         .pipe(dest('assets'));
 }
+export const copyIconFonts = () => src('src/images/icons/fonts/**/*.{eot,svg,ttf,woff}').pipe(dest('assets/images/icons/fonts'))
 
 export const clean = async (cb) => {
     await deleteAsync(['assets/**/*']);
@@ -130,6 +131,7 @@ export const watchForChanges = () => {
     watch('src/scss/**/*.scss', styles);
     watch('src/images/**/*.{jpg,jpeg,png,svg,gif}', series(images, reload));
     watch(['src/**/*', '!src/images/icons/index.html', '!src/{images,js,scss}','!src/{images,js,scss}/**/*'], series(copy, reload));
+    watch(['src/images/icons/fonts/**/*.{eot,svg,ttf,woff}'], series(copyIconFonts, reload));
     watch('src/js/**/*.js', series(scripts, reload));
     watch('src/images/icons/individual-icons', series(sprite, reload));
     watch('src/fonts/*.ttf', series(font, reload));
@@ -188,8 +190,8 @@ export const pot = () => {
 
 
 
-export const dev = series(clean, parallel(sprite, font, styles, images, copy, scripts), serve, watchForChanges);
-export const build = series(clean, parallel(sprite, font, styles, images, copy, scripts), pot, compress);
+export const dev = series(clean, parallel(sprite, font, styles, images, copy, copyIconFonts, scripts), serve, watchForChanges);
+export const build = series(clean, parallel(sprite, font, styles, images, copy, copyIconFonts, scripts), pot, compress);
 
 export default dev;
 
