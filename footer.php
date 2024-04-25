@@ -58,17 +58,11 @@
 
                     foreach ($array_socials as $social => $link) {
                         if ($link) { ?>
-
                         <li>
                             <a href="<?= esc_url($link) ?>" aria-label="link <?= $social ?>">
-                                <span class="icon_wrap">
-                                    <svg class="icon icon--size_mod">
-                                        <use xlink:href="<?php echo get_template_directory_uri() . '/assets/images/icons/sprite.svg#' . $social ?>"></use>
-                                    </svg>
-                                </span>
+                                <span class="icon-<?php echo $social; ?>"></span>
                             </a>
                         </li>
-
                     <?php } } ?>
 
                 </ul>

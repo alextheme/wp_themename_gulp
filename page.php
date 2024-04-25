@@ -1,29 +1,36 @@
 <?php get_header(); ?>
 
-<?php if ( have_posts() ) : while ( have_posts() ) : the_post();  ?>
+<div id="primary" class="content-area">
+    <main id="main" class="site-main" role="main">
 
-    <!-- Вивід постів, функцій цикла: the_title() і т.п -->
-    <?php
-    $page_name = '';
-    if (function_exists('is_account_page') && is_account_page()) $page_name = 'my_account';
-    if (function_exists('is_cart') && is_cart()) $page_name = 'cart';
-    if (is_page('cart-classic')) $page_name = 'cart-classic';
-    ?>
+        <?php if ( have_posts() ) : while ( have_posts() ) : the_post();  ?>
 
-    <section class="section <?php echo esc_attr($page_name); ?>">
-        <div class="section_in">
+            <!-- Вивід постів, функцій цикла: the_title() і т.п -->
+            <?php
+            $page_name = '';
+            if (function_exists('is_account_page') && is_account_page()) $page_name = 'my_account';
+            if (function_exists('is_cart') && is_cart()) $page_name = 'cart';
+            if (is_page('cart-classic')) $page_name = 'cart-classic';
+            ?>
 
-        <?php if (!is_page(['my-account', 'cart', 'cart-classic'])) { ?>
-            <h2><?php the_title(); ?></h2>
-        <?php } ?>
+            <section class="section <?php echo esc_attr($page_name); ?>">
+                <div class="section_in">
 
-        <?php the_content(); ?>
+                <?php if (!is_page(['my-account', 'cart', 'cart-classic'])) { ?>
+                    <h2><?php the_title(); ?></h2>
+                <?php } ?>
 
-        </div>
-    </section>
+                <?php the_content(); ?>
 
-<?php endwhile; else: ?>
-    Записів немає
-<?php endif; ?>
+                </div>
+            </section>
+
+        <?php endwhile; else: ?>
+            Записів немає
+        <?php endif; ?>
+
+
+    </main>
+</div>
 
 <?php get_footer(); ?>

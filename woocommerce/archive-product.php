@@ -34,18 +34,6 @@ do_action( 'woocommerce_before_main_content' );
 			<h1 class="woocommerce-products-header__title page-title"><?php woocommerce_page_title(); ?></h1>
 		<?php endif; ?>
 
-
-		<div class="wc_products_header__menu_cat">
-			<label class="label">Verwandte Kategorien</label>
-			<?php
-			wp_nav_menu(array(
-				'theme_location' => 'category_menu',
-				'container' => false,
-
-			))
-			?>
-		</div>
-
 		<?php
 		/**
 		 * Hook: woocommerce_archive_description.
@@ -99,18 +87,6 @@ if ( woocommerce_product_loop() ) {
 	 */
 	do_action( 'woocommerce_no_products_found' );
 }
-
-?>
-
-<div class="shppb__shop_bottom_product_list_wrapper">
-	<header class="woocommerce-products-header">
-		<h1 class="woocommerce-products-header__title page-title">Angesehene Produkte</h1>
-	</header>
-
-	<?php // Show Featured Products Block ?>
-	<?php echo do_shortcode('[featured_products columns=6 limit=6]')?>
-</div>
-<?php
 
 /**
  * Hook: woocommerce_after_main_content.

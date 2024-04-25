@@ -24,7 +24,7 @@ export const setCookie = (key, value) => {
     document.cookie = "" + key + "=" + value + "; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/";
 }
 
-export const getCookie = key => {
+export const getCookies = key => {
     return document.cookie
         .split("; ")
         .find(row => row.startsWith("" + key + "="))

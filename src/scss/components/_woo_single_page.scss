@@ -1,0 +1,598 @@
+
+.woocommerce #content div.product div.images,
+.woocommerce div.product div.images,
+.woocommerce-page #content div.product div.images,
+.woocommerce-page div.product div.images,
+.woocommerce #content div.product div.summary,
+.woocommerce div.product div.summary,
+.woocommerce-page #content div.product div.summary,
+.woocommerce-page div.product div.summary {
+  width: calc( (100% - 2rem) / 2 );
+
+  @include bp($point_3) {
+    width: 100%;
+  }
+}
+
+.woocommerce:where(body:not(.woocommerce-block-theme-has-button-styles)) #respond input#submit.alt,
+.woocommerce:where(body:not(.woocommerce-block-theme-has-button-styles)) a.button.alt,
+.woocommerce:where(body:not(.woocommerce-block-theme-has-button-styles)) button.button.alt,
+.woocommerce:where(body:not(.woocommerce-block-theme-has-button-styles)) input.button.alt,
+:where(body:not(.woocommerce-block-theme-has-button-styles)) .woocommerce #respond input#submit.alt,
+:where(body:not(.woocommerce-block-theme-has-button-styles)) .woocommerce a.button.alt,
+:where(body:not(.woocommerce-block-theme-has-button-styles)) .woocommerce button.button.alt,
+:where(body:not(.woocommerce-block-theme-has-button-styles)) .woocommerce input.button.alt,
+.woocommerce div.product form.cart .button,
+.a {
+  @extend %base_btn;
+  @extend %pink_bg;
+
+  text-align: center;
+}
+
+.woocommerce {
+  div.product {
+
+    @include bp($point_3) {
+      padding-top: 2.8rem;
+    }
+
+    .onsale {
+      display: none;
+    }
+
+    div.images {
+      margin-bottom: 4.7rem;
+
+      @include bp($point_3) {
+        height: auto !important;
+        margin-bottom: 0;
+      }
+
+      .woocommerce-product-gallery__wrapper,
+      .woocommerce-product-gallery__image--placeholder {
+        width: 100%;
+        height: 100%;
+      }
+
+      img {
+        height: 100%;
+        object-fit: contain;
+        object-position: center center;
+
+        @include bp($point_3) {
+          object-fit: cover;
+        }
+      }
+    }
+
+    .product_title {
+      @extend %h2;
+
+      margin-bottom: .2rem;
+
+      @include bp($point_3) {
+        font-size: 3.2rem;
+        font-weight: 700;
+        margin-bottom: .8rem;
+      }
+    }
+
+    .single_product_page__summary_header {
+      @extend %flex_row_wrap_flex_start;
+      width: 100%;
+      order: -1;
+      margin-bottom: .3rem;
+
+      @include bp($point_3) {
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+    }
+
+    .single_product_page__made_in {
+      @extend %flex_row_wrap_center_center;
+
+      margin-left: auto;
+
+      @include bp($point_3) {
+        margin-top: -7px;
+      }
+
+      span:first-child {
+        @extend %small;
+
+        margin-right: 1.2rem;
+        margin-top: -.4rem;
+
+        @include bp($point_4) {
+          display: none;
+        }
+      }
+
+      span img {
+        display: inline-block;
+        width: 2.3rem;
+        height: 2.3rem;
+        object-fit: contain;
+      }
+    }
+
+    .woocommerce-product-rating {
+      @extend %flex_row_wrap_flex_start;
+
+      margin-right: 1rem;
+      margin-bottom: 0;
+
+      .star-rating {
+        margin: .1rem .8rem 0 .1rem;
+        font-size: .9rem;
+        letter-spacing: .18rem;
+        width: 5.5rem;
+      }
+
+      .woocommerce-review-link {
+        @extend %small;
+
+        margin-top: -2px;
+        display: block;
+        white-space: nowrap;
+        line-height: 1;
+      }
+    }
+
+    div.summary {
+      @extend %flex_column_wrap_flex_start;
+
+      padding: 5rem 0 2.5rem;
+
+      @include bp($point_3) {
+        padding: 1.3rem 0 2.5rem;
+      }
+
+      @include bp($point_4 + 1, min) {
+        padding-right: 5rem;
+        padding-left: 5rem;
+        margin-bottom: 3rem;
+
+        border-radius: 2.5rem;
+        border: 1px solid $grey;
+        -webkit-box-shadow: 0 16px 40px 0 rgba(0,0,0,0.09);
+        box-shadow: 0 16px 40px 0 rgba(0,0,0,0.09);
+      }
+
+      @include bp($point_4) {
+        margin-bottom: 2.1rem;
+      }
+
+      .price {
+        @extend %flex_row_wrap_center_center;
+        @extend %h2;
+
+        margin-bottom: 3.4rem;
+        color: $pink_prime;
+
+        @include bp($point_4) {
+          margin: 0 auto;
+        }
+
+        del {
+          order: 1;
+          font-weight: 500;
+          font-size: 3.2rem;
+          color: $grey;
+        }
+
+        ins {
+          margin-right: 4rem;
+        }
+
+        .woocommerce-Price-currencySymbol {
+          margin-left: .8rem;
+        }
+      }
+
+      .woocommerce-product-details__short-description {
+        @extend %text;
+
+        margin-bottom: 3rem;
+      }
+
+      .stock {
+        margin-bottom: .8rem;
+
+        @include bp($point_4) {
+          @include flex_block(row, wrap, flex-start, center, center);
+
+          margin-bottom: .3rem;
+        }
+
+        span {
+          display: block;
+
+          &:first-child {
+            @extend %small;
+            margin-bottom: .4rem;
+            color: $blue_prime;
+          }
+
+          &:nth-child(2) {
+            @extend %add;
+            display: block;
+            color: $green_prime;
+
+            @include bp($point_4) {
+              margin-left: auto;
+            }
+          }
+        }
+      }
+
+      form.cart {
+        @extend %flex_column_nowrap_flex_start;
+
+        width: 100%;
+        margin-bottom: 0;
+
+        table.variations,
+        .woocommerce-variation-price {
+          display: none;
+        }
+
+        .single_variation_wrap {
+          width: 100%;
+        }
+
+        .woocommerce-variation-add-to-cart {
+          @extend %flex_column_nowrap_flex_start;
+        }
+
+        div.quantity {
+          @extend %flex_row_wrap_flex_start_center;
+          margin-bottom: 3.8rem;
+
+          @include bp($point_4) {
+            width: 100%;
+            margin-right: 0;
+            margin-bottom: 5rem;
+          }
+
+          button {
+            @extend %base_btn;
+            @extend %blue_border;
+            @extend %h4;
+
+            height: 4rem;
+            width: 7.4rem;
+            color: $blue_prime;
+            font-size: 2rem;
+
+            @include bp($point_4) {
+              width: 100%;
+              max-width: 33%;
+              height: 4.4rem;
+            }
+          }
+
+          .qty {
+            @extend %remove_input_arrows;
+            @extend %h4;
+            color: $pink_prime;
+            border: 0;
+
+            @include bp($point_4) {
+              width: 100%;
+              max-width: 34%;
+            }
+          }
+
+        }
+
+        .product_summary_footer {
+          @extend %flex_row_wrap_flex_start;
+
+          @include bp($point_4 + 1, min) {
+
+          }
+
+          @include bp($point_4) {
+            width: 100%;
+          }
+
+          .add_to_cart_button__wrapper {
+            @extend %flex_column_nowrap_flex_start;
+
+            @include bp($point_4 + 1, min) {
+              margin: 0 3rem 3rem 0;
+            }
+
+            @include bp($point_4) {
+              width: 100%;
+            }
+          }
+
+          .pay_services_list {
+            margin: 0 auto;
+          }
+
+          .tinv-wraper {
+            margin-bottom: 3rem;
+
+            @include bp($point_3) {
+              position: absolute;
+              top: 0;
+              right: 0;
+              margin-bottom: 0;
+            }
+
+            a {
+              width: 7.2rem;
+              height: 7.2rem;
+              margin: 0;
+
+              @include bp($point_3) {
+                width: 4.4rem;
+                height: 4.4rem;
+                margin-top: 3.6rem;
+              }
+            }
+          }
+        }
+
+        button[type=submit] {
+          @extend %h4;
+
+          min-height: 6.7rem;
+          margin-bottom: 1.6rem;
+
+          @include bp($point_4 + 1, min) {
+            padding: 0 11.4rem;
+          }
+
+          @include bp($point_4) {
+            padding: 0 3.4rem;
+            width: 100%;
+          }
+        }
+      }
+    }
+
+
+
+
+
+  }
+}
+
+ul.variations_form__var_list {
+  @extend %flex_row_wrap_flex_start;
+
+  @include bp($point_4 + 1, min) {
+    margin: 0 -.8rem calc(4rem - .8rem) 0;
+  }
+
+  @include bp($point_4) {
+    margin: 0 -2.5rem calc(4rem - 2rem) 0;
+  }
+
+  li.variations_form__var_item {
+    width: 6.5rem;
+    height: 6.5rem;
+
+
+    @include bp($point_4 + 1, min) {
+      margin: 0 .8rem .8rem 0;
+    }
+
+    @include bp($point_4) {
+      margin: 0 2.5rem 2rem 0;
+    }
+
+    &.variations_form__var_item--active {
+      .variations_form__var_btn {
+        outline: .3rem solid $pink_prime;
+        cursor: default;
+      }
+    }
+
+    &:hover {
+      .variations_form__var_btn {
+        outline: .3rem solid $pink_prime;
+      }
+    }
+
+    .variations_form__var_btn {
+      display: block;
+
+      border-radius: 50%;
+      outline: 1px solid $grey;
+      overflow: hidden;
+      cursor: pointer;
+
+      width: 100%;
+      height: 100%;
+
+      .img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+}
+
+.woocommerce div.product div.images .woocommerce-product-gallery__image {
+  a {
+    display: block;
+    width: 100%;
+    overflow: hidden;
+
+    @include bp($point_3) {
+      height: auto !important;
+    }
+  }
+}
+.woocommerce-product-gallery__image {
+  .zoomImg {
+    min-width: 100rem !important;
+    object-fit: contain;
+  }
+
+  .zoomImgWrapper {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.pay_services_list {
+  @extend %flex_row_wrap_flex_start;
+
+  margin-left: -6px;
+
+  @include bp($point_3) {
+    margin-left: 0;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: -2rem;
+  }
+
+  li {
+    margin-right: 1.7rem;
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    @include bp($point_3) {
+      margin-bottom: 2rem;
+    }
+
+    @include bp($point_4 + 1, min) {
+
+    }
+
+    @include bp($point_4) {
+      margin-bottom: 1rem;
+    }
+
+    .pay_service {
+      @extend %flex_row_wrap_center_center;
+
+      height: 2.6rem;
+
+      &.pay_service__visa       .icon_wrap { width: 4rem; height: 1.3rem }
+      &.pay_service__mastercard .icon_wrap { width: 3.3rem; height: 2.6rem }
+      &.pay_service__gpay       .icon_wrap { width: 5rem; height: 2rem }
+      &.pay_service__paypal     .icon_wrap { width: 6.5rem; height: 1.7rem }
+      &.pay_service__apay       .icon_wrap { width: 4rem; height: 2.6rem }
+    }
+
+    .icon_wrap {
+      display: block;
+    }
+  }
+}
+
+
+.woocommerce {
+
+  div.product {
+
+    .woocommerce-tabs {
+      width: 100%;
+      max-width: 75rem;
+      margin-bottom: 4rem;
+
+      @include bp($point_3) {
+        max-width: 100%;
+      }
+
+      ul.tabs {
+        padding-left: 0;
+
+        @include bp($point_4 + 1, min) {
+          margin-bottom: 3rem;
+        }
+
+        @include bp($point_4) {
+          margin-bottom: 2.2rem;
+        }
+
+        &:before, &:after {
+          display: none;
+        }
+
+        li {
+          @extend %transition_all;
+
+          width: calc((100% - 4.75rem) / 3);
+          margin: 0;
+          padding: 0 .8rem;
+
+          color: $blue_prime;
+          background-color: $white;
+          border: 0;
+          border-bottom: 1px solid $blue_prime;
+          border-radius: 0;
+
+          @include bp($point_3) {
+            width: calc((100% - 2.35rem) / 3);
+            padding: 0 .4rem;
+          }
+
+          &:before, &:after {
+            display: none;
+          }
+
+          &:not(:last-child) {
+            margin-right: 2rem;
+
+            @include bp($point_3) {
+              margin-right: .8rem;
+            }
+          }
+
+          a {
+            @extend %text;
+            width: 100%;
+            color: inherit;
+
+            @include bp($point_3) {
+              font-size: 1.2rem;
+              font-weight: 900;
+              text-align: center;
+            }
+
+            @include bp($point_4 + 1, min) {
+              padding: 1rem 0;
+            }
+
+            @include bp($point_4) {
+              padding: .8rem 0;
+            }
+          }
+
+          &:hover,
+          &:focus,
+          &.active {
+            background-color: $white;
+            color: $pink_prime;
+            border-bottom-color: $pink_prime;
+
+            a { color: inherit }
+          }
+        }
+      }
+
+      .panel {
+        margin: 0;
+      }
+
+    }
+  }
+
+}
+
+

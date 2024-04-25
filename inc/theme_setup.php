@@ -80,6 +80,9 @@ add_action( 'after_setup_theme', function () {
 
 } );
 
+/**
+ * WIDGETS
+ */
 add_action('widgets_init', function () {
     register_sidebar(array(
         'name' => esc_html__('Sidebar', '_themename'),
@@ -100,6 +103,27 @@ add_action('widgets_init', function () {
             'after_widget' => '</section>',
         )
     );
+
+    register_sidebar(
+        array(
+            'name' => esc_html__( 'Header For Mini Cart', '_themename'),
+            'id' => 'header-widget-mini-cart',
+            'description' => esc_html__( 'Add widgets here.', '_themename'),
+            'before_widget' => '<section id="%1$s" class="widget %2$s">',
+            'after_widget' => '</section>',
+        )
+    );
+
+    register_sidebar(
+        array(
+            'name' => esc_html__( 'Header Widget area', '_themename'),
+            'id' => 'header-widget-area',
+            'description' => esc_html__( 'Add widgets here.', '_themename'),
+            'before_widget' => '<section id="%1$s" class="widget %2$s">',
+            'after_widget' => '</section>',
+        )
+    );
+
 });
 
 //add_filter('aws_searchbox_markup', function ($markup, $params) {

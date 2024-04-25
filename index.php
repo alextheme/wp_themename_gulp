@@ -1,11 +1,17 @@
 <?php get_header(); ?>
 
-<?php if ( have_posts() ) : while ( have_posts() ) : the_post();  ?>
-    <?php //Вивід постів, функцій цикла: the_title() і т.п ?>
-    <h2><?php the_title(); ?></h2>
-    <?php the_content(); ?>
-<?php endwhile; else: ?>
-    Записів немає
-<?php endif; ?>
+<div id="primary" class="content-area">
+    <main id="main" class="site-main" role="main">
+
+        <?php if ( have_posts() ) : while ( have_posts() ) : the_post();  ?>
+            <?php //Вивід постів, функцій цикла: the_title() і т.п ?>
+            <h2><?php the_title(); ?></h2>
+            <?php the_content(); ?>
+        <?php endwhile; else: ?>
+            Записів немає
+        <?php endif; ?>
+
+</main>
+</div>
 
 <?php get_footer(); ?>

@@ -3,12 +3,9 @@
 	position: relative;
 
 	width: 100%;
+	padding: 5rem var(--gl-indent);
 
 	font-size: $font_size_base;
-
-	@include bp($point_2, min) {
-	    padding: 5rem var(--gl-indent);
-	}
 
 	@include bp($point_3) {
 	    padding: 2rem var(--gl-indent) 3.5rem;

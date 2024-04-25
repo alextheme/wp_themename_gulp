@@ -1,6 +1,7 @@
 @import "family";
 @import "reset";
 @import "fonts";
+@import "icon_fonts";
 @import "print";
 
 //------------------------------------------------------------base styles
@@ -14,7 +15,7 @@
 	--width-logo: 12.5rem;
 	--width-logo-footer: 19rem;
 
-	@include bp($point_2) {
+	@include bp($point_3) {
 		--height-header: 6.4rem;
 		--width-logo: 5.2rem;
 		--width-logo-footer: 8rem;
@@ -52,7 +53,7 @@ body {
 	}
 
 	&.body--open_menu_state {
-		@include bp($point_2) {
+		@include bp($point_3) {
 			overflow: hidden;
 			height: 100%;
 			width: 100%;
@@ -85,7 +86,7 @@ body {
 //	flex: 1 0 auto;
 //}
 
-#primary { // .content-area
+#primary { //.wrapper (.content-area)
 	position: relative;
 
 	width: 100%;
@@ -98,7 +99,7 @@ body {
 	overflow-x: hidden;
 }
 
-#main { // .site-main
+#main { // .base (.site-main)
 	position: relative;
 
 	width: 100%;

@@ -19,7 +19,7 @@
 
 	@include z-index(header);
 
-	@include bp($point_2) {
+	@include bp($point_3) {
 		padding: 0;
 	}
 
@@ -44,23 +44,26 @@
 
 .header__row {
 	&:nth-child(1) {
-		@extend %global_flex_block_row_wrap_flex_end_center;
+		@extend %flex_row_wrap_flex_end_center;
 
 		height: 4rem;
 
 		.header__top_button {
-			@extend %green_btn;
+			@extend %base_btn;
+			@extend %green_bg;
 
+			min-height: 2.7rem;
+			padding: 0 20px;
 			margin-top: .5rem;
 		}
 
-		@include bp($point_2) {
+		@include bp($point_3) {
 		  display: none;
 		}
 	}
 
 	&:nth-child(2) {
-		@extend %global_flex_block_row_wrap_flex_start_center;
+		@extend %flex_row_wrap_flex_start_center;
 
 		padding: .8rem 3rem;
 		background-color: $blue_prime;
@@ -71,9 +74,11 @@
 			padding: .8rem 2.2rem;
 		}
 
-		@include bp($point_2) {
+		@include bp($point_3) {
 			height: var(--height-header);
 			border-radius: 0;
+			padding-right: 2rem;
+			padding-left: 2rem;
 		}
 	}
 
@@ -86,13 +91,13 @@
 
 
 .header__col_left {
-	@extend %global_flex_block_row_nowrap_flex_start_center;
+	@extend %flex_row_nowrap_flex_start_center;
 	width: calc((100% - var(--width-logo)) / 2);
 	height: 100%;
 	padding-right: 1.2rem;
 
 	.header__link_shop {
-		@extend %global_flex_block_row_nowrap_center_center;
+		@extend %flex_row_nowrap_center_center;
 
 		margin-right: 3.2rem;
 
@@ -100,26 +105,26 @@
 			margin-right: 1.2rem;
 		}
 
-		.icon_wrap {
-			display: block;
-			width: 3.6rem;
-			height: 3.6rem;
-			margin-right: .8rem;
+		.icon-menu {
+			font-size: 3.4rem;
+			color: $pink_prime;
+			margin-right: 1rem;
 
-			@include bp($point_2) {
-				width: 2.4rem;
-				height: 2.4rem;
+			@include bp($point_3) {
+				font-size: 2.4rem;
+				margin-right: .4rem;
 			}
 		}
 
-		.icon_wrap_2 {
+		.icon-arrow_down {
 			display: none;
 
-			@include bp($point_2) {
+			margin-left: .4rem;
+			font-size: .5rem;
+			color: $white;
+
+			@include bp($point_3) {
 				display: block;
-				width: .6rem;
-				height: .4rem;
-				margin-left: .4rem;
 			}
 		}
 
@@ -128,7 +133,7 @@
 			color: $white;
 			white-space: nowrap;
 
-			@include bp($point_2) {
+			@include bp($point_3) {
 				font-size: 1.2rem;
 			}
 		}
@@ -157,7 +162,7 @@
 			transform: translateY(-20rem);
 		}
 
-		@include bp($point_2) {
+		@include bp($point_3) {
 			margin-top: 6.4rem;
 			border-radius: 0;
 		}
@@ -191,9 +196,18 @@
 		}
 
 		.aws-search-btn {
-			background: $white url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 31.6 31.6"><path fill="%23888888" d="M29.1,31.6C29.1,31.6,29.1,31.6,29.1,31.6c-0.5,0-0.9-0.2-1.2-0.5L22.8,26c-0.1-0.1-0.3-0.1-0.4,0c-2.4,1.7-5.2,2.6-8.1,2.6C6.4,28.5,0,22.1,0,14.3S6.4,0,14.3,0s14.3,6.4,14.3,14.3c0,2.9-0.9,5.7-2.6,8.1l0,0c-0.1,0.1-0.1,0.3,0,0.4l5.1,5.1c0.7,0.7,0.7,1.8,0,2.5L30.3,31C30,31.4,29.6,31.6,29.1,31.6z M22.6,24.4c0.5,0,0.9,0.2,1.3,0.5l5.1,5.1c0.1,0.1,0.2,0.1,0.2,0.1c0,0,0.1,0,0.2-0.1l0.7-0.7c0.1-0.1,0.1-0.3,0-0.4l-5.1-5.1c-0.6-0.6-0.7-1.6-0.2-2.3l0,0c1.5-2.1,2.3-4.7,2.3-7.3c0-7-5.7-12.8-12.8-12.8S1.5,7.2,1.5,14.3S7.2,27,14.3,27c2.6,0,5.1-0.8,7.3-2.3C21.9,24.5,22.2,24.4,22.6,24.4z M14.3,25.5C8,25.5,3,20.5,3,14.3S8,3,14.3,3s11.3,5,11.3,11.3c0,2.9-1.1,5.7-3.2,7.8l-0.2,0.2C20,24.4,17.2,25.5,14.3,25.5z M14.3,4.5c-5.4,0-9.8,4.4-9.8,9.8S8.9,24,14.3,24c2.5,0,5-1,6.8-2.8l0.2-0.2c1.8-1.8,2.7-4.2,2.7-6.8C24,8.9,19.6,4.5,14.3,4.5z M14.3,21c-3.7,0-6.8-3-6.8-6.8c0-3.7,3-6.8,6.8-6.8c0.5,0,0.9,0.2,1.1,0.7c0.3,0.5,0.3,1.3-0.1,1.9c-0.2,0.4-0.3,0.8-0.3,1.2c0,1.2,1,2.3,2.3,2.3c0.4,0,0.8-0.1,1.2-0.3c0.6-0.3,1.3-0.4,1.9-0.1c0.4,0.2,0.7,0.7,0.7,1.1C21,18,18,21,14.3,21z M14.1,9C11.3,9.1,9,11.4,9,14.3c0,2.9,2.4,5.3,5.3,5.3c2.8,0,5.2-2.3,5.2-5.1c-0.1,0-0.2,0-0.3,0.1c-0.6,0.4-1.3,0.6-2,0.6c-2.1,0-3.8-1.7-3.8-3.8c0-0.7,0.2-1.4,0.6-2C14.1,9.2,14.1,9.1,14.1,9z"/></svg>') no-repeat center right;
-			background-size: 3rem 3rem !important;
+			@extend %iconmoon_font;
+
 			width: 56px;
+			font-size: 3.8rem;
+			color: $grey;
+			background-color: $white !important;
+
+			&:before {
+				content: "\e90e";
+				color: inherit;
+				margin: 2.7rem 0 0 .4rem;
+			}
 
 			@include bp($point_1) {
 				border-top-left-radius: 4rem !important;
@@ -202,11 +216,11 @@
 			}
 
 			.aws-search-btn_icon {
-				opacity: 0;
+				opacity: 0 !important;
 			}
 
 			&:hover {
-				background: $white url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 31.6 31.6"><path fill="%23252F6C" d="M29.1,31.6C29.1,31.6,29.1,31.6,29.1,31.6c-0.5,0-0.9-0.2-1.2-0.5L22.8,26c-0.1-0.1-0.3-0.1-0.4,0c-2.4,1.7-5.2,2.6-8.1,2.6C6.4,28.5,0,22.1,0,14.3S6.4,0,14.3,0s14.3,6.4,14.3,14.3c0,2.9-0.9,5.7-2.6,8.1l0,0c-0.1,0.1-0.1,0.3,0,0.4l5.1,5.1c0.7,0.7,0.7,1.8,0,2.5L30.3,31C30,31.4,29.6,31.6,29.1,31.6z M22.6,24.4c0.5,0,0.9,0.2,1.3,0.5l5.1,5.1c0.1,0.1,0.2,0.1,0.2,0.1c0,0,0.1,0,0.2-0.1l0.7-0.7c0.1-0.1,0.1-0.3,0-0.4l-5.1-5.1c-0.6-0.6-0.7-1.6-0.2-2.3l0,0c1.5-2.1,2.3-4.7,2.3-7.3c0-7-5.7-12.8-12.8-12.8S1.5,7.2,1.5,14.3S7.2,27,14.3,27c2.6,0,5.1-0.8,7.3-2.3C21.9,24.5,22.2,24.4,22.6,24.4z M14.3,25.5C8,25.5,3,20.5,3,14.3S8,3,14.3,3s11.3,5,11.3,11.3c0,2.9-1.1,5.7-3.2,7.8l-0.2,0.2C20,24.4,17.2,25.5,14.3,25.5z M14.3,4.5c-5.4,0-9.8,4.4-9.8,9.8S8.9,24,14.3,24c2.5,0,5-1,6.8-2.8l0.2-0.2c1.8-1.8,2.7-4.2,2.7-6.8C24,8.9,19.6,4.5,14.3,4.5z M14.3,21c-3.7,0-6.8-3-6.8-6.8c0-3.7,3-6.8,6.8-6.8c0.5,0,0.9,0.2,1.1,0.7c0.3,0.5,0.3,1.3-0.1,1.9c-0.2,0.4-0.3,0.8-0.3,1.2c0,1.2,1,2.3,2.3,2.3c0.4,0,0.8-0.1,1.2-0.3c0.6-0.3,1.3-0.4,1.9-0.1c0.4,0.2,0.7,0.7,0.7,1.1C21,18,18,21,14.3,21z M14.1,9C11.3,9.1,9,11.4,9,14.3c0,2.9,2.4,5.3,5.3,5.3c2.8,0,5.2-2.3,5.2-5.1c-0.1,0-0.2,0-0.3,0.1c-0.6,0.4-1.3,0.6-2,0.6c-2.1,0-3.8-1.7-3.8-3.8c0-0.7,0.2-1.4,0.6-2C14.1,9.2,14.1,9.1,14.1,9z"/></svg>') no-repeat center right;
+				color: $pink_prime;
 			}
 		}
 
@@ -223,7 +237,7 @@
 }
 
 .header__col_center {
-	@extend %global_flex_block_row_wrap_center_center;
+	@extend %flex_row_wrap_center_center;
 
 	width: var(--width-logo);
 	height: var(--width-logo);
@@ -238,27 +252,57 @@
 }
 
 .header__col_right {
-	@extend %global_flex_block_row_wrap_flex_end_center;
+	@extend %flex_row_wrap_flex_end_center;
 	width: calc((100% - var(--width-logo)) / 2);
 	height: 100%;
 	padding-left: 1rem;
 
+	.header__link_wrapper,
 	.header__link {
-		@extend %global_flex_block_row_nowrap_center_center;
+		@extend %flex_row_nowrap_center_center;
 
 		position: relative;
-		margin-right: 3.2rem;
-
-		&:last-child {
-			margin-right: 1.5rem;
-		}
+		margin-right: 3.5rem;
 
 		@include bp(1350px) {
 			margin-right: 1.2rem;
 		}
 
 		@include bp($point_5) {
-			margin-right: 1rem;
+			margin-right: .8rem;
+		}
+
+		&:last-child {
+			@include bp($point_2, min) {
+				margin-right: 1.5rem;
+			}
+		}
+
+		[class^='icon-'] {
+			margin-right: .8rem;
+			font-size: 2.2rem;
+
+			@include bp($point_1) {
+				margin-right: 0;
+			}
+
+			@include bp($point_3) {
+				font-size: 2.4rem;
+			}
+		}
+
+		.icon-search,
+		.icon-hot {
+			color: $white;
+		}
+		.icon-heart {
+			color: $pink_prime;
+		}
+		.icon-shop {
+			color: $green_prime;
+		}
+		.icon-profil {
+			color: $light_blu;
 		}
 
 		.icon_wrap {
@@ -271,7 +315,7 @@
 				margin-right: 0;
 			}
 
-			@include bp($point_2) {
+			@include bp($point_3) {
 				width: 2.1rem;
 				height: 2.1rem;
 			}
@@ -299,13 +343,13 @@
 			}
 		}
 
-		.header__warenkorb_cnt {
+		.header__mini_cart_count {
+			@extend %flex_row_wrap_center_center;
 			@extend %add;
-			@extend %global_flex_block_row_wrap_center_center;
 
 			position: absolute;
-			bottom: -6px;
-			left: 16px;
+			bottom: -.4rem;
+			left: 1.6rem;
 
 			width: 1.6rem;
 			height: 1.6rem;
@@ -314,6 +358,48 @@
 			border-radius: 2rem;
 			font-weight: 700;
 			color: $white;
+
+			@include bp($point_2, min) {
+
+			}
+
+			@include bp($point_3) {
+				bottom: -.4rem;
+				left: 1.4rem;
+
+				width: 1.2rem;
+				height: 1.2rem;
+
+				font-size: 1.1rem;
+			}
+		}
+
+		&.header__mini_cart {
+			a {
+				@extend %flex_row_nowrap_center_center;
+			}
+			.widget {
+				position: absolute;
+				width: 100%;
+				opacity: 0;
+				cursor: pointer;
+			}
+
+			[data-block-name] {
+				width: 100%;
+			}
+
+			.wc-block-mini-cart__button {
+				width: 100%;
+				cursor: pointer;
+			}
+		}
+	}
+
+	.header__link_wrapper {
+		@include bp($point_3) {
+			order: 1;
+			margin-right: 0;
 		}
 	}
 }

@@ -2,20 +2,12 @@
 	font-family: $font_1;
 	font-weight: 400;
 	font-size: 6rem;
-
-	@include bp($point_2) {
-
-	}
 }
 
 %h2 {
 	font-family: $font_1;
 	font-weight: 400;
 	font-size: 4.2rem;
-
-	@include bp($point_2) {
-
-	}
 }
 
 %h3 {
@@ -23,10 +15,6 @@
 	font-weight: 500;
 	font-size: 3.2rem;
 	line-height: 1.2;
-
-	@include bp($point_2) {
-
-	}
 }
 
 %h4 {
@@ -34,10 +22,6 @@
 	font-weight: 800;
 	font-size: 2rem;
 	line-height: 1.2;
-
-	@include bp($point_2) {
-
-	}
 }
 
 %body {
@@ -45,10 +29,6 @@
 	font-weight: 400;
 	font-size: 1.6rem;
 	line-height: 1.2;
-
-	@include bp($point_2) {
-
-	}
 }
 
 %text {
@@ -56,19 +36,11 @@
 	font-weight: 700;
 	font-size: 1.6rem;
 	line-height: 1.2;
-
-	@include bp($point_2) {
-
-	}
 }
 
 %small {
 	font-size: 1.4rem;
 	font-weight: 600;
-
-	@include bp($point_2) {
-
-	}
 }
 
 %add {
@@ -76,9 +48,5 @@
 	font-size: 1.2rem;
 	line-height: 1.2;
 	font-weight: 800;
-
-	@include bp($point_2) {
-
-	}
 }
 

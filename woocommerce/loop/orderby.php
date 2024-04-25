@@ -24,13 +24,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 	<?php // Add Filters ?>
 	<?php if ( is_active_sidebar(  'filter' ) ) { ?>
-
-	<!-- Shop Sidebar Filter Start -->
-	<div class="sidebar-filter">
-		<?php dynamic_sidebar( 'filter' ); ?>
-	</div>
-	<!-- Shop Sidebar Filter End -->
-
+		<!-- Shop Sidebar Filter Start -->
+		<div class="sidebar-filter">
+			<?php dynamic_sidebar( 'filter' ); ?>
+		</div>
+		<!-- Shop Sidebar Filter End -->
 	<?php } ?>
 
 	<form class="woocommerce-ordering" method="get">

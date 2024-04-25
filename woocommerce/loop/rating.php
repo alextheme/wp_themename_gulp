@@ -30,13 +30,11 @@ if ( ! wc_review_ratings_enabled() ) {
     <a class="product__rating_link" href="<?php echo get_the_permalink() ?>#respond">
         <?php echo wc_get_rating_html( $product->get_average_rating() ); // WordPress.XSS.EscapeOutput.OutputNotEscaped. ?>
     </a>
-    <button class="product__favorite_btn button_add_to_wish_list"><!-- product__favorite_btn--active -->
-        <span class="icon_wrap">
-            <svg class="icon icon--size_mod">
-                <use xlink:href="<?php echo get_template_directory_uri() . '/assets/images/icons/sprite.svg#heart2' ?>"></use>
-            </svg>
-        </span>
-    </button>
+
+    <div class="product__header_made_in">
+        <img src="<?php echo get_template_directory_uri() . '/assets/images/eu1.png'; ?>" alt="">
+    </div>
+
 </div>
 
 

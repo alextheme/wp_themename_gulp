@@ -8,6 +8,7 @@ function _themename_scripts() {
     wp_enqueue_style ( 'add_google_font2' , 'https://fonts.googleapis.com/css2?family=Hammersmith+One&display=swap' , false );
 
     wp_enqueue_script( '_themename-scripts', get_template_directory_uri() . '/assets/js/bundle.js', array('jquery'), _S_VERSION, true );
+    wp_enqueue_script('jquery-form');
 }
 
 add_action( 'wp_enqueue_scripts', '_themename_scripts' );
