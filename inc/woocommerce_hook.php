@@ -70,7 +70,7 @@ function _themename_add_menu_categories() { ?>
  */
 add_action( 'woocommerce_after_main_content', '_themename_add_featured_products_list', 5 );
 function _themename_add_featured_products_list() { ?>
-    <div class="shop__featured_products_wrapper">
+    <div class="shop__featured_products_wrapper js-slick-products">
 
         <header class="woocommerce-products-header">
             <h1 class="woocommerce-products-header__title page-title">

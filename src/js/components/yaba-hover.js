@@ -23,7 +23,7 @@ const yabaHover = () => {
             })
             .each((_, product) => {
                 const topEl = $(product).find('> .woocommerce-loop-product__link')[0]
-                const bottomEl = $(product).find('.add_to_cart_wrap')[0]
+                const bottomEl = $(product).find('.price')[0]
                 $(topEl).css({ paddingBottom: distanceBetweenElements(topEl, bottomEl) + 'px' })
             })
     }

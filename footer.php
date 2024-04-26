@@ -36,14 +36,6 @@
                     'container' => false,
                 ))
                 ?>
-<!--    <li><a href="#">Privacy policy</a></li>-->
-<!--    <li><a href="#">Public offer</a></li>-->
-<!--    <li><a href="#">Delivery conditions</a></li>-->
-<!--    <li><a href="#">Rules for partners</a></li>-->
-<!--    <li><a href="#">Privacy policy</a></li>-->
-<!--    <li><a href="#">Public offer</a></li>-->
-<!--    <li><a href="#">Delivery conditions</a></li>-->
-<!--    <li><a href="#">Rules for partners</a></li>-->
                 <button class="footer__button footer__button--mob">Händler Account anfragen</button>
             </div>
 

@@ -90,7 +90,7 @@ const yaba = () => {
         }
     })
 
-    $('.shop__featured_products_wrapper .featured_products_mobile ul.products').slick({
+    $('.js-slick-products .featured_products_mobile ul.products').slick({
         slidesToShow: 2,
         slidesToScroll: 2,
         arrows: false,
