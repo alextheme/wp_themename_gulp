@@ -99,6 +99,44 @@ const yaba = () => {
         dots: true,
     })
 
+    $('.js-hero_slider').slick({
+        slidesToShow: 2,
+        slidesToScroll: 2,
+        arrows: false,
+        infinite: true,
+        swipe: true,
+        dots: true,
+
+        responsive: [
+            {
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                }
+            }
+        ]
+    })
+
+    $('.js-slick-hot_products ul.products').slick({
+        slidesToShow: 6,
+        slidesToScroll: 2,
+        arrows: false,
+        infinite: true,
+        swipe: true,
+        dots: true,
+
+        responsive: [
+            {
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 2,
+                }
+            }
+        ]
+    })
+
 
 
 

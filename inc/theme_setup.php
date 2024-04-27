@@ -9,6 +9,7 @@ add_action( 'after_setup_theme', function () {
             array(
                 'header_menu' => esc_html__( 'Header menu', '_themename' ),
                 'category_menu' => esc_html__( 'Menu Category', '_themename' ),
+                'category_section' => esc_html__( 'Category Section', '_themename' ),
                 'footer_category' => esc_html__( 'Footer Category', '_themename' ),
                 'footer_menu' => esc_html__( 'Footer menu', '_themename' ),
             )

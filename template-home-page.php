@@ -4,40 +4,81 @@
 
 get_header();
 
-if (function_exists('get_field')) {
+do_action( 'woocommerce_before_main_content' );
 
-    global $post;
+global $post;
 
-    get_template_part('parts/home', 'hero');
+if (function_exists('get_field')) { ?>
 
-    $args = array(
-        'mod' => '',
-        'title_section' => get_field('poster_of_the_month_title', $post->ID),
-        'posters' => get_field('poster_of_the_month', $post->ID),
-    );
-    get_template_part('parts/home', 'posters', $args);
+    <section class="home_section hero">
+        <div class="section_header hero_header">
+            <h2 class="section_title">The sweetest store in Germany</h2>
+            <a href="#">Alle Marken</a>
+        </div>
 
+        <?php $hero_slider = get_field('hero_slider', 'option'); ?>
+        <?php $hero_brands = get_field('hero_brands', 'option'); ?>
 
-    $args = array(
-        'mod' => 'posters--popular_mod',
-        'title_section' => get_field('popularni_autorzy_title', $post->ID),
-        'posters' => get_field('popularni_autorzy', $post->ID),
-        'bg_section' => get_field('popularni_autorzy_background', $post->ID),
-    );
-    get_template_part('parts/home', 'posters', $args);
+        <?php if (count($hero_slider) > 0) { ?>
+        <div class="hero_slider">
+            <ul class="hero_slider_list js-hero_slider">
+                <?php foreach ($hero_slider as $item) { ?>
+                <li class="hero_slider_item">
+                    <a href="<?php echo esc_url( $item['link'] ); ?>">
+                        <img src="<?php echo esc_url( $item['image'] ); ?>" alt="">
+                    </a>
+                </li>
+                <?php } ?>
+            </ul>
+        </div>
+        <?php } ?>
 
+        <?php if (count($hero_brands) > 0) { ?>
+            <div class="hero_brands">
+                <ul class="hero_brands_list">
+                    <?php for ($i = 0; $i < 2; $i++) { ?>
+                        <?php foreach ($hero_brands as $item) { ?>
+                            <li class="hero_brands_item">
+                                <a href="<?php echo esc_url( $item['link'] ); ?>">
+                                    <img src="<?php echo esc_url( $item['image'] ); ?>" alt="">
+                                </a>
+                            </li>
+                        <?php } ?>
+                    <?php } ?>
+                </ul>
+            </div>
+        <?php } ?>
 
-    $args = array(
-        'mod' => 'posters--new_mod',
-        'title_section' => get_field('new_additions_pigasus_title', $post->ID),
-        'posters' => get_field('new_additions_pigasus', $post->ID),
-    );
-    get_template_part('parts/home', 'posters', $args);
+    </section><!-- .hero -->
 
-    get_template_part('parts/home', 'about');
+    <section class="home_section home_cat">
+        <div class="section_header home_cat_header">
+            <h2 class="section_title">The sweetest store in Germany</h2>
+            <a href="#">Alle Kategorien</a>
+        </div>
 
-    get_template_part('parts/home', 'contacts');
+        <?php wp_nav_menu(
+            array(
+                'theme_location' => 'category_section',
+                'container_class' => 'home_category_section',
+                'walker' => new Yaba_Categories_Section(),
+            )
+        ) ?>
+    </section>
 
-}
+    <section class="home_section hot_products">
+        <div class="section_header hot_products_header">
+            <h2 class="section_title">Hot Deals</h2>
+            <a href="#">Alle Hot-Deals</a>
+        </div>
+
+        <div class="hot_products_slider js-slick-hot_products">
+            <?php echo do_shortcode('[featured_products columns=6]')?>
+        </div>
+    </section>
+
+<?php }
+
+do_action( 'woocommerce_after_main_content' );
 
 get_footer();

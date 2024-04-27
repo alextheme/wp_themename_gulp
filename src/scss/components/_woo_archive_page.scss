@@ -103,6 +103,7 @@
 
           @include bp($point_2, min) {
             min-height: 3.6rem;
+            padding: .5rem 2rem;
           }
 
           @include bp($point_3) {
@@ -376,6 +377,7 @@
       .product_type_grouped,
       .add_to_cart_button {
         @extend %base_btn;
+        @extend %btn_size_1;
         @extend %pink_border;
 
         margin-top: auto;
@@ -455,6 +457,7 @@ span.wishlist_products_counter.top_wishlist-custom.no-txt img {
       width: 4.7rem;
       height: 3rem;
       min-height: 3rem;
+      padding: .5rem 2rem;
     }
 
     input.qty {
@@ -854,35 +857,7 @@ span.wishlist_products_counter.top_wishlist-custom.no-txt img {
   }
 
   .slick-dots {
-    @extend %flex_row_wrap_center_center;
-
-    width: 100%;
-    margin: 1.4rem 0 0;
-
-    li {
-      width: 1.6rem;
-      height: 1.6rem;
-
-      button {
-        font-size: 0;
-
-        &:before {
-          @extend %iconmoon_font;
-          @extend %transition_color;
-
-          content: "\e903";
-          font-size: 1.6rem;
-          color: $grey;
-        }
-      }
-
-      &:hover,
-      &.slick-active {
-        button:before {
-          color: $pink_prime;
-        }
-      }
-    }
+    @extend %slick_dots;
   }
 }
 

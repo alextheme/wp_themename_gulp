@@ -51,3 +51,54 @@
 		-moz-appearance: textfield;
 	}
 }
+
+%slick_dots {
+	@extend %flex_row_wrap_center_center;
+
+	width: 100%;
+	margin: 1.4rem 0 0;
+
+	li {
+		width: 1.6rem;
+		height: 1.6rem;
+
+		&:not(:last-child) {
+			@include bp($point_2, min) {
+				margin-right: 1.6rem;
+			}
+
+			@include bp($point_3) {
+				margin-right: .8rem;
+			}
+		}
+
+		button {
+			font-size: 0;
+			cursor: pointer;
+
+			&:before {
+				@extend %iconmoon_font;
+				@extend %transition_color;
+
+				content: "\e903";
+
+				color: $grey;
+
+				@include bp($point_2, min) {
+					font-size: 2.4rem;
+				}
+
+				@include bp($point_3) {
+					font-size: 1.6rem;
+				}
+			}
+		}
+
+		&:hover,
+		&.slick-active {
+			button:before {
+				color: $pink_prime;
+			}
+		}
+	}
+}

@@ -25,6 +25,7 @@
 .woocommerce div.product form.cart .button,
 .a {
   @extend %base_btn;
+  @extend %btn_size_1;
   @extend %pink_bg;
 
   text-align: center;
@@ -265,6 +266,8 @@
 
             height: 4rem;
             width: 7.4rem;
+            padding: .5rem 2rem;
+
             color: $blue_prime;
             font-size: 2rem;
 

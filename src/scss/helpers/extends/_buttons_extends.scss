@@ -19,10 +19,7 @@
 	@extend %flex_row_wrap_center_center;
 	@extend %add;
 
-	min-height: 3.8rem;
-	padding: .5rem 2rem;
-
-	border-radius: 4rem;
+	border-radius: 5rem;
 	border: .2rem solid;
 	background-color: $white;
 	white-space: nowrap;
@@ -36,6 +33,15 @@
 		color: $blue_prime !important;
 		background-color: $white !important;
 	}
+}
+
+%btn_size_1 {
+	min-height: 3.8rem;
+	padding: .5rem 2rem;
+}
+%btn_size_2 {
+	height: 8.7rem;
+	padding: 1rem 4rem;
 }
 
 %pink_border {
