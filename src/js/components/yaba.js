@@ -153,18 +153,11 @@ const yaba = () => {
         onWindowResize(() => { setTimeout(() => setColHeight(), 200) })
 
         if (typeof variationData !== 'undefined') {
-
             if (variationData.default_variation_id > 0) {
-                console.log(1)
                 $('.product .summary > .price').replaceWith(variationData['price_html'])
             } else {
-                console.log(2)
                 $('.product .summary > .price').replaceWith(variationData['price_base_html'])
             }
-
-        } else {
-            console.log(3)
-            // $('.product .summary > .price').css({ opacity: 1 })
         }
 
         $('.reset_variations').on('click', () => {

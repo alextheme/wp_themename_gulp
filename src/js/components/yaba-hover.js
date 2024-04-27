@@ -18,11 +18,11 @@ const yabaHover = () => {
         // щоб ціна не скакала вгору
         $('ul.products li.product')
             .each((_, product) => {
-                const topEl = $(product).find('> .woocommerce-loop-product__link')[0]
+                const topEl = $(product).find('.product_item__wrapper > .woocommerce-loop-product__link')[0]
                 $(topEl).css({ paddingBottom: 0 })
             })
             .each((_, product) => {
-                const topEl = $(product).find('> .woocommerce-loop-product__link')[0]
+                const topEl = $(product).find('.product_item__wrapper > .woocommerce-loop-product__link')[0]
                 const bottomEl = $(product).find('.price')[0]
                 $(topEl).css({ paddingBottom: distanceBetweenElements(topEl, bottomEl) + 'px' })
             })
@@ -74,7 +74,7 @@ const yabaHover = () => {
                 const rect = itemPositions[i]
                 item.style.top = rect.top + 'px'
                 item.style.left = rect.left + 'px'
-                item.classList.add('product__jsPositionAbsolute')
+                item.classList.add('js-pos-absolute')
                 i++
             }
 
@@ -92,9 +92,9 @@ const yabaHover = () => {
             for (const item of list.children) {
                 item.style.top = 'unset'
                 item.style.left = 'unset'
-                item.classList.remove('product__jsPositionAbsolute')
+                item.classList.remove('js-pos-absolute')
             }
-            list.style.width = '100%'
+            list.style.width = 'auto'
             list.style.height = '100%'
         })
     }
@@ -106,13 +106,15 @@ const yabaHover = () => {
         const productFooter = product.querySelector('.product_item__footer')
 
         if (event.type === 'mouseenter') {
-            product.style.zIndex = 3
+            product.style.zIndex = 20
             productFooter.style.height = productFooter.getAttribute('data-height') + 'px'
+            product.classList.add('js-product-hover')
         }
 
         if (event.type === 'mouseleave') {
             productFooter.style.height = 0
             product.style.zIndex = 0
+            product.classList.remove('js-product-hover')
         }
     }
 

@@ -135,6 +135,11 @@ add_filter('woocommerce_pagination_args', function ($args) {
  */
 add_action( 'woocommerce_before_shop_loop_item', function () { echo '<div class="product_item__wrapper">'; }, 5 );
 add_action( 'woocommerce_after_shop_loop_item', function () { echo '</div>'; }, 20 );
+/*
+ * Add wrapper for image product
+ */
+add_action( 'woocommerce_before_shop_loop_item_title', function () { echo '<div class="product_item_img__wrapper">'; }, 9 );
+add_action( 'woocommerce_before_shop_loop_item_title', function () { echo '</div>'; }, 11 );
 
 /**
  * SINGLE PRODUCT
