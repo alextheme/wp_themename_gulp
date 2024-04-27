@@ -133,8 +133,8 @@ add_filter('woocommerce_pagination_args', function ($args) {
 /*
  * Add wrapper for item product
  */
-//add_action( 'woocommerce_before_shop_loop_item', function () { echo '<div class="product_item__wrapper">'; }, 5 );
-//add_action( 'woocommerce_after_shop_loop_item', function () { echo '</div>'; }, 20 );
+add_action( 'woocommerce_before_shop_loop_item', function () { echo '<div class="product_item__wrapper">'; }, 5 );
+add_action( 'woocommerce_after_shop_loop_item', function () { echo '</div>'; }, 20 );
 
 /**
  * SINGLE PRODUCT
