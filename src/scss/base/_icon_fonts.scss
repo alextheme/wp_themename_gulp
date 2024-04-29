@@ -29,6 +29,14 @@
   @extend %iconmoon_font;
 }
 
+.icon-slider_arrow_left:before {
+  content: "\e914";
+  //color: #252f6c;
+}
+.icon-slider_arrow_right:before {
+  content: "\e915";
+  //color: #252f6c;
+}
 .icon-arrow-left:before {
   content: "\e905";
 }

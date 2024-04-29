@@ -5,32 +5,6 @@ import * as zoom from "jquery-zoom";
 const $ = jQuery
 
 const yaba = () => {
-    // $('.product_item__quantity').on( 'click', '.plus, .minus', function() {
-    //     var qty = $( this ).closest( '.product_item__quantity' ).find( '.qty' );
-    //     var addToCartBtn = $( this ).closest( '.product' ).find( '.button.add_to_cart_button' );
-    //     var val   = parseFloat(qty.val());
-    //     var max = parseFloat(qty.attr( 'max' ));
-    //     var min = parseFloat(qty.attr( 'min' ));
-    //     var step = parseFloat(qty.attr( 'step' ));
-    //
-    //     if ( $( this ).is( '.plus' ) ) {
-    //         if ( max && ( max <= val ) ) {
-    //             qty.val( max );
-    //         } else {
-    //             qty.val( val + step );
-    //         }
-    //     } else {
-    //         if ( min && ( min >= val ) ) {
-    //             qty.val( min );
-    //         } else if ( val > 1 ) {
-    //             qty.val( val - step );
-    //         }
-    //     }
-    //
-    //     console.log(addToCartBtn)
-    //var addToCartBtn = $( this ).closest( '.product' ).find( '.button.add_to_cart_button' );
-    //     addToCartBtn.attr('data-quantity', qty.val() )
-    // });
 
     $(document).on( 'click', 'button.plus, button.minus', function() {
         var qty = $( this ).parent( '.quantity' ).find( '.qty' );
@@ -72,6 +46,7 @@ const yaba = () => {
         $('.header__search_form_wrap').toggleClass('header__search_form_wrap--open')
     })
 
+    // Close elements
     $(document.body).on('click', function (e) {
         const $this = $(e.target)
 
@@ -121,7 +96,7 @@ const yaba = () => {
     $('.js-slick-hot_products ul.products').slick({
         slidesToShow: 6,
         slidesToScroll: 2,
-        arrows: false,
+        arrows: true,
         infinite: true,
         swipe: true,
         dots: true,
@@ -137,10 +112,59 @@ const yaba = () => {
         ]
     })
 
+    // Home About Show Content
+    ;(() => {
+        const button = $('.js-home_about_show_more')
+        const content = button.parent().find('.home_about__content_text')
+
+        button.data('content_height', content.height())
+
+        content.height('auto')
+        button.data('content_full_height', content.height())
+        content.height(button.data('content_height'))
+
+        button.on('click', function() {
+            const item = $(this).parent()
+            if (item.hasClass('home_about__content--show')) {
+                item.removeClass('home_about__content--show')
+                item.find('.home_about__content_text').height($(this).data('content_height'))
+            } else {
+                item.addClass('home_about__content--show')
+                item.find('.home_about__content_text').height($(this).data('content_full_height'))
+            }
+        })
+    })()
+
+    // Home Accordion questions-answers
+    ;(() => {
+        const items = $('.js-home_accordion').find('.acc_item')
+
+        items.each(function() {
+            const button = $(this).find('.acc_header')
+            const content = $(this).find('.acc_content')
+            button.data( 'content_height', $(content).height() )
+            content.height(0)
 
 
+            button.on('click', function () {
+                items.removeClass('home_accordion__item--open')
+                items.find('.acc_content').height(0)
 
-    const productVariationsEvents = () => {
+                const item = $(this).parent()
+                if (item.hasClass('home_accordion__item--open')) {
+                    item.removeClass('home_accordion__item--open')
+                    item.find('.acc_content').height(0)
+                } else {
+                    item.addClass('home_accordion__item--open')
+                    item.find('.acc_content').height($(this).data('content_height'))
+                }
+            })
+        })
+
+    })()
+
+    // Product Variations Events
+    ;(() => {
         const setColHeight = () => {
             if (window.innerWidth <= 1024) return
 
@@ -191,12 +215,13 @@ const yaba = () => {
 
             //imageZoom(jsonData['image'])
         })
-    }
-    productVariationsEvents()
 
-    window.imageZoomInstans = null
+    })()
 
-    const imageZoom = img => {
+    // Image Zoom
+    ;(() => {
+        window.imageZoomInstans = null
+
         const image = $('.woocommerce-product-gallery__image')
         const imgIns = image.find('img')
         const src = imgIns.length ? imgIns.attr('src') : undefined
@@ -222,12 +247,15 @@ const yaba = () => {
         //             duration: 300,
         //             /*on: 'mouseover', //mouseover, grab, click, toggle */ })
         // }
+    })()
 
-    }
-    // imageZoom()
 
-    // Events
-    const checkWoocommerceEvents = () => {
+
+
+
+
+    // Woocommerce Events
+    ;(() => {
         jQuery(document.body).on(
             "init_checkout " +
             "payment_method_selected " +
@@ -259,14 +287,8 @@ const yaba = () => {
             (e, params) => console.log(e.type)
         )
         $( '.wc-tabs-wrapper, .woocommerce-tabs, #rating' ).on( 'init', (e, params) => console.log(e.type));
-    }
-    checkWoocommerceEvents()
 
-
-    const resize = () => {
-
-    }
-    onWindowResize(resize)
+    })()
 }
 
 export default yaba;

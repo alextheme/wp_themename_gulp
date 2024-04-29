@@ -43,6 +43,10 @@
 	height: 8.7rem;
 	padding: 1rem 4rem;
 }
+%btn_size_3 {
+	height: 4.2rem;
+	padding: .5rem 2rem;
+}
 
 %pink_border {
 	@extend %transition_color_background;
