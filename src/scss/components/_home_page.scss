@@ -1,14 +1,10 @@
-.conic_gradient_example {
-  --mask:
-          linear-gradient(red, red) padding-box,
-          conic-gradient(red 10deg 45deg, blue 45deg 180deg, transparent 180deg) border-box;
-  -webkit-mask: var(--mask);
-  mask: var(--mask);
-}
-
-.help_el_for_hide_below_el + div {
-  display: none;
-}
+//.conic_gradient_example {
+//  --mask:
+//          linear-gradient(red, red) padding-box,
+//          conic-gradient(red 10deg 45deg, blue 45deg 180deg, transparent 180deg) border-box;
+//  -webkit-mask: var(--mask);
+//  mask: var(--mask);
+//}
 
 .section_header {
    @extend %flex_row_wrap_flex_start_center;
@@ -163,6 +159,7 @@ Menu Category Section
             width: 100%;
             height: 100%;
             object-fit: contain;
+            object-position: right bottom;
           }
         }
 
@@ -790,6 +787,7 @@ Home Question - Answers
  */
 .home_accordion {
   position: relative;
+  margin-bottom: 10rem;
 
   &:before {
     @extend %hor_centr;

@@ -6,9 +6,6 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
     <?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
@@ -28,7 +25,7 @@
                 <?php /* Alle Produkte */
                 if (function_exists('wc_get_page_id')) {
                     $shop_page_url = get_permalink( wc_get_page_id( 'shop' ) ); ?>
-                    <a class="header__link_shop" href="<?php echo esc_url($shop_page_url); ?>" aria-label="Alle Produkte">
+                    <a class="header__link_menu js-header__link_menu" href="<?php echo esc_url($shop_page_url); ?>" aria-label="Alle Produkte">
                         <span class="icon-menu"></span>
                         <span class="label">Alle Produkte</span>
                         <span class="icon-arrow_down"></span>
@@ -104,4 +101,14 @@
         </div>
     </div>
     </div>
+
+    <nav id="header_nav_menu_category">
+        <?php wp_nav_menu(
+            array(
+                'theme_location' => 'category_section',
+                'container_class' => 'menu_category',
+                'walker' => new Yaba_Categories_Section(),
+            )
+        ) ?>
+    </nav>
 </header>

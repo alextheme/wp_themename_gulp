@@ -2,7 +2,12 @@
 
 /* Template Name: Template Home Page */
 
-get_header();
+get_header();  ?>
+
+<div id="primary_home" class="content-area template_home_page">
+    <main id="main" class="site-main ">
+
+<?php
 
 if (function_exists('get_field')) { ?>
 
@@ -273,7 +278,11 @@ if (function_exists('get_field')) { ?>
 
 
     <span class="help_el_for_hide_below_el"></span>
-<?php }
+<?php } ?>
 
+    </main>
+</div>
+
+<?php
 
 get_footer();

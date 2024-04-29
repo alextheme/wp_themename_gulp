@@ -6,6 +6,7 @@
 	padding: 5rem var(--gl-indent);
 
 	font-size: $font_size_base;
+	overflow: hidden;
 
 	@include bp($point_3) {
 	    padding: 2rem var(--gl-indent);

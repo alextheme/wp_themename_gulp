@@ -10,6 +10,8 @@
 
 	background-color: $blue_prime;
 
+	overflow-x: hidden;
+
 	@include bp($point_3) {
 		padding-top: 3rem;
 		padding-bottom: 4.4rem;

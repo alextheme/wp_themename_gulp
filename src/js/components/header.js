@@ -32,6 +32,7 @@ const header = () => {
 
         if (prevScrollPos < currentScrollPos && currentScrollPos > 150) {
             bodyElement.classList.add('body--go_scroll_up')
+            bodyElement.classList.remove('body--open_menu_category')
         } else {
             bodyElement.classList.remove('body--go_scroll_up')
         }

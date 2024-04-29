@@ -6,6 +6,17 @@ const $ = jQuery
 
 const yaba = () => {
 
+    const elNav = '<li id="menu-item-243" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat current-product-ancestor menu-item-243"><a href="//localhost:3000/yaba/product-category/chips/"><span>Chips</span><img src="//localhost:3000/yaba/wp-content/uploads/2024/04/cat-chips.png" alt="" width="762" height="365"></a></li>'
+    $('#menu-home-categories-section').append(elNav)
+    $('#menu-home-categories-section').append(elNav)
+    $('#menu-home-categories-section').append(elNav)
+    $('#menu-home-categories-section').append(elNav)
+    $('#menu-home-categories-section').append(elNav)
+    $('#menu-home-categories-section').append(elNav)
+    $('#menu-home-categories-section').append(elNav)
+    $('#menu-home-categories-section').append(elNav)
+    $('#menu-home-categories-section').append(elNav)
+
     $(document).on( 'click', 'button.plus, button.minus', function() {
         var qty = $( this ).parent( '.quantity' ).find( '.qty' );
         var val = parseFloat(qty.val());
@@ -34,15 +45,20 @@ const yaba = () => {
 
     });
 
+    $(document).on('click', '.js-header__link_menu', function (event) {
+        event.preventDefault()
+        $(document.body).toggleClass('body--open_menu_category')
+    })
+
     $('form.woocommerce-ordering select.orderby').hide().select2()
 
     // Open Filters
-    $('.wp-block-heading').on( 'click', function () {
+    $(document).on( 'click', '.wp-block-heading', function () {
         $(this).toggleClass('wp-block-heading--open_drop_down')
     })
 
     // Open Search Mobile
-    $('.header__search_mob').on('click', function () {
+    $(document).on('click', '.header__search_mob', function () {
         $('.header__search_form_wrap').toggleClass('header__search_form_wrap--open')
     })
 
@@ -62,6 +78,13 @@ const yaba = () => {
                  $this.closest('.header__search_mob').length )
         ) {
             $('.header__search_form_wrap').removeClass('header__search_form_wrap--open')
+        }
+
+        // Close Menu Header
+        if ( ! ( $this.closest('.js-header__link_menu').length ||
+                 $this.closest('.header_nav_menu_category').length )
+        ) {
+            $(document.body).removeClass('body--open_menu_category')
         }
     })
 
