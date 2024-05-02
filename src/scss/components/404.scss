@@ -1,92 +1,149 @@
-body.error404 {
-  background-color: $black;
+#primary_4040 {
 
-  .wrapper {
-    min-height: auto;
-  }
-  .base {
-    flex: 0 1 auto;
-  }
+  padding: var(--height-header) 0 5rem;
+  background: rgb(255,255,255);
+  background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(96,203,232,1) 100%);
 
-  .error-404 {
-    .header__logo {
-      background-color: $black;
-    }
-
-    .header__logo_text span:nth-child(2) {
-      color: $white;
-    }
-
-    .header__logo {
-      @extend %transition_all;
-
-      width: auto;
-      height: auto;
-      padding: 0;
-
-      &:hover {
-        .header__logo_i_w {
-          box-shadow:
-                  0 0 4rem $red,
-                  0 0 8rem rgba($red, .5),
-                  0 0 12rem rgba($red, .1);
-        }
-      }
-    }
-
-    .header__logo_i_w {
-      width: 10rem;
-      height: 10rem;
-
-      border-radius: 10rem;
-      overflow: hidden;
-
-      box-shadow:
-              0 0 4rem $red;
-
-      img {
-        object-fit: cover;
-      }
-    }
+  @include bp($point_2, min) {
+    min-height: 100vh;
   }
 
-
-
-  .error-message {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: calc(100vh - 50rem);
-    width: 100%;
-  }
-  .error-message__container {
-    text-align: center;
-    color: white;
-
-    h1 {
-      font-size: 6rem
-    }
-    p {
-      font-size: 1.8rem;
-      margin-bottom: 2rem;
-    }
-  }
-
-  .animated {
-    animation-duration: 2.5s;
-    animation-fill-mode: both;
-    animation-iteration-count: infinite;
-  }
-
-  @keyframes bounce {
-    0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
-    40% {transform: translateY(-3rem);}
-    60% {transform: translateY(-1.5rem);}
-  }
-  .bounce {
-    animation-name: bounce;
+  @include bp($point_3) {
+    padding-bottom: 11rem;
   }
 }
 
+.error_404 {
+  padding-top: 6rem;
 
+  .section_in {
+    @extend %flex_column_nowrap_center_center;
+  }
+
+  .number_404 {
+
+    .four {
+      display: inline-block;
+
+      font-family: $font_2;
+
+      font-weight: 800;
+      line-height: 1;
+      color: $blue_prime;
+
+      &:nth-child(1) {
+        @include bp($point_2, min) {
+          transform: translateX(-.6rem);
+        }
+
+        @include bp($point_3) {
+          transform: translateX(.2rem);
+        }
+      }
+
+      &:nth-child(3) {
+        @include bp($point_2, min) {
+          transform: translateX(.7rem);
+        }
+
+        @include bp($point_3) {
+          transform: translateX(.2rem);
+        }
+      }
+
+      @include bp($point_2, min) {
+        font-size: 45.4rem;
+      }
+
+      @include bp($point_3) {
+        font-size: 17.4rem;
+      }
+    }
+
+    .icon-menu {
+      color: #F05075;
+      display: inline-block;
+
+      @include bp($point_2, min) {
+        font-size: 32.4rem;
+        transform: rotate(73deg) translate(-.6rem, -.3rem);
+      }
+
+      @include bp($point_3) {
+        font-size: 12.2rem;
+        transform: rotate(73deg) translate(-.3rem, -.3rem);
+      }
+    }
+  }
+
+  .subtitle {
+    @extend %h1;
+
+    color: $pink_prime;
+
+    @include bp($point_2, min) {
+      margin-bottom: -3rem;
+    }
+
+    @include bp($point_3) {
+      font-size: 4.2rem;
+      margin-bottom: -.6rem
+    }
+  }
+
+  .title {
+    @extend %h1;
+
+
+
+    color: $blue_prime;
+    line-height: 1;
+
+    @include bp($point_2, min) {
+      margin-top: -2.2rem;
+      padding-bottom: .8rem;
+    }
+
+    @include bp($point_3) {
+      margin-top: 1rem;
+      padding-bottom: 1.2rem;
+      font-size: 4.2rem;
+    }
+  }
+
+  .descr {
+    @extend %h3;
+    color: $blue_prime;
+
+
+    @include bp($point_2, min) {
+      margin-bottom: 3.2rem;
+    }
+
+    @include bp($point_3) {
+      margin-bottom: 4rem;
+      font-size: 2rem;
+    }
+  }
+
+  .link_404 {
+    @extend %base_btn;
+    @extend %pink_bg;
+    @extend %h4;
+
+    min-height: 7.5rem;
+
+
+    font-size: 2rem;
+    white-space: nowrap;
+
+    @include bp($point_2, min) {
+      padding: .5rem 16rem;
+    }
+
+    @include bp($point_3) {
+      padding: .5rem 8rem;
+    }
+  }
+
+}

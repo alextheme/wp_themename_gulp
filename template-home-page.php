@@ -4,18 +4,16 @@
 
 get_header();  ?>
 
-<div id="primary_home" class="content-area template_home_page">
-    <main id="main" class="site-main ">
+<div id="home_page" class="content-area home_page">
+    <main id="main" class="site-main">
 
-<?php
-
-if (function_exists('get_field')) { ?>
+<?php if (function_exists('get_field')) { ?>
 
     <section class="section hero">
         <div class="section_in">
             <div class="section_header hero_header">
                 <h2 class="section_title">The sweetest store in Germany</h2>
-                <a href="#">Alle Marken</a>
+                <a href="<?php echo esc_url( get_permalink( wc_get_page_id( 'shop' ) ) )?>">Alle Marken</a>
             </div>
 
             <?php $hero_slider = get_field('hero_slider', 'option'); ?>
@@ -34,31 +32,49 @@ if (function_exists('get_field')) { ?>
                     </ul>
                 </div>
             <?php } ?>
-
-            <?php if (count($hero_brands) > 0) { ?>
-                <div class="hero_brands">
-                    <ul class="hero_brands_list">
-                        <?php for ($i = 0; $i < 2; $i++) { ?>
-                            <?php foreach ($hero_brands as $item) { ?>
-                                <li class="hero_brands_item">
-                                    <a href="<?php echo esc_url( $item['link'] ); ?>">
-                                        <img src="<?php echo esc_url( $item['image'] ); ?>" alt="">
-                                    </a>
-                                </li>
-                            <?php } ?>
-                        <?php } ?>
-                    </ul>
-                </div>
-            <?php } ?>
         </div>
     </section><!-- .hero -->
+
+    <?php if (count($hero_brands) > 0) { ?>
+        <div class="hero_brands">
+            <ul class="hero_brands_list">
+                <?php for ($i = 0; $i < 3; $i++) { ?>
+                    <?php foreach ($hero_brands as $item) { ?>
+                        <li class="hero_brands_item">
+                            <a href="<?php echo esc_url( $item['link'] ); ?>">
+                                <img src="<?php echo esc_url( $item['image'] ); ?>" alt="">
+                            </a>
+                        </li>
+                    <?php } ?>
+                <?php } ?>
+            </ul>
+        </div><!-- .hero_brands -->
+    <?php } ?>
 
     <section class="section home_cat">
         <div class="section_in">
             <div class="section_header">
                 <h2 class="section_title">The sweetest store in Germany</h2>
-                <a href="#">Alle Kategorien</a>
+                <a href="<?php echo esc_url( get_permalink( wc_get_page_id( 'shop' ) ) )?>">Alle Kategorien</a>
             </div>
+
+            <?php
+            $category_styles = get_field( 'home_category_nav_styles', 'option' );
+            if (count($category_styles) > 0)
+            ?>
+            <style>
+                <?php $inx = 0; foreach ($category_styles as $style) {
+                    $clr = $category_styles[ $inx ]['color'];
+                    $bgr = $category_styles[ $inx ]['background_image'];
+                    ?>
+                .home_cat .menu .menu-item:nth-child(<?= $inx + 1 ?>) {
+                    border-color: <?= $clr; ?>;
+                    background: <?= $clr; ?>;
+                    background-image: url("<?= $bgr; ?>");
+                    background-image: url("<?= $bgr; ?>"), linear-gradient(#fff, <?= $clr; ?>);
+                }
+                <?php $inx++; } ?>
+            </style>
 
             <?php wp_nav_menu(
                 array(
@@ -70,16 +86,14 @@ if (function_exists('get_field')) { ?>
         </div>
     </section><!-- .home_cat -->
 
-    <section class="section hot_products hot_products__bg">
+    <section class="section hot_products">
         <div class="section_in">
             <div class="section_header">
                 <h2 class="section_title">Hot Deals</h2>
-                <a href="#">Alle Hot Deals</a>
+                <a href="<?php echo esc_url( get_permalink( wc_get_page_id( 'shop' ) ) )?>">Alle Hot Deals</a>
             </div>
 
-            <div class="products_slider js-slick-hot_products">
-                <?php echo do_shortcode('[featured_products columns=6]')?>
-            </div>
+            <?php echo do_shortcode( '[products visibility="featured" limit=12 class="products_slider js-slick-home_products"]' )?>
         </div>
 
         <div class="hot_products__decors">
@@ -88,16 +102,14 @@ if (function_exists('get_field')) { ?>
         </div>
     </section><!-- .hot_products -->
 
-    <section class="section new_products new_products__bg">
+    <section class="section new_products">
         <div class="section_in">
             <div class="section_header">
                 <h2 class="section_title">Neue Produkte</h2>
-                <a href="#">Alle neuen Produkte</a>
+                <a href="<?php echo esc_url( get_permalink( wc_get_page_id( 'shop' ) ) )?>">Alle neuen Produkte</a>
             </div>
 
-            <div class="products_slider js-slick-hot_products">
-                <?php echo do_shortcode('[featured_products columns=6]')?>
-            </div>
+            <?php echo do_shortcode( '[products visibility="visible" orderby="date" order="DESC" limit=12 class="products_slider js-slick-home_products"]' )?>
         </div>
 
         <div class="new_products__decors">
@@ -109,7 +121,7 @@ if (function_exists('get_field')) { ?>
         </div>
     </section><!-- .new_products -->
 
-    <section class="section features_section"><!-- .features_section -->
+    <section class="section features_section">
 
         <?php $features = get_field('features', 'option'); ?>
         <?php if (count($features) > 0) { ?>
@@ -162,7 +174,7 @@ if (function_exists('get_field')) { ?>
         </div>
         <?php } ?>
 
-    </section>
+    </section><!-- .features_section -->
 
     <section class="section home_category_buttons">
         <div class="section_in">
@@ -179,7 +191,7 @@ if (function_exists('get_field')) { ?>
             ) ?>
 
             <a href="#" class="home_category_button__more_categories">mehr Kategorien</a>
-            <a href="#" class="home_category_button__all_products">Alle Produkte</a>
+            <a href="<?php echo esc_url( get_permalink( wc_get_page_id( 'shop' ) ) )?>" class="home_category_button__all_products">Alle Produkte</a>
         </div>
 
         <ul class="home_category_buttons__decors">
@@ -187,7 +199,7 @@ if (function_exists('get_field')) { ?>
                <li><img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/home/buttons_section_decors/' . $j . '.png' )?>" alt=""></li>
            <?php } ?>
         </ul>
-    </section>
+    </section><!-- .home_category_buttons -->
 
     <section class="section home_about">
         <div class="section_in">
@@ -209,37 +221,7 @@ if (function_exists('get_field')) { ?>
             <div class="home_about__content">
                 <h3 class="home_about__content_title">The sweetest store in Germany</h3>
                 <div class="home_about__content_text">
-                    <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi, fugiat incidunt officia placeat
-                        provident quaerat quod soluta. Cumque et perspiciatis placeat tempore voluptatum! Culpa magnam,
-                        nobis officia omnis repellat ullam.
-                    </div>
-                    <div>A, culpa dolor excepturi fugiat laborum maxime suscipit veritatis voluptas? Accusantium aliquam
-                        aperiam aspernatur consectetur cupiditate, debitis earum error expedita facere, iste nam natus
-                        numquam pariatur rerum tempora velit voluptatibus?
-                    </div>
-                    <div>Amet animi atque consectetur dolore ea, eum, facilis, illo in nobis nostrum nulla pariatur possimus
-                        provident quidem rem sit unde veritatis. Cumque doloribus omnis rerum veritatis. Ab fuga id quidem!
-                    </div>
-                    <div>Aliquam architecto consectetur corporis debitis facilis harum, illum nam non. Accusantium adipisci
-                        animi asperiores cumque dolores dolorum, ea eaque eveniet harum in iusto minima nemo quidem ratione
-                        veniam voluptates voluptatibus!
-                    </div>
-                    <div>Aperiam autem, cumque cupiditate earum error esse facere fuga id, illum iure laboriosam maiores
-                        nisi odit officia officiis perspiciatis possimus, praesentium quasi quibusdam quis ratione sit sunt
-                        tempora unde vitae.
-                    </div>
-                    <div>Illo minima pariatur quae! Accusamus, saepe, voluptatibus? Commodi doloremque ea eaque illo
-                        laborum, sunt? Accusantium cumque, dicta dolor ducimus, eaque ex fugit id, molestiae mollitia nihil
-                        perspiciatis repellat repellendus soluta!
-                    </div>
-                    <div>Architecto atque, cum cumque cupiditate deleniti eaque earum esse et expedita facere facilis fugit
-                        illum inventore ipsa, molestias nostrum, optio porro quae quaerat quam recusandae soluta tenetur ut
-                        vitae voluptas?
-                    </div>
-                    <div>Accusamus adipisci aliquid, aspernatur at atque debitis distinctio error est excepturi fugiat
-                        inventore laborum maiores modi molestias nam nihil nobis officiis optio praesentium quia quibusdam
-                        ullam vitae voluptas voluptatem voluptates?
-                    </div>
+                    <?php echo wp_kses_post( get_field( 'about', 'option' ) ); ?>
                 </div>
                 <button type="button" class="home_about__content_button js-home_about_show_more">
                     <span>Show more</span>
@@ -247,7 +229,7 @@ if (function_exists('get_field')) { ?>
                 </button>
             </div>
         </div>
-    </section>
+    </section><!-- .home_about -->
 
     <section class="section home_accordion">
         <div class="section_in">
@@ -273,11 +255,8 @@ if (function_exists('get_field')) { ?>
                 </div>
             <?php } ?>
         </div>
-    </section>
+    </section><!-- .home_accordion -->
 
-
-
-    <span class="help_el_for_hide_below_el"></span>
 <?php } ?>
 
     </main>

@@ -116,9 +116,9 @@ const yaba = () => {
         ]
     })
 
-    $('.js-slick-hot_products ul.products').slick({
+    $('.js-slick-home_products ul.products').slick({
         slidesToShow: 6,
-        slidesToScroll: 2,
+        slidesToScroll: 3,
         arrows: true,
         infinite: true,
         swipe: true,
@@ -141,7 +141,6 @@ const yaba = () => {
         const content = button.parent().find('.home_about__content_text')
 
         button.data('content_height', content.height())
-
         content.height('auto')
         button.data('content_full_height', content.height())
         content.height(button.data('content_height'))
@@ -168,22 +167,21 @@ const yaba = () => {
             button.data( 'content_height', $(content).height() )
             content.height(0)
 
-
             button.on('click', function () {
-                items.removeClass('home_accordion__item--open')
-                items.find('.acc_content').height(0)
-
                 const item = $(this).parent()
+
                 if (item.hasClass('home_accordion__item--open')) {
                     item.removeClass('home_accordion__item--open')
                     item.find('.acc_content').height(0)
                 } else {
+                    items.removeClass('home_accordion__item--open')
+                    items.find('.acc_content').height(0)
+
                     item.addClass('home_accordion__item--open')
                     item.find('.acc_content').height($(this).data('content_height'))
                 }
             })
         })
-
     })()
 
     // Product Variations Events
@@ -243,20 +241,20 @@ const yaba = () => {
 
     // Image Zoom
     ;(() => {
-        window.imageZoomInstans = null
-
-        const image = $('.woocommerce-product-gallery__image')
-        const imgIns = image.find('img')
-        const src = imgIns.length ? imgIns.attr('src') : undefined
-        imgIns.on('click', e => e.preventDefault())
-        console.log('111')
-        if (!src) return
-
-        const url = img || ( typeof variationData !== 'undefined'
-            ? variationData['image'] : imgIns.attr('src') )
-
-        console.log('222')
-        const iimg = $(imageZoomInstans).find('img.zoomImg')
+        // window.imageZoomInstans = null
+        //
+        // const image = $('.woocommerce-product-gallery__image')
+        // const imgIns = image.find('img')
+        // const src = imgIns.length ? imgIns.attr('src') : undefined
+        // imgIns.on('click', e => e.preventDefault())
+        // console.log('111')
+        // if (!src) return
+        //
+        // const url = img || ( typeof variationData !== 'undefined'
+        //     ? variationData['image'] : imgIns.attr('src') )
+        //
+        // console.log('222')
+        // const iimg = $(imageZoomInstans).find('img.zoomImg')
         // if (iimg.length) {
         //     iimg.attr('src', url)
         // } else {

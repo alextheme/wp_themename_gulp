@@ -66,7 +66,7 @@
 }
 
 @mixin triangle_narrow($side,$color,$size) {
-	$narrow_size: $size/2;
+	$narrow_size: calc( $size / 2 );
 	@if $side == left {
 		border: $narrow_size solid transparent;
 		border-right: $size solid $color;

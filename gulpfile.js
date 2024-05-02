@@ -53,7 +53,7 @@ export const sprite = done => {
 }
 
 export const styles = () => {
-    return src(['src/scss/bundle.scss', 'src/scss/admin.scss'])
+    return src(['src/scss/bundle.scss'])
         .pipe(gulpif(!PRODUCTION, sourcemaps.init()))
         .pipe(sass().on('error', sass.logError))
         .pipe(gulpif(PRODUCTION, postcss([ autoprefixer ])))
