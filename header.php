@@ -78,7 +78,7 @@
 
                 <?php /* Mini Cart Link */ ?>
                 <div class="header__link_wrapper header__mini_cart">
-                    <a class="header__lnk" href="#<?php //echo esc_url( get_permalink( wc_get_page_id( 'cart' ) ) )?>" aria-label="Warenkorb">
+                    <a class="header__mini_cart_button ic-cart-header-btn" href="#<?php //echo esc_url( get_permalink( wc_get_page_id( 'cart' ) ) )?>" aria-label="Warenkorb">
                         <span class="icon-shop"></span>
                         <span class="label">Warenkorb</span>
                         <?php if (function_exists('is_cart') && !is_cart()) { ?>
@@ -88,7 +88,7 @@
                             </span>
                         <?php } ?>
                     </a>
-                    <?php dynamic_sidebar('header-widget-mini-cart') ?>
+                    <?php //dynamic_sidebar('header-widget-mini-cart') ?>
                 </div>
 
                 <?php /* Profil */ ?>

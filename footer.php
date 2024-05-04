@@ -1,3 +1,14 @@
+<div class="ic-cart-sidebar-wrapper">
+    <div class="ic-cart-sidebar-wrapper_header">
+        <p><?php _e( 'Your Cart', 'wordpress' ); ?></p>
+        <div class="ic-cart-header-btn-close"><i class="ri-close-line"></i></div>
+    </div>
+    <div class="ic-cart-sidebar-wrapper_body">
+<!--            <div class="widget_shopping_cart_content"></div>-->
+        <?php woocommerce_mini_cart( [ 'list_class' => 'my-css-class' ] ); ?>
+    </div>
+</div>
+
 <footer class="footer">
     <div class="footer_in">
         <div class="footer__row">

@@ -14,13 +14,24 @@
 }
 
 .error_404 {
-  padding-top: 6rem;
+  @include bp($point_2, min) {
+    padding-top: 14rem;
+  }
+
+  @include bp($point_3) {
+    padding-top: 8rem;
+    padding-bottom: 3rem;
+  }
 
   .section_in {
     @extend %flex_column_nowrap_center_center;
   }
 
   .number_404 {
+
+    @include bp($point_4) {
+      margin: 0 -1rem;
+    }
 
     .four {
       display: inline-block;

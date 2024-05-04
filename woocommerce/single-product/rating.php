@@ -28,7 +28,7 @@ if ( ! wc_review_ratings_enabled() ) {
 $rating_count = $product->get_rating_count();
 $review_count = $product->get_review_count();
 $average      = $product->get_average_rating();
-$average = 3.2;
+//$average = 3.2;
 if ( $rating_count > 0 ) : ?>
 
 	<div class="single_product_page__summary_header">

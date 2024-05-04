@@ -923,7 +923,8 @@ span.wishlist_products_counter.top_wishlist-custom.no-txt img {
       position: absolute;
       top: 0;
       left: 0;
-      width: 50%;
+      width: 0;
+      height: 0;
       opacity: 0;
       user-select: none;
       pointer-events: none;

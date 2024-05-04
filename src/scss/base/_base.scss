@@ -14,11 +14,15 @@
 	--height-header: 10.8rem; //14.8rem;
 	--width-logo: 12.5rem;
 	--width-logo-footer: 19rem;
+	--scroll-bar-width: 18px;
 
 	@include bp($point_3) {
 		--height-header: 6.4rem;
 		--width-logo: 5.2rem;
 		--width-logo-footer: 8rem;
+	}
+	@include bp($point_4) {
+		--gl-indent: 1rem;
 	}
 }
 

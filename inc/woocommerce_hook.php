@@ -36,8 +36,7 @@ function _themename_woocommerce_after_shop_loop_item() {
         <div class="product_item__quantity">
             <div class="quantity">
                 <button class="minus" aria-label="Reduce quantity of product">－</button>
-                <input class="qty" type="number" step="1" min="1" max="9999" value="1"
-                       aria-label="Quantity of product in your cart.">
+                <input class="qty" type="number" step="1" min="1" max="9999" value="1" aria-label="Quantity of product in your cart.">
                 <button class="plus" aria-label="Increase quantity of product">＋</button>
             </div>
         </div>
@@ -149,14 +148,14 @@ remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_singl
 /*
  * Add buttons PLUS & MINUS Quantity
  */
-add_action( 'woocommerce_after_quantity_input_field', '_themename_quantity_plus' );
-add_action( 'woocommerce_before_quantity_input_field', '_themename_quantity_minus' );
-function _themename_quantity_plus() {
-    echo '<button type="button" class="plus">+</button>';
-}
-function _themename_quantity_minus() {
-    echo '<button type="button" class="minus">-</button>';
-}
+//add_action( 'woocommerce_after_quantity_input_field', '_themename_quantity_plus' );
+//add_action( 'woocommerce_before_quantity_input_field', '_themename_quantity_minus' );
+//function _themename_quantity_plus() {
+//    echo '<button type="button" class="plus">+</button>';
+//}
+//function _themename_quantity_minus() {
+//    echo '<button type="button" class="minus">-</button>';
+//}
 
 /*
  * TABS in product single page
