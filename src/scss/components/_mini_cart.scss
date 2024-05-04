@@ -80,9 +80,15 @@ body {
     }
   }
 
+
+
   .ic-cart-sidebar-wrapper_body {
     padding: 2rem;
     height: calc(100% - 18.7rem);
+
+    .widget_shopping_cart_content {
+      height: 100%;
+    }
 
     ul {
       height: 100%;

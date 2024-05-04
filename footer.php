@@ -4,8 +4,9 @@
         <div class="ic-cart-header-btn-close"><i class="ri-close-line"></i></div>
     </div>
     <div class="ic-cart-sidebar-wrapper_body">
-<!--            <div class="widget_shopping_cart_content"></div>-->
-        <?php woocommerce_mini_cart( [ 'list_class' => 'my-css-class' ] ); ?>
+        <div class="widget_shopping_cart_content">
+            <?php woocommerce_mini_cart( [ 'list_class' => 'my-css-class' ] ); ?>
+        </div>
     </div>
 </div>
 
