@@ -1,0 +1,385 @@
+$max_wid: 122rem;
+
+.section.my_account_page .section_in {
+  max-width: 122rem;
+  height: 100%;
+}
+
+.section.my_account_page {
+  @include bp($point_2, min) {
+    height: calc( 100vh - var(--height-header) );
+  }
+
+  @include bp($point_3) {
+    padding-top: 4rem;
+  }
+
+  .woocommerce {
+    @include bp($point_2, min) {
+      height: 100%;
+    }
+
+    @include bp($point_3) {
+
+    }
+  }
+
+  #customer_login {
+    @include bp($point_2, min) {
+      display: flex;
+
+      height: 100%;
+    }
+
+    @include bp($point_3) {
+
+    }
+
+    .col-1, .col-2 {
+      @include bp($point_2, min) {
+        width: calc( (100% - 3rem) / 2 );
+        margin: auto 0;
+      }
+
+      @include bp($point_3) {
+        padding: 3rem 0;
+      }
+    }
+
+    .col-1 {
+      @include bp($point_3) {
+        margin-bottom: 1.2rem;
+      }
+    }
+
+    form.login, form.register {
+      border: 0;
+
+      @include bp($point_2, min) {
+        padding: 5rem;
+      }
+
+      @include bp($point_3) {
+        padding: 0;
+      }
+    }
+
+    h2 {
+      @extend %h2;
+
+      color: $blue_prime;
+
+      @include bp($point_2, min) {
+        padding: 0 5rem;
+      }
+
+      @include bp($point_3) {
+
+      }
+    }
+
+    .form-row {
+      @include bp($point_2, min) {
+        &:not(:last-child) {
+          margin-bottom: 2rem;
+        }
+      }
+
+      @include bp($point_3) {
+        &:not(:last-child) {
+          margin-bottom: 1rem;
+        }
+      }
+    }
+
+    .woocommerce-form-login__rememberme {
+      width: 100%;
+
+      @include bp($point_2, min) {
+        margin-bottom: 2rem;
+      }
+
+      @include bp($point_3) {
+        margin-bottom: 1rem;
+      }
+
+      span {
+        display: block;
+
+        font-weight: 400;
+        text-transform: lowercase;
+      }
+    }
+
+    .woocommerce-form__input-checkbox {
+      @extend %form_el_checkbox;
+    }
+
+    .lost_password {
+      @extend %transition_opacity;
+      @extend %text;
+
+      color: $blue_prime;
+
+      &:hover {
+        opacity: .6;
+      }
+
+      @include bp($point_2, min) {
+
+      }
+
+      @include bp($point_3) {
+        text-align: center;
+      }
+    }
+
+    .woocommerce-privacy-policy-text {
+      margin-bottom: 2rem;
+      font-size: 1.2rem;
+
+      p {
+        font-size: inherit;
+      }
+    }
+
+    button[type='submit'] {
+      min-width: 15rem;
+      padding: 0 4rem;
+      margin-right: 0;
+
+      @include bp($point_2, min) {
+
+      }
+
+      @include bp($point_3) {
+        width: 100%;
+        height: 5rem;
+      }
+    }
+
+    .woocommerce-password-strength {
+      @extend %body;
+
+      padding: .5rem 1rem;
+      margin-top: .6rem;
+
+      color: $blue_prime;
+      font-size: 1.2rem;
+      border-radius: 1rem;
+    }
+
+    .woocommerce-password-hint {
+      @extend %body;
+
+      padding: .5rem 1rem;
+      margin-top: .6rem;
+
+      color: $blue_prime;
+      font-size: 1.2rem;
+      border-radius: 1rem;
+      border: 1px solid $grey3;
+    }
+
+  }
+}
+
+.woocommerce form .show-password-input::after,
+.woocommerce-page form .show-password-input::after {
+  //font-family: WooCommerce;
+  //speak: never;
+  //font-weight: 400;
+  //font-variant: normal;
+  //text-transform: none;
+  //line-height: 1;
+  //-webkit-font-smoothing: antialiased;
+  //margin-left: .618em;
+  //content: "\e010";
+  //text-decoration: none;
+
+  margin: 0 .4rem 0 1.2rem;
+  color: $grey3;
+  font-size: 2rem;
+  line-height: 2.4rem;
+}
+
+.woocommerce-account {
+
+  .woocommerce-MyAccount-navigation {
+
+    @include bp($point_2, min) {
+      position: relative;
+
+      max-width: 31rem;
+      width: 100%;
+      padding-right: 3rem;
+
+      &:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 3rem;
+        width: 1px;
+        height: 200%;
+        background: $grey3;
+      }
+    }
+
+    @include bp($point_3) {
+
+    }
+
+    ul {
+
+      @include bp($point_2, min) {
+
+      }
+
+      @include bp($point_3) {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+
+        margin: 0 -2rem -2rem 0;
+      }
+
+      li {
+        @extend %text;
+
+        font-size: 1.8rem;
+        color: $blue_prime;
+
+        @include bp($point_2, min) {
+          &:not(:last-child) {
+            margin-bottom: 3rem;
+          }
+        }
+
+        @include bp($point_3) {
+          min-width: 8rem;
+          padding: 0 2rem 2rem 0;
+        }
+
+        a {
+          color: inherit;
+
+          @include bp($point_2, min) {
+
+          }
+
+          @include bp($point_3) {
+            display: block;
+            padding: .5rem;
+            text-align: center;
+            font-size: 1.2rem;
+          }
+
+        }
+
+        &.is-active {
+          color: $pink_prime;
+        }
+      }
+    }
+  }
+
+  .woocommerce-MyAccount-content {
+
+    @include bp($point_2, min) {
+      float: left;
+
+      max-width: 59.5rem;
+      width: 100%;
+    }
+
+    @include bp($point_3) {
+
+    }
+
+    form {
+      .form-row-last,
+      .form-row-first {
+        float: unset;
+        width: 100%;
+      }
+
+      button[type='submit'] {
+        width: 100%;
+        margin-top: 2rem;
+      }
+
+      fieldset {
+        position: relative;
+
+        padding: 6rem 3rem 3rem;
+
+        border-radius: 2.5rem;
+        border: 1px solid $grey3;
+
+        &:before {
+          @extend %hor_centr;
+
+          content: '';
+          position: absolute;
+          top: -2.8rem;
+          width: calc(100% - 6rem);
+          height: 1px;
+          background: $grey3;
+        }
+
+
+        legend {
+          @extend %h2;
+
+          color: $blue_prime;
+
+          transform: translateY(4.4rem);
+        }
+      }
+    }
+
+    table {
+      @include bp($point_2, min) {
+        padding: 0;
+        border-spacing: 1rem;
+      }
+
+      @include bp($point_3) {
+        margin-top: 2rem;
+      }
+
+      .woocommerce-orders-table__row {
+        @include bp($point_2, min) {
+          border-radius: 1rem;
+          outline: 1px solid $grey3;
+        }
+
+        @include bp($point_3) {
+          padding: 1rem;
+          margin-bottom: 1rem;
+
+          border-radius: 2rem;
+          border: 1px solid $grey3;
+        }
+      }
+
+      .woocommerce-orders-table__cell {
+        a {
+          @include bp($point_2, min) {
+
+          }
+
+          @include bp($point_3) {
+            display: block;
+            width: 16rem;
+            margin-left: auto;
+          }
+        }
+      }
+    }
+  }
+
+}
+
+
