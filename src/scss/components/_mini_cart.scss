@@ -29,7 +29,7 @@ body {
     position: fixed;
     z-index: 110;
     content: '';
-    background: rgba($white,.8);
+    background: rgba($black,.8);
 
     transform: translateX(100%);
 
@@ -83,8 +83,15 @@ body {
 
 
   .ic-cart-sidebar-wrapper_body {
-    padding: 2rem;
-    height: calc(100% - 18.7rem);
+    padding: 2rem 2rem 0 2rem;
+
+    @include bp($point_4 + 1, min) {
+      height: calc(100% - 18.7rem);
+    }
+
+    @include bp($point_4) {
+      height: calc(100% - 15.8rem);
+    }
 
     .widget_shopping_cart_content {
       height: 100%;
@@ -119,45 +126,7 @@ body {
         }
 
         .remove_from_cart_button {
-          @extend %transition_transform;
-
-          position: absolute;
-          right: 0;
-          font-size: 0;
-          display: block;
-          width: 2rem;
-          height: 2rem;
-
-
-          transform: rotate(-45deg);
-
-          &:before, &:after {
-            position: absolute;
-            content: '';
-            background: $black;
-          }
-
-          &:before {
-            top: 50%;
-            left: 0;
-            width: 100%;
-            height: 1.5px;
-          }
-          &:after {
-            top: 0;
-            left: 50%;
-            width: 1.5px;
-            height: 100%;
-          }
-
-          &:hover {
-            background: transparent !important;
-            transform: rotate(45deg);
-
-            &:before, &:after {
-              background: $red;
-            }
-          }
+          @extend %remove_button;
         }
 
         img {
@@ -182,10 +151,6 @@ body {
           @include bp($point_4 + 1, min) {
             padding-top: 2.4rem;
             padding-left: 2rem;
-          }
-
-          @include bp($point_4) {
-            //padding-left: 1.6rem;
           }
         }
 
@@ -285,7 +250,7 @@ body {
           }
         }
 
-        .mini_cart_quantity_symbol_plus {
+        .mini_cart_quantity_symbol_x {
           @extend %text;
 
           margin: 0 .5rem;
@@ -297,13 +262,32 @@ body {
 
     .mini_cart_footer {
       position: absolute;
-      bottom: 2rem;
-      left: 2rem;
-      right: 2rem;
+      bottom: 0;
+      left: 0;
+      right: 0;
 
-      padding-top: 2rem;
+      padding: 2rem 2rem 1rem 2rem;
 
-      border-top: 1px solid $grey3;
+      //border-top: 1px solid $grey3;
+
+      @include bp($point_2, min) {
+
+      }
+
+      @include bp($point_3) {
+        box-shadow: 0 0 60px -40px $blue_prime;
+
+        &:before {
+          content: '';
+          position: absolute;
+          top: -1px;
+          left: 50%;
+          transform: translateX(-50%);
+          width: calc(100% - 4rem);
+          height: 1px;
+          background: $grey3;
+        }
+      }
     }
 
     .woocommerce-mini-cart__total {

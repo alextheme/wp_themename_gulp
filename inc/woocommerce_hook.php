@@ -148,14 +148,14 @@ remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_singl
 /*
  * Add buttons PLUS & MINUS Quantity
  */
-//add_action( 'woocommerce_after_quantity_input_field', '_themename_quantity_plus' );
-//add_action( 'woocommerce_before_quantity_input_field', '_themename_quantity_minus' );
-//function _themename_quantity_plus() {
-//    echo '<button type="button" class="plus">+</button>';
-//}
-//function _themename_quantity_minus() {
-//    echo '<button type="button" class="minus">-</button>';
-//}
+add_action( 'woocommerce_after_quantity_input_field', '_themename_quantity_plus' );
+add_action( 'woocommerce_before_quantity_input_field', '_themename_quantity_minus' );
+function _themename_quantity_plus() {
+    echo '<button type="button" class="plus">+</button>';
+}
+function _themename_quantity_minus() {
+    echo '<button type="button" class="minus">-</button>';
+}
 
 /*
  * TABS in product single page
@@ -303,3 +303,32 @@ remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_r
  */
 //add_action( 'woocommerce_after_single_product_summary', '_themename_add_featured_products_list', 10 );
 
+/*
+ * My Account
+ */
+function _themename_remove_my_account_links( $menu_links ) {
+    //    [orders] => Orders
+    //    [edit-account] => Account details
+    //    [wishlist] => Wishlist
+    //    [customer-logout] => Log out
+
+    unset( $menu_links['dashboard'] );
+    unset( $menu_links['downloads'] );
+    unset( $menu_links['edit-address'] );
+
+    return $menu_links;
+}
+add_filter ( 'woocommerce_account_menu_items', '_themename_remove_my_account_links', 10, 1 );
+
+
+/*
+ * Order Review
+ */
+function _themename_woocommerce_checkout_before_order_review_heading() {
+    echo '<div class="yaba_order_review_wrapper">';
+}
+function _themename_woocommerce_checkout_after_order_review() {
+    echo '</div><!-- .yaba_order_review_wrapper -->';
+}
+add_action( 'woocommerce_checkout_before_order_review_heading', '_themename_woocommerce_checkout_before_order_review_heading' );
+add_action( 'woocommerce_checkout_after_order_review', '_themename_woocommerce_checkout_after_order_review' );

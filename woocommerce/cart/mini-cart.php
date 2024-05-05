@@ -84,7 +84,7 @@ do_action( 'woocommerce_before_mini_cart' ); ?>
 
 							</div>
 
-							<div class="mini_cart_quantity_symbol_plus">×</div>
+							<div class="mini_cart_quantity_symbol_x">×</div>
 
 							<?php echo apply_filters( 'woocommerce_cart_item_price', WC()->cart->get_product_price( $cart_item['data'] ), $cart_item, $cart_item_key ); ?>
 

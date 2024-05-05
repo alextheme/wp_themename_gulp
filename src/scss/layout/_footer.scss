@@ -276,10 +276,11 @@
 	font-size: 2rem;
 	line-height: 1.2;
 
+	white-space: pre-wrap;
+
 	&.footer__button--desktop {
 		@include bp(1500px) {
 			min-height: 5.7rem;
-			padding: .5rem 2rem;
 		}
 
 		@include bp($point_3) {

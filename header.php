@@ -76,23 +76,25 @@
                     <span class="label">Wunschliste</span>
                 </a>
 
-                <?php /* Mini Cart Link */ ?>
-                <div class="header__link_wrapper header__mini_cart">
-                    <a class="header__mini_cart_button ic-cart-header-btn" href="#<?php //echo esc_url( get_permalink( wc_get_page_id( 'cart' ) ) )?>" aria-label="Warenkorb">
-                        <span class="icon-shop"></span>
-                        <span class="label">Warenkorb</span>
-                        <?php if (function_exists('is_cart') && !is_cart()) { ?>
-                            <span class="header__mini_cart_count">
-                                <?php echo WC()->cart->get_cart_contents_count(); ?>
-                                <?php //echo count(WC()->cart->get_cart()); ?>
-                            </span>
-                        <?php } ?>
-                    </a>
-                    <?php //dynamic_sidebar('header-widget-mini-cart') ?>
-                </div>
+                <?php /* Mini Cart Link */
+                if (!is_cart()) { ?>
+                    <div class="header__link_wrapper header__mini_cart">
+                        <a class="header__mini_cart_button ic-cart-header-btn" href="#<?php //echo esc_url( get_permalink( wc_get_page_id( 'cart' ) ) )?>" aria-label="Warenkorb">
+                            <span class="icon-shop"></span>
+                            <span class="label">Warenkorb</span>
+                            <?php if (function_exists('is_cart') && !is_cart()) { ?>
+                                <span class="header__mini_cart_count">
+                                    <?php echo WC()->cart->get_cart_contents_count(); ?>
+                                    <?php //echo count(WC()->cart->get_cart()); ?>
+                                </span>
+                            <?php } ?>
+                        </a>
+                        <?php //dynamic_sidebar('header-widget-mini-cart') ?>
+                    </div>
+                <?php } ?>
 
                 <?php /* Profil */ ?>
-                <a class="header__link header__profil" href="<?php echo esc_url( get_permalink( wc_get_page_id( 'myaccount' ) ) )?>" aria-label="Profil">
+                <a class="header__link header__profil" href="<?php echo esc_url( get_permalink( wc_get_page_id( 'myaccount' ) ) . 'orders/' )?>" aria-label="Profil">
                     <span class="icon-profil"></span>
                     <span class="label">Profil</span>
                 </a>
