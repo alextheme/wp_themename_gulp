@@ -199,6 +199,7 @@
       }
       @include bp($point_3) {
         width: 50%;
+        margin-bottom: 2rem;
       }
 
       &.js-pos-absolute {
@@ -336,17 +337,34 @@
         @extend %h4;
 
         width: 100%;
+
         padding-top: 0;
+        padding-bottom: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+
+        -webkit-box-orient: vertical;
 
         text-align: center;
 
+        @include bp($point_4 + 1, min) {
+          min-height: 7.2rem;
+          -webkit-line-clamp: 3;
+        }
+
+        @include bp($point_4) {
+          min-height: 3.6rem;
+          -webkit-line-clamp: 2;
+        }
+
         @include bp($point_2, min) {
-          padding-bottom: 1.2rem;
+          margin-bottom: 1.2rem;
         }
 
         @include bp($point_3) {
           font-size: 1.4rem;
-          padding-bottom: 1rem;
+          margin-bottom: 1rem;
         }
       }
 
@@ -355,6 +373,10 @@
 
         @include bp($point_3) {
           margin-top: -2rem;
+        }
+
+        & + .product_item__footer {
+          margin-top: 4.4rem;
         }
       }
 
@@ -409,11 +431,11 @@
           margin: 0 auto;
           color: $red;
 
-          @include bp($point_2, min) {
+          @include bp($point_4 + 1, min) {
             font-size: 3.2rem;
           }
 
-          @include bp($point_3) {
+          @include bp($point_4) {
             font-size: 2rem;
             font-weight: 400;
           }
@@ -422,7 +444,16 @@
 
       &:not(.product-type-simple) {
         .price {
-          font-size: 2rem;
+          min-height: 3.84rem;
+
+          @include bp($point_4 + 1, min) {
+            font-size: 3.2rem;
+          }
+
+          @include bp($point_4) {
+            font-size: 2rem;
+            font-weight: 400;
+          }
         }
       }
 
@@ -678,109 +709,162 @@ span.wishlist_products_counter.top_wishlist-custom.no-txt img {
     margin: 0 0 0 auto;
 
     .select2-container {
-      min-width: 23.9rem;
+      z-index: 110;
+
+      display: block;
+      min-width: 24rem;
+      height: 4rem;
 
       @include bp($point_3) {
         width: 100% !important;
       }
 
+      .selection {
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
+
       &.select2-container--open {
-        border-left: 1px solid $grey;
-        border-right: 1px solid $grey;
-        border-top-left-radius: 1.8rem;
-        border-top-right-radius: 1.8rem;
+        position: relative;
+
+        &:before, &:after {
+          position: absolute;
+          content: '';
+          width: 1px;
+          height: 50%;
+          top: 50%;
+          background: $grey;
+        }
+        &:before {
+          left: 0;
+        }
+        &:after {
+          right: 0;
+        }
 
         .select2-selection {
-          border: 2px solid $pink_prime;
+          border-color: transparent;
+          outline: 2px solid $pink_prime;
+          outline-offset: -2px;
           border-bottom-left-radius: 1.8rem;
           border-bottom-right-radius: 1.8rem;
         }
 
         .select2-selection__arrow {
           transform: rotate(180deg);
-          margin-right: 1.8rem;
-          margin-top: -2.3rem;
+          margin-right: 1.6rem;
+          margin-top: -.5rem;
         }
       }
     }
 
     .select2-selection {
-      min-height: 3.54rem;
-      border-radius: 1.8rem;
-      border: 1px solid $grey;
-    }
-
-    .select2-selection__rendered {
       position: relative;
 
+      display: block;
+      width: 100%;
       height: 100%;
-      padding: 0.8rem 3.2rem 0.8rem 1.6rem;
-      line-height: 1.26;
 
-      &[title*="Sorted by"] {
-        @include bp($point_2, min) {
-          padding-left: 4.2rem;
-        }
+      min-height: 4rem;
+      border-radius: 2rem;
+      border: 1px solid $grey;
 
-        @include bp($point_3) {
-          padding-left: 4.7rem;
-        }
 
-        &:before {
-          position: absolute;
-          top: 50%;
-          left: 1.6rem;
-          content: "";
-          width: 2.4rem;
-          height: 2.4rem;
-          background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 24 24"><path class="st1" d="M11.3,12.7H4.5c-0.4,0-0.8-0.3-0.8-0.8s0.3-0.8,0.8-0.8h6.8c0.4,0,0.8,0.3,0.8,0.8S11.7,12.7,11.3,12.7z"/><path class="st1" d="M17.3,6.7H4.5C4.1,6.7,3.8,6.4,3.8,6s0.3-0.8,0.8-0.8h12.7C17.7,5.2,18,5.6,18,6S17.7,6.7,17.3,6.7z"/><path class="st1" d="M9.8,18.7H4.5c-0.4,0-0.8-0.3-0.8-0.8s0.3-0.8,0.8-0.8h5.3c0.4,0,0.8,0.3,0.8,0.8S10.2,18.7,9.8,18.7z"/><path class="st1" d="M21.5,15.2c-0.3-0.3-0.8-0.3-1.1,0L18,17.7v-7.2c0-0.4-0.3-0.8-0.8-0.8s-0.8,0.3-0.8,0.8v7.2L14,15.2c-0.3-0.3-0.8-0.3-1.1,0s-0.3,0.8,0,1.1l3.7,3.8c0.1,0.1,0.2,0.1,0.2,0.2c0.1,0,0.2,0.1,0.3,0.1s0.2,0,0.3-0.1c0.1,0,0.2-0.1,0.2-0.2l3.8-3.8C21.8,16,21.8,15.5,21.5,15.2z"/></svg>');
+      .select2-selection__rendered {
+        position: relative;
+
+        display: block;
+        height: 100%;
+        padding: 0.8rem 3.2rem 0.8rem 1.6rem;
+        line-height: 1.26;
+        cursor: pointer;
+
+        &[title*="Sorted by"] {
+          display: block;
+          width: 100%;
+          height: 100%;
+          cursor: pointer;
 
           @include bp($point_2, min) {
-            margin-top: -1.3rem;
+            padding-left: 4.2rem;
           }
 
           @include bp($point_3) {
-            margin-top: -1.2rem;
+            padding-left: 4.7rem;
+          }
+
+          &:before {
+            position: absolute;
+            top: 50%;
+            left: 1.6rem;
+            content: "";
+            width: 2.4rem;
+            height: 2.4rem;
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 24 24"><path class="st1" d="M11.3,12.7H4.5c-0.4,0-0.8-0.3-0.8-0.8s0.3-0.8,0.8-0.8h6.8c0.4,0,0.8,0.3,0.8,0.8S11.7,12.7,11.3,12.7z"/><path class="st1" d="M17.3,6.7H4.5C4.1,6.7,3.8,6.4,3.8,6s0.3-0.8,0.8-0.8h12.7C17.7,5.2,18,5.6,18,6S17.7,6.7,17.3,6.7z"/><path class="st1" d="M9.8,18.7H4.5c-0.4,0-0.8-0.3-0.8-0.8s0.3-0.8,0.8-0.8h5.3c0.4,0,0.8,0.3,0.8,0.8S10.2,18.7,9.8,18.7z"/><path class="st1" d="M21.5,15.2c-0.3-0.3-0.8-0.3-1.1,0L18,17.7v-7.2c0-0.4-0.3-0.8-0.8-0.8s-0.8,0.3-0.8,0.8v7.2L14,15.2c-0.3-0.3-0.8-0.3-1.1,0s-0.3,0.8,0,1.1l3.7,3.8c0.1,0.1,0.2,0.1,0.2,0.2c0.1,0,0.2,0.1,0.3,0.1s0.2,0,0.3-0.1c0.1,0,0.2-0.1,0.2-0.2l3.8-3.8C21.8,16,21.8,15.5,21.5,15.2z"/></svg>');
+
+            @include bp($point_2, min) {
+              margin-top: -1.3rem;
+            }
+
+            @include bp($point_3) {
+              margin-top: -1.2rem;
+            }
           }
         }
       }
+
+      .select2-selection__arrow {
+        @extend %iconmoon_font;
+
+        position: absolute;
+        top: 50%;
+        right: 0;
+
+        margin-top: -.4rem;
+        margin-right: 1.6rem;
+
+        font-size: .8rem;
+
+        &:before {
+          content: '\e912';
+        }
+
+        b {
+          display: none;
+          position: static;
+          width: .9rem;
+          height: .7rem;
+          margin-left: 0;
+          margin-top: 0;
+
+          border-color: transparent;
+          border-style: none;
+          border-width: 0;
+          background: url('data:image/svg+xml,<svg width="9" height="7" viewBox="0 0 9 7" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.74268 6.15685L0.5 1.91425L1.91422 0.5L4.74268 3.32845L7.57108 0.5L8.98528 1.91425L4.74268 6.15685Z" fill="%23252F6C"/></svg>') no-repeat;
+        }
+
+      }
     }
 
-    .select2-selection__arrow {
-      @extend %iconmoon_font;
 
-      top: 50%;
-      margin-right: 1rem;
-      margin-top: -.4rem;
-      font-size: .8rem;
-      right: 0;
-
-      &:before {
-        content: '\e912';
-      }
-
-      b {
-        display: none;
-        position: static;
-        width: .9rem;
-        height: .7rem;
-        margin-left: 0;
-        margin-top: 0;
-
-        border-color: transparent;
-        border-style: none;
-        border-width: 0;
-        background: url('data:image/svg+xml,<svg width="9" height="7" viewBox="0 0 9 7" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.74268 6.15685L0.5 1.91425L1.91422 0.5L4.74268 3.32845L7.57108 0.5L8.98528 1.91425L4.74268 6.15685Z" fill="%23252F6C"/></svg>') no-repeat;
-      }
-
-    }
   }
+}
+
+.select2-container {
+  z-index: 30;
 }
 
 .select2-dropdown {
   &.select2-dropdown--below {
+    display: block;
+
+    background: $white;
     border-bottom-left-radius: 1.8rem;
     border-bottom-right-radius: 1.8rem;
+    border-style: solid;
+    border-color: $grey;
+    border-width: 0 1px 1px 1px;
     overflow: hidden;
   }
 
@@ -901,6 +985,10 @@ span.wishlist_products_counter.top_wishlist-custom.no-txt img {
 .shop__featured_products_wrapper {
   padding-top: 5rem;
   padding-bottom: 10rem;
+
+  body.featured_products & {
+    display: none;
+  }
 
   .woocommerce-products-header {
     margin-bottom: 2.8rem;

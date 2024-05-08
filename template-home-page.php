@@ -11,7 +11,8 @@ get_header();  ?>
 
     <section class="section hero">
         <div class="section_in">
-            <div class="section_header hero_header">
+
+            <div class="section_header">
                 <h2 class="section_title">The sweetest store in Germany</h2>
                 <a href="<?php echo esc_url( get_permalink( wc_get_page_id( 'shop' ) ) )?>">Alle Marken</a>
             </div>
@@ -32,6 +33,11 @@ get_header();  ?>
                     </ul>
                 </div>
             <?php } ?>
+
+<!--            <div class="section_footer">-->
+<!--                <a href="--><?php //echo esc_url( get_permalink( wc_get_page_id( 'shop' ) ) )?><!--">Alle Marken</a>-->
+<!--            </div>-->
+
         </div>
     </section><!-- .hero -->
 
@@ -53,6 +59,7 @@ get_header();  ?>
 
     <section class="section home_cat">
         <div class="section_in">
+
             <div class="section_header">
                 <h2 class="section_title">The sweetest store in Germany</h2>
                 <a href="<?php echo esc_url( get_permalink( wc_get_page_id( 'shop' ) ) )?>">Alle Kategorien</a>
@@ -60,7 +67,7 @@ get_header();  ?>
 
             <?php
             $category_styles = get_field( 'home_category_nav_styles', 'option' );
-            if (count($category_styles) > 0)
+            if ($category_styles && count($category_styles) > 0) {
             ?>
             <style>
                 <?php $inx = 0; foreach ($category_styles as $style) {
@@ -75,6 +82,7 @@ get_header();  ?>
                 }
                 <?php $inx++; } ?>
             </style>
+            <?php } ?>
 
             <?php wp_nav_menu(
                 array(
@@ -83,6 +91,10 @@ get_header();  ?>
                     'walker' => new Yaba_Categories_Section(),
                 )
             ) ?>
+
+            <div class="section_footer">
+                <a href="<?php echo esc_url( get_permalink( wc_get_page_id( 'shop' ) ) )?>">Alle Kategorien</a>
+            </div>
         </div>
     </section><!-- .home_cat -->
 
@@ -90,10 +102,14 @@ get_header();  ?>
         <div class="section_in">
             <div class="section_header">
                 <h2 class="section_title">Hot Deals</h2>
-                <a href="<?php echo esc_url( get_permalink( wc_get_page_id( 'shop' ) ) )?>">Alle Hot Deals</a>
+                <a href="<?php echo esc_url( get_permalink( wc_get_page_id( 'shop' ) ) . '?filterby=featured' )?>">Alle Hot Deals</a>
             </div>
 
             <?php echo do_shortcode( '[products visibility="featured" limit=12 class="products_slider js-slick-home_products"]' )?>
+
+            <div class="section_footer">
+                <a href="<?php echo esc_url( get_permalink( wc_get_page_id( 'shop' ) ) . '?filterby=featured' )?>">Alle Hot Deals</a>
+            </div>
         </div>
 
         <div class="hot_products__decors">
@@ -106,10 +122,14 @@ get_header();  ?>
         <div class="section_in">
             <div class="section_header">
                 <h2 class="section_title">Neue Produkte</h2>
-                <a href="<?php echo esc_url( get_permalink( wc_get_page_id( 'shop' ) ) )?>">Alle neuen Produkte</a>
+                <a href="<?php echo esc_url( get_permalink( wc_get_page_id( 'shop' ) ) . '/?orderby=date' ); ?>">Alle neuen Produkte</a>
             </div>
 
             <?php echo do_shortcode( '[products visibility="visible" orderby="date" order="DESC" limit=12 class="products_slider js-slick-home_products"]' )?>
+
+            <div class="section_footer">
+                <a href="<?php echo esc_url( get_permalink( wc_get_page_id( 'shop' ) ) . '/?orderby=date' ); ?>">Alle neuen Produkte</a>
+            </div>
         </div>
 
         <div class="new_products__decors">
@@ -126,46 +146,52 @@ get_header();  ?>
         <?php $features = get_field('features', 'option'); ?>
         <?php if (count($features) > 0) { ?>
         <div class="features_list__wrapper">
-        <ul class="features_list">
+
+            <ul class="features_list">
             <?php $i = 0; $border_pos = array('left', 'top', 'bottom', 'right'); $border_style = ''; ?>
             <?php foreach ($features as $feature) { ?>
                 <?php $border_style .= "border-{$border_pos[$i % 4]}-color: {$features[$i]['color']};"; ?>
 
-            <li class="feature_item" data-color="<?php echo esc_attr( $feature['color'] ); ?>">
-                <div class="feature_item__in"
-                     style="
-                         border-color: <?= esc_attr( $features[$i]['color'] ); ?>;
-                         background: linear-gradient(135deg, #ffffff 0%, <?= esc_attr( $features[$i]['color'] ); ?> 100%);
-                         ">
-                    <h3 class="feature_item__title"><?php echo esc_html( $feature['title'] ); ?></h3>
-                    <p class="feature_item__description"><?php echo wp_kses_post( $feature['description'] ); ?></p>
-                    <div class="features_item__icon">
-                        <img src="<?php echo esc_html( $feature['icon'] ); ?>" alt="">
+                <li class="feature_item" data-color="<?php echo esc_attr( $feature['color'] ); ?>">
+                    <div class="feature_item__in"
+                         style="
+                             border-color: <?= esc_attr( $features[$i]['color'] ); ?>;
+                             background: linear-gradient(135deg, #ffffff 0%, <?= esc_attr( $features[$i]['color'] ); ?> 100%);
+                             ">
+                        <h3 class="feature_item__title"><?php echo esc_html( $feature['title'] ); ?></h3>
+                        <div class="feature_item__description"><?php echo wp_kses_post( $feature['description'] ); ?></div>
+                        <div class="features_item__icon">
+                            <img src="<?php echo esc_html( $feature['icon'] ); ?>" alt="">
+                        </div>
+                        <?php if ($i === 0) { ?>
+                            <div class="feature_logo__bottom_bg">
+                                <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/home/feature_bg.png') ?>" alt="">
+                            </div>
+                            <div class="feature_logo">
+                                <div class="feature_logo__border"></div>
+                                <div class="feature_logo__mask"></div>
+                                <a class="feature_logo__link" href="<?php echo esc_url(home_url('/')) ?>" aria-label="logo">
+                                    <?php if ( get_field('logo_color', 'option') ) { ?>
+                                        <img src="<?php the_field('logo_color', 'option'); ?>" alt="ale producte icon">
+                                    <?php } else { ?>
+                                        <span class="icon_wrap">
+                                            <svg class="icon icon--size_mod">
+                                                <use xlink:href="<?php echo get_template_directory_uri() . '/assets/images/icons/sprite.svg#logo' ?>"></use>
+                                            </svg>
+                                        </span>
+                                    <?php } ?>
+                                </a>
+                            </div>
+                        <?php } $i++; ?>
                     </div>
-                    <?php if ($i === 0) { ?>
-                        <div class="feature_logo__bottom_bg">
-                            <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/home/feature_bg.png') ?>" alt="">
-                        </div>
-                        <div class="feature_logo">
-                            <div class="feature_logo__border"></div>
-                            <div class="feature_logo__mask"></div>
-                            <a class="feature_logo__link" href="<?php echo esc_url(home_url('/')) ?>" aria-label="logo">
-                                <?php if ( get_field('logo_color', 'option') ) { ?>
-                                    <img src="<?php the_field('logo_color', 'option'); ?>" alt="ale producte icon">
-                                <?php } else { ?>
-                                    <span class="icon_wrap">
-                                        <svg class="icon icon--size_mod">
-                                            <use xlink:href="<?php echo get_template_directory_uri() . '/assets/images/icons/sprite.svg#logo' ?>"></use>
-                                        </svg>
-                                    </span>
-                                <?php } ?>
-                            </a>
-                        </div>
-                    <?php } $i++; ?>
-                </div>
-            </li>
+                </li>
             <?php } ?>
         </ul>
+
+            <div class="feature_logo__bg_mob">
+                <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/home/feature_bg.png') ?>" alt="">
+            </div>
+
             <style id="border_style">
                 .feature_logo__border {
                     <?= esc_attr( $border_style ); ?>
@@ -219,7 +245,7 @@ get_header();  ?>
                 <span class="line"></span>
             </div>
             <div class="home_about__content">
-                <h3 class="home_about__content_title">The sweetest store in Germany</h3>
+                <h3 class="home_about__content_title">Yaba Land of Candy – Ihr Süßigkeiten-Online-Shop für Süßwaren aus aller Welt.</h3>
                 <div class="home_about__content_text">
                     <?php echo wp_kses_post( get_field( 'about', 'option' ) ); ?>
                 </div>
@@ -246,7 +272,7 @@ get_header();  ?>
                                     <h3><?php echo $question['question']; ?></h3>
                                 </button>
                                 <div class="acc_content">
-                                    <div><?php echo $question['answer']; ?></div>
+                                    <div class="acc_content_wrapper"><?php echo $question['answer']; ?></div>
                                 </div>
                             </li>
                         <?php } ?>

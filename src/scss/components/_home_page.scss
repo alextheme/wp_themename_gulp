@@ -31,10 +31,6 @@
 .section_title {
   @extend %h1;
 
-  @include bp($point_2, min) {
-
-  }
-
   @include bp($point_3) {
     font-size: 4.2rem;
     font-weight: 400;
@@ -46,29 +42,84 @@ Hero Section
  */
 .hero {
 
+  @include bp($point_2, min) {
+
+  }
+
+  @include bp($point_3) {
+    padding-top: 1.4rem;
+    line-height: 1.1;
+  }
+
+  .section_header {
+    @include bp($point_3) {
+      margin-bottom: .7rem;
+    }
+
+    .section_title {
+      @include bp($point_3) {
+        font-size: 3.8rem;
+      }
+    }
+
+    a {
+      @include bp($point_3) {
+        display: none;
+      }
+    }
+  }
+
 }
 
 .hero_slider {
   width: 100%;
-  margin-bottom: 5rem;
+
+  @include bp($point_2, min) {
+    margin-bottom: 5rem;
+  }
+
+  @include bp($point_3) {
+
+  }
 
   .hero_slider_list {
     @extend %flex_row_wrap_flex_start;
 
-    margin: 0 -2rem -2rem 0;
+    @include bp($point_2, min) {
+      margin: 0 -2rem -2rem 0;
+    }
+
+    @include bp($point_3) {
+      margin: 0 -2rem 0 0;
+    }
   }
 
   .hero_slider_item {
-    width: 50%;
-    height: 46.8rem;
-    padding: 0 2rem 2rem 0;
+    @include bp($point_2, min) {
+      width: 50%;
+      height: 46.8rem;
+      padding: 0 2rem 2rem 0;
+    }
+
+    @include bp($point_3) {
+      height: 21rem;
+      padding: 0 2rem 0 0;
+    }
 
     a {
       display: block;
       width: 100%;
       height: 100%;
-      border-radius: 3rem;
+
       overflow: hidden;
+
+      @include bp($point_2, min) {
+        border-radius: 3rem;
+      }
+
+      @include bp($point_3) {
+        border-radius: 1.4rem;
+      }
 
       img {
         width: 100%;
@@ -81,13 +132,28 @@ Hero Section
   .slick-dots {
     @extend %slick_dots;
 
-    margin-top: 0;
     padding-right: 2rem;
+
+    @include bp($point_2, min) {
+      margin-top: 0;
+    }
+
+    @include bp($point_3) {
+      margin-top: .7rem;
+    }
   }
 }
 
 .hero_brands {
   margin: 0 calc( -1 * var(--gl-indent) );
+
+  @include bp($point_2, min) {
+
+  }
+
+  @include bp($point_3) {
+    padding: 1.8rem 0;
+  }
 
   .hero_brands_list {
     @extend %flex_row_wrap_flex_start_center;
@@ -97,8 +163,15 @@ Hero Section
   }
 
   .hero_brands_item {
-    height: 9.2rem;
-    padding: 0 2rem 2rem 0;
+    @include bp($point_2, min) {
+      height: 9.2rem;
+      padding: 0 2rem 2rem 0;
+    }
+
+    @include bp($point_3) {
+      height: 5.6rem;
+      padding: 0 .8rem .8rem 0;
+    }
 
     a {
       display: block;
@@ -118,27 +191,100 @@ Hero Section
 Menu Category Section
  */
 .home_cat {
-  padding-bottom: 9.2rem;
+  @include bp($point_2, min) {
+    padding-bottom: 9.2rem;
+  }
+
+  @include bp($point_3) {
+    padding-top: 4rem;
+    padding-bottom: 5rem;
+  }
+
+  .section_header {
+    @include bp($point_3) {
+      margin-bottom: .8rem;
+    }
+
+    .section_title {
+      @include bp($point_3) {
+        font-size: 2rem;
+      }
+    }
+
+    a {
+      @include bp($point_3) {
+        display: none;
+      }
+    }
+  }
+
+  .section_footer {
+    margin-top: 2rem;
+
+    @include bp($point_2, min) {
+      display: none;
+    }
+
+    a {
+      @extend %base_btn;
+      @extend %pink_bg;
+
+      width: 100%;
+      height: 3.6rem;
+    }
+  }
 
   .home_nav_category {
 
     .menu {
       display: grid;
-      grid-template:
-            "a b c"
-            "a d f";
-      grid-template-columns: 1fr 1fr 1fr;
-      grid-template-rows: 27.9rem 27.9rem;
-      grid-gap: 2rem;
+
+
+      @include bp($point_2, min) {
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 28rem 28rem;
+        grid-gap: 2rem;
+      }
+
+      @include bp($point_3) {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 9rem 9rem;
+        grid-gap: 1.6rem;
+      }
 
       .menu-item {
         width: 100%;
         height: 100%;
 
-        border-radius: 3rem;
         border: .5rem solid $blue_prime;
         background: linear-gradient($white, $blue_prime);
         overflow: hidden;
+
+        @include bp($point_2, min) {
+          border-radius: 3rem;
+        }
+
+        @include bp($point_3) {
+          border-radius: 1rem;
+          border-width: .2rem;
+        }
+
+        &:not(:first-child) {
+          @include bp($point_2, min) {
+            max-height: 28rem;
+          }
+
+          @include bp($point_3) {
+            max-height: 9rem;
+          }
+        }
+
+        &:nth-child(1) {
+          grid-column-start: 1;
+          grid-column-end: 2;
+          grid-row-start: 1;
+          grid-row-end: span 2;
+        }
 
         a {
           @extend %transition_opacity;
@@ -161,6 +307,15 @@ Menu Category Section
             left: 0;
 
             margin: 20px 0 0 20px;
+
+            @include bp($point_2, min) {
+
+            }
+
+            @include bp($point_3) {
+              font-size: 1.2rem;
+              font-weight: 800;
+            }
           }
 
           img {
@@ -169,22 +324,6 @@ Menu Category Section
             object-fit: contain;
             object-position: right bottom;
           }
-        }
-
-        &:nth-child(1) {
-          grid-area: a;
-        }
-        &:nth-child(2) {
-          grid-area: b;
-        }
-        &:nth-child(3) {
-          grid-area: c;
-        }
-        &:nth-child(4) {
-          grid-area: d;
-        }
-        &:nth-child(5) {
-          grid-area: f;
         }
       }
     }
@@ -198,11 +337,55 @@ New Prod Section
 .hot_products,
 .new_products {
   position: relative;
-  padding-bottom: 14rem;
+
+
+  @include bp($point_2, min) {
+    padding-bottom: 14rem;
+  }
+
+  @include bp($point_3) {
+    padding-top: 4.8rem;
+    padding-bottom: 5rem;
+  }
 
   .section_header {
     position: relative;
     z-index: 5;
+
+    @include bp($point_2, min) {
+
+    }
+
+    @include bp($point_3) {
+      margin-bottom: 1.3rem;
+    }
+
+    a {
+      @include bp($point_3) {
+        display: none;
+      }
+    }
+  }
+
+  .section_footer {
+    @include bp($point_2, min) {
+      display: none;
+    }
+
+    @include bp($point_3) {
+      position: relative;
+      z-index: 5;
+
+      margin-top: 4rem;
+    }
+
+    a {
+      @extend %base_btn;
+      @extend %pink_bg;
+
+      width: 100%;
+      height: 3.6rem;
+    }
   }
 
   .products_slider {
@@ -273,9 +456,16 @@ New Prod Section
       position: absolute;
       bottom: 0;
       left: 0;
-      z-index: 0;
+      z-index: 20;
       margin: 0;
-      transform: translateY(5rem);
+
+      @include bp($point_2, min) {
+        transform: translateY(5rem);
+      }
+
+      @include bp($point_3) {
+
+      }
     }
   }
 }
@@ -319,7 +509,15 @@ New Prod Section
 }
 
 .new_products {
-  padding-top: 17rem;
+
+
+  @include bp($point_2, min) {
+    padding-top: 17rem;
+  }
+
+  @include bp($point_3) {
+    padding-top: 4.4rem;
+  }
 
   .new_products__decors {
 
@@ -365,8 +563,14 @@ New Prod Section
 Feature Section
  */
 .features_section {
-  padding-top: 14rem;
-  padding-bottom: 14rem;
+  @include bp($point_2, min) {
+    padding-top: 14rem;
+    padding-bottom: 14rem;
+  }
+
+  @include bp($point_3) {
+
+  }
 
   .features_list__wrapper {
     max-width: 126.4rem;
@@ -376,78 +580,111 @@ Feature Section
 
   .features_list {
     @extend %flex_row_wrap_flex_start_stretch;
-    margin: 0 -2rem -2rem  0;
+
+
+    @include bp($point_2, min) {
+      margin: 0 -2rem -2rem  0;
+    }
+
+    @include bp($point_3) {
+
+    }
 
     .feature_item {
       position: relative;
-      width: 50%;
-      padding: 0 2rem 2rem  0;
+
+      @include bp($point_2, min) {
+        width: 50%;
+        padding: 0 2rem 2rem  0;
+      }
+
+      @include bp($point_3) {
+        width: 100%;
+
+        &:not(:last-child) {
+          padding-bottom: 1.6rem;
+        }
+      }
 
       .feature_item__in:before {
         @extend %iconmoon_font;
 
-        position: absolute;
-        content: '\e903';
-        z-index: -1;
-        color: $pink_prime;
-        font-size: 14rem;
+        @include bp($point_2, min) {
+          position: absolute;
+          content: '\e903';
+          z-index: -1;
+          color: $pink_prime;
+          font-size: 14rem;
+        }
       }
 
       &:nth-child(2n + 1) .feature_item__in {
-        padding: 4.2rem 15rem 4rem 4rem;
+        @include bp($point_2, min) {
+          padding: 4.2rem 15rem 4rem 4rem;
+        }
       }
 
       &:nth-child(2n) .feature_item__in {
-        padding: 4.2rem 4rem 4rem 15rem;
+        @include bp($point_2, min) {
+          padding: 4.2rem 4rem 4rem 15rem;
+        }
       }
 
       $offset_icon: 2.4rem;
 
       &:nth-child(1) {
-        .features_item__icon {
-          top: $offset_icon;
-          right: $offset_icon;
-        }
-        .feature_item__in:before {
-          top: 0;
-          left: 0;
-          margin: -70px 0 0 -70px;
+        @include bp($point_2, min) {
+          .features_item__icon {
+            top: $offset_icon;
+            right: $offset_icon;
+          }
+          .feature_item__in:before {
+            top: 0;
+            left: 0;
+            margin: -70px 0 0 -70px;
+          }
         }
       }
 
       &:nth-child(2) {
-        .features_item__icon {
-          top: $offset_icon;
-          left: $offset_icon;
-        }
-        .feature_item__in:before {
-          top: 0;
-          right: 0;
-          margin: -70px -70px 0 0;
+        @include bp($point_2, min) {
+          .features_item__icon {
+            top: $offset_icon;
+            left: $offset_icon;
+          }
+          .feature_item__in:before {
+            top: 0;
+            right: 0;
+            margin: -70px -70px 0 0;
+          }
         }
       }
 
       &:nth-child(3) {
-        .features_item__icon {
-          bottom: $offset_icon;
-          right: $offset_icon;
-        }
-        .feature_item__in:before {
-          bottom: 0;
-          left: 0;
-          margin: 0 0 -70px -70px;
+        @include bp($point_2, min) {
+          .features_item__icon {
+            bottom: $offset_icon;
+            right: $offset_icon;
+          }
+          .feature_item__in:before {
+            bottom: 0;
+            left: 0;
+            margin: 0 0 -70px -70px;
+          }
         }
       }
 
       &:nth-child(4) {
-        .features_item__icon {
-          bottom: $offset_icon;
-          left: $offset_icon;
-        }
-        .feature_item__in:before {
-          bottom: 0;
-          right: 0;
-          margin: 0 -70px -70px 0;
+        @include bp($point_2, min) {
+          .features_item__icon {
+            bottom: $offset_icon;
+            left: $offset_icon;
+          }
+          .feature_item__in:before {
+            bottom: 0;
+            right: 0;
+            margin: 0 -70px -70px 0;
+          }
         }
       }
     }
@@ -456,47 +693,109 @@ Feature Section
       position: relative;
       width: 100%;
       height: 100%;
-      min-height: 28rem;
+
 
       border-style: solid;
       border-width: .5rem;
       border-radius: 3rem;
       background: $white;
-      //background: linear-gradient(45deg, rgba(2,0,36,1) 0%, rgba(0,212,255,1) 100%);
+
+      @include bp($point_2, min) {
+        min-height: 28rem;
+      }
+
+      @include bp($point_3) {
+        padding: 2.5rem 1.6rem;
+      }
     }
 
     .feature_item__title {
       @extend %h2;
 
-      margin-bottom: 1.7rem;
+      @include bp($point_2, min) {
+        margin-bottom: 1.7rem;
+      }
+
+      @include bp($point_3) {
+        padding-right: 6.4rem;
+        margin-bottom: 1.2rem;
+
+        font-size: 2rem;
+        font-weight: 800;
+      }
     }
 
     .feature_item__description {
       @extend %text;
 
+      @include bp($point_3) {
+        font-size: 1.2rem;
+        font-weight: 400;
+      }
+
+      p:not(:last-child) {
+        margin-bottom: 2rem;
+      }
     }
 
     .features_item__icon {
       position: absolute;
 
-      width: 8.8rem;
-      height: 8.8rem;
-
       img {width: 100%;height: 100%;}
+
+      @include bp($point_2, min) {
+        width: 8.8rem;
+        height: 8.8rem;
+      }
+
+      @include bp($point_3) {
+        top: 1.6rem;
+        right: 1.6rem;
+
+        width: 4.2rem;
+        height: 4.2rem;
+      }
     }
   }
 
   .feature_logo__bottom_bg {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    z-index: -1;
-    width: 750px;
-    height: 750px;
-    border-radius: 50%;
 
-    transform: translate(calc(50% + 1rem), calc(50% + 1rem));
+    @include bp($point_2, min) {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      z-index: -1;
+      width: 750px;
+      height: 750px;
+      border-radius: 50%;
+
+      transform: translate(calc(50% + 1rem), calc(50% + 1rem));
+    }
+
+    @include bp($point_3) {
+      display: none;
+    }
   }
+
+  .feature_logo__bg_mob {
+
+    @include bp($point_2, min) {
+      display: none;
+    }
+
+    @include bp($point_3) {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      z-index: -1;
+      width: 750px;
+      height: 750px;
+      border-radius: 50%;
+
+      transform: translateY(-50%);
+    }
+  }
+
   .feature_logo {
     position: absolute;
     bottom: 0;
@@ -509,6 +808,14 @@ Feature Section
     border-radius: 50%;
 
     transform: translate(calc(50% + 1rem), calc(50% + 1rem));
+
+    @include bp($point_2, min) {
+
+    }
+
+    @include bp($point_3) {
+      display: none;
+    }
   }
 
   .feature_logo__border {
@@ -523,10 +830,6 @@ Feature Section
     border-radius: 50%;
     border-style: solid;
     border-width: .5rem;
-    //border-top-color: red;
-    //border-left-color: green;
-    //border-bottom-color: blue;
-    //border-right-color: yellow;
   }
 
   .feature_logo__mask {
@@ -575,16 +878,42 @@ Feature Section
 Home Category Buttons
  */
 .home_category_buttons {
-  padding-top: 14rem;
-  padding-bottom: 10rem;
+  @include bp($point_2, min) {
+    padding-top: 14rem;
+    padding-bottom: 10rem;
+  }
+
+  @include bp($point_3) {
+    padding-top: 3rem;
+  }
 
   .section_header {
     display: block;
-    text-align: center;
+
     margin-bottom: 3rem;
+
+    @include bp($point_2, min) {
+      text-align: center;
+    }
+
+    @include bp($point_3) {
+      text-align: left;
+    }
   }
+
+  .section_title {
+    @include bp($point_3) {
+      line-height: 1.1;
+    }
+  }
+
   .section_description {
     @extend %h3;
+
+    @include bp($point_3) {
+      font-size: 2rem;
+      font-weight: 800;
+    }
   }
 
   .home_nav_category_buttons {
@@ -594,9 +923,24 @@ Home Category Buttons
     ul.menu {
       @extend %flex_row_wrap_center_center;
 
-      margin: 0 -2rem -2rem 0;
+      @include bp($point_2, min) {
+        margin: 0 -2rem -2rem 0;
+      }
+
+      @include bp($point_3) {
+        justify-content: flex-start;
+
+        margin: 0 -1.6rem -1.6rem 0;
+      }
+
       li.menu-item {
-        padding: 0 2rem 2rem 0;
+        @include bp($point_2, min) {
+          padding: 0 2rem 2rem 0;
+        }
+
+        @include bp($point_3) {
+          padding: 0 1.6rem 1.6rem 0;
+        }
 
         a {
           @extend %base_btn;
@@ -617,20 +961,24 @@ Home Category Buttons
     position: relative;
     display: none;
 
-    padding: .5rem 4.6rem .5rem 2rem;
-    margin: 0 auto;
-    width: min-content;
+    padding: .5rem 2rem;
+    width: 100%;
+    margin: 0 auto 1.6rem;
 
-    &:before {
+    @include bp($point_2, min) {
+
+    }
+
+    @include bp($point_3) {
+
+    }
+
+    &:after {
       @extend %iconmoon_font;
-
-      position: absolute;
-      top: 50%;
-      right: 2rem;
-      transform: translateY(-50%);
 
       content: '\e912';
       font-size: 6px;
+      margin-left: 1rem;
     }
   }
 
@@ -641,42 +989,110 @@ Home Category Buttons
 
     position: relative;
 
-    width: min-content;
     height: 7.2rem;
-    padding: .5rem 7.4rem .5rem 3.2rem;
+
     margin: 0 auto;
 
-    font-size: 2rem;
+    @include bp($point_2, min) {
+      width: min-content;
+      padding: .5rem 7.4rem .5rem 3.2rem;
+      font-size: 2rem;
+    }
 
-    &:before {
+    @include bp($point_3) {
+      width: 100%;
+      height: 3.6rem;
+      padding: .5rem 3.2rem;
+      font-size: 1.2rem;
+      font-weight: 700;
+    }
+
+    &:after {
       @extend %iconmoon_font;
 
-      position: absolute;
-      top: 50%;
-      right: 3.2rem;
-      transform: translateY(-50%);
-
       content: '\e903';
-      font-size: 3.2rem;
+
+      @include bp($point_2, min) {
+        position: absolute;
+        top: 50%;
+        right: 3.2rem;
+        transform: translateY(-50%);
+
+        font-size: 3.2rem;
+      }
+
+      @include bp($point_3) {
+        margin-left: 1rem;
+        font-size: 2.2rem;
+      }
     }
   }
 
   .home_category_buttons__decors {
-    //background: rgba(255, 69, 0, 0.15);
-    //@extend %stretch;
-    //position: absolute;
 
     li {
       @extend %hor_vert_centr;
       position: absolute;
       z-index: -1;
+      min-width: 10rem;
 
-      &:nth-child(1) { margin: -15rem 0 0 -50%; }
-      &:nth-child(2) { margin: -1rem 0 0 -44%; }
-      &:nth-child(3) { margin: 18rem 0 0 -38%; }
-      &:nth-child(4) { margin: -15rem 0 0 50%; }
-      &:nth-child(5) { margin: -1rem 0 0 44%; }
-      &:nth-child(6) { margin: 18rem 0 0 38%; }
+      img {
+        @include bp($point_3) {
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+        }
+      }
+
+      &:nth-child(1) {
+        @include bp($point_2, min) {
+          margin: -15rem 0 0 -50%;
+        }
+
+        @include bp($point_3) {
+          margin: -9rem 0 0 48%;
+          filter: blur(2px);
+        }
+      }
+      &:nth-child(2) {
+        margin: -1rem 0 0 -44%;
+      }
+      &:nth-child(3) {
+        margin: 18rem 0 0 -38%;
+      }
+      &:nth-child(4) {
+
+        @include bp($point_2, min) {
+          margin: -15rem 0 0 50%;
+        }
+
+        @include bp($point_3) {
+          margin: 5rem 0 0 -48%;
+        }
+      }
+      &:nth-child(5) {
+        @include bp($point_2, min) {
+          margin: -1rem 0 0 44%;
+        }
+
+        @include bp($point_3) {
+          margin: 8rem 0 0 50%;
+          width: 11.5rem;
+          height: auto;
+        }
+      }
+      &:nth-child(6) {
+        margin: 18rem 0 0 38%;
+      }
+
+      //&:nth-child(1),
+      &:nth-child(2),
+      &:nth-child(3),
+      &:nth-child(6) {
+        @include bp($point_3) {
+          display: none;
+        }
+      }
     }
   }
 }
@@ -749,6 +1165,15 @@ Home About
 
     margin-bottom: 1.6rem;
     text-align: center;
+
+    @include bp($point_2, min) {
+
+    }
+
+    @include bp($point_3) {
+      font-size: 2rem;
+      font-weight: 800;
+    }
   }
 
   .home_about__content_text {
@@ -759,12 +1184,21 @@ Home About
     margin: 0 auto;
 
     text-align: center;
-    font-weight: 400;
+
     line-height: 1.3;
     overflow: hidden;
 
     transition: height .3s ease;
     will-change: height;
+
+    @include bp($point_2, min) {
+      font-weight: 400;
+    }
+
+    @include bp($point_3) {
+      font-size: 1.2rem;
+      font-weight: 800;
+    }
   }
 
   .home_about__content_button {
@@ -792,8 +1226,17 @@ Home Question - Answers
  */
 .home_accordion {
   position: relative;
-  padding-top: 8rem;
-  padding-bottom: 10rem;
+
+
+  @include bp($point_2, min) {
+    padding-top: 8rem;
+    padding-bottom: 10rem;
+  }
+
+  @include bp($point_3) {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
 
   &:before {
     @extend %hor_centr;
@@ -818,9 +1261,17 @@ Home Question - Answers
 }
 
 .home_accordion__list {
-  padding: 5rem 5rem 1.7rem;
+
   background: $white;
   border-radius: 3rem;
+
+  @include bp($point_2, min) {
+    padding: 5rem 5rem 1.7rem;
+  }
+
+  @include bp($point_3) {
+    padding: 2.2rem 1.6rem .6rem 1.6rem;
+  }
 }
 
 .home_accordion__item {
@@ -834,8 +1285,16 @@ Home Question - Answers
   .acc_header {
     width: 100%;
     text-align: left;
-    padding: 0 0 3.3rem 0;
+
     cursor: pointer;
+
+    @include bp($point_2, min) {
+      padding: 0 0 3.3rem 0;
+    }
+
+    @include bp($point_3) {
+      padding: 0 0 1.6rem 0;
+    }
 
     h3 {
       @extend %h2;
@@ -844,6 +1303,15 @@ Home Question - Answers
       padding-right: 3rem;
 
       color: $blue_prime;
+
+      @include bp($point_2, min) {
+
+      }
+
+      @include bp($point_3) {
+        font-size: 2rem;
+        font-weight: 800;
+      }
 
       &:before {
         @extend %transition_transform;
@@ -854,10 +1322,21 @@ Home Question - Answers
 
         width: 1.5rem;
         height: 1.4rem;
-        margin-top: 1.5rem;
+
 
         content: '';
         background: url('data:image/svg+xml,<svg width="15" height="14" viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.41812 13.3209C7.95844 14.1509 6.76508 14.1509 6.3054 13.3209L0.329261 2.53026C-0.116483 1.72542 0.46559 0.737667 1.38562 0.737667L13.3379 0.737668C14.2579 0.737668 14.84 1.72542 14.3943 2.53026L8.41812 13.3209Z" fill="%23252F6C"/></svg>');
+
+        @include bp($point_2, min) {
+          margin-top: 1.5rem;
+        }
+
+        @include bp($point_3) {
+          margin-top: .3rem;
+          width: 10px;
+          height: 10px;
+          background-size: 100% 100%;
+        }
       }
     }
   }
@@ -865,7 +1344,7 @@ Home Question - Answers
   .acc_content {
     @extend %body;
 
-    max-width: 80%;
+    //max-width: 80%;
     margin: 0 auto;
 
     color: $blue_prime;
@@ -877,6 +1356,20 @@ Home Question - Answers
 
     div {
       padding-bottom: 3.3rem;
+    }
+  }
+
+  .acc_content_wrapper {
+    @include bp($point_2, min) {
+      p:not(:last-child) {
+        margin-bottom: 1.8rem;
+      }
+    }
+
+    @include bp($point_3) {
+      p:not(:last-child) {
+        margin-bottom: 1.2rem;
+      }
     }
   }
 }

@@ -139,7 +139,6 @@ Select
   @extend %body;
 
   color: $blue_prime;
-  line-height: 4rem;
 }
 
 .select2-container .select2-selection--single .select2-selection__rendered {
@@ -154,8 +153,8 @@ Select
 .select2-container--default .select2-selection--single .select2-selection__arrow {
   //height: 26px;
   //position: absolute;
-  top: .6rem;
-  right: 1rem;
+  top: 2rem;
+  right: 0;
   //width: 20px;
 }
 
@@ -640,8 +639,9 @@ Cart Page
 
         button[type='submit'] {
           @include bp($point_2, min) {
-            width: 20.7rem;
+            min-width: 20.7rem;
             margin-left: auto;
+            padding: 0 2rem;
           }
         }
       }
@@ -889,10 +889,6 @@ Cart Page
         padding-left: 3rem;
       }
 
-      @include bp($point_9) {
-
-      }
-
       .cart_totals {
         @extend %flex_column_wrap_center;
 
@@ -934,6 +930,27 @@ Cart Page
         }
       }
 
+      .shipping-calculator-form {
+        margin: 1.2rem 0 3rem 0;
+
+        .form-row {
+          margin-bottom: 1rem;
+
+          &:nth-child(1), &:nth-child(2) {
+            margin-bottom: 1.4rem;
+          }
+        }
+
+        .select2-selection__rendered {
+          line-height: 4rem;
+          padding-right: 4rem;
+        }
+
+        .select2-selection__arrow {
+          top: .7rem;
+          right: 1rem;
+        }
+      }
 
     }
   }

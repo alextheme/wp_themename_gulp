@@ -8,7 +8,15 @@
 
     <?php wp_head(); ?>
 </head>
-<body <?php body_class(); ?>>
+
+<?php
+$body_class = '';
+if (array_key_exists('filterby', $_GET) && $_GET['filterby'] === 'featured') {
+    $body_class = 'featured_products';
+}
+?>
+
+<body <?php body_class( $body_class ); ?>>
 <?php wp_body_open(); ?>
 
 
@@ -64,14 +72,14 @@
                 </a>
 
                 <?php /* Hot Deals */ ?>
-                <a class="header__link header__hot_deals" href="/hot-deals" aria-label="hot deals">
+                <a class="header__link header__hot_deals" href="<?php echo esc_url( get_permalink( wc_get_page_id( 'shop' ) ) . '?filterby=featured' )?>" aria-label="hot deals">
                     <span class="icon-hot"></span>
                     <span class="label">Hot Deals</span>
                 </a>
 
                 <?php /* Wishlist */ ?>
                 <?php //echo do_shortcode("[ti_wishlist_products_counter]" ) ?>
-                <a class="header__link header__wunschliste" href="http://localhost/yaba/wishlist/" aria-label="Wunschliste">
+                <a class="header__link header__wunschliste" href="<?php echo esc_url( get_home_url() . '/wunschzettel' ); ?>" aria-label="Wunschliste">
                     <span class="icon-heart"></span>
                     <span class="label">Wunschliste</span>
                 </a>

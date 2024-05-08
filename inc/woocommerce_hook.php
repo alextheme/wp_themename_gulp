@@ -103,7 +103,29 @@ function _thememane_woocommerce_catalog_orderby($sortby) {
     unset($sortby['rating']);
     unset($sortby['date']);
 
+
+//    $sortby['featured'] = __( 'Featured', 'woocommerce' );
+
     return $sortby;
+}
+
+// Display featured products in shop pages
+add_filter( 'woocommerce_product_query_tax_query', 'custom_product_query_tax_query', 10, 2 );
+function custom_product_query_tax_query( $tax_query, $query ) {
+
+    if( is_admin() ) return $tax_query;
+
+    if (array_key_exists('filterby', $_GET) && $_GET['filterby'] === 'featured') {
+        if ( is_shop() ) {
+            $tax_query[] = array(
+                'taxonomy' => 'product_visibility',
+                'field'    => 'name',
+                'terms'    => 'featured'
+            );
+        }
+    }
+
+    return $tax_query;
 }
 
 remove_action('woocommerce_before_shop_loop', 'woocommerce_result_count', 20);
@@ -162,22 +184,34 @@ function _themename_quantity_minus() {
  */
 add_filter( 'woocommerce_product_tabs', '_themename_add_product_tab', 100 );
 function _themename_add_product_tab( $tabs ) {
+    global $product;
+
     unset( $tabs['reviews'] );
     unset( $tabs['additional_information'] );
 
-    $tabs['description']['title'] = __( 'Beschreibung', 'woocommerce' );
-    add_filter( 'woocommerce_product_description_heading', function() { return ''; } );
+    if ( ! $product->get_description() ) {
+        unset( $tabs['description'] );
+    } else {
+        $tabs['description']['title'] = __( 'Beschreibung', 'woocommerce' );
+        add_filter( 'woocommerce_product_description_heading', function() { return ''; } );
+    }
 
-    $tabs['ingredients'] = array(
-        'title' => __( 'Inhaltsstoffe', 'woocommerce' ), // TAB TITLE
-        'priority' => 20, // TAB SORTING (DESC 10, ADD INFO 20, REVIEWS 30)
-        'callback' => '_themename_ingredients_product_tab_content', // TAB CONTENT CALLBACK
-    );
-    $tabs['delivery'] = array(
-        'title' => __( 'Lieferung', 'woocommerce' ), // TAB TITLE
-        'priority' => 30, // TAB SORTING (DESC 10, ADD INFO 20, REVIEWS 30)
-        'callback' => '_themename_delivery_product_tab_content', // TAB CONTENT CALLBACK
-    );
+    if ( get_field( 'ingredients', $product->get_id() ) ) {
+        $tabs['ingredients'] = array(
+            'title' => __( 'Inhaltsstoffe', 'woocommerce' ), // TAB TITLE
+            'priority' => 20, // TAB SORTING (DESC 10, ADD INFO 20, REVIEWS 30)
+            'callback' => '_themename_ingredients_product_tab_content', // TAB CONTENT CALLBACK
+        );
+    }
+
+    if ( get_field( 'delivery', $product->get_id() ) ) {
+        $tabs['delivery'] = array(
+            'title' => __( 'Lieferung', 'woocommerce' ),
+            'priority' => 30,
+            'callback' => '_themename_delivery_product_tab_content',
+        );
+    }
+
     return $tabs;
 }
 function _themename_ingredients_product_tab_content() {
@@ -332,3 +366,18 @@ function _themename_woocommerce_checkout_after_order_review() {
 }
 add_action( 'woocommerce_checkout_before_order_review_heading', '_themename_woocommerce_checkout_before_order_review_heading' );
 add_action( 'woocommerce_checkout_after_order_review', '_themename_woocommerce_checkout_after_order_review' );
+
+
+
+/**
+ * User Role
+ */
+function _themename_add_custom_user_role() {
+    remove_role('partner_user');
+
+    $role = get_role('customer');
+
+    add_role( 'partner_user','Partner User', $role);
+}
+add_action('init', '_themename_add_custom_user_role');
+

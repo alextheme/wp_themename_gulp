@@ -3,51 +3,51 @@ import {race} from "../../../../../../wp-includes/js/dist/redux-routine.js";
 const $ = jQuery
 
 const yabaHover = () => {
-    /**
-     * Hover ul.products li.product (archive page)
-     */
-    function distanceBetweenElements(topEl, bottomEl) {
-        if (!topEl || !bottomEl) return 0
-
-        const topRect = topEl.getBoundingClientRect();
-        const bottomRect = bottomEl.getBoundingClientRect();
-        const res = bottomRect.top - topRect.bottom;
-        return res;
-    }
-
-    function setPaddingToBetweenElements() {
-        let hotProductsClass = '.js-slick-hot_products'
-        let hotProductMaxHeight = 0
-
-        // Додаємо падінг між елементами на основі попередньої між ними відстані
-        // щоб ціна не скакала вгору
-        $('ul.products li.product')
-            // .each((_, product) => {
-            //     const pLink = $(product).find('.product_item__wrapper > .woocommerce-loop-product__link')[0]
-            //     $(pLink).css({ paddingBottom: 0 })
-            // })
-            .each((_, product) => {
-                if (product.closest(hotProductsClass)) {
-                    hotProductMaxHeight = Math.max(hotProductMaxHeight, product.getBoundingClientRect().height)
-                }
-            })
-            .each((_, product) => {
-                const pLink = $(product).find('.product_item__wrapper > .woocommerce-loop-product__link')[0]
-                const pPrice = $(product).find('.price')[0]
-                let padding = Math.round( distanceBetweenElements(pLink, pPrice) )
-
-                if (padding === 0) {
-                    if (product.closest(hotProductsClass)) {
-                        padding = hotProductMaxHeight - product.getBoundingClientRect().height
-                    }
-                }
-
-                $(pLink).css({ paddingBottom: padding + 'px' })
-            })
-    }
+    // /**
+    //  * Hover ul.products li.product (archive page)
+    //  */
+    // function distanceBetweenElements(topEl, bottomEl) {
+    //     if (!topEl || !bottomEl) return 0
+    //
+    //     const topRect = topEl.getBoundingClientRect();
+    //     const bottomRect = bottomEl.getBoundingClientRect();
+    //     const res = bottomRect.top - topRect.bottom;
+    //     return res;
+    // }
+    //
+    // function setPaddingToBetweenElements() {
+    //     let hotProductsClass = '.js-slick-hot_products'
+    //     let hotProductMaxHeight = 0
+    //
+    //     // Додаємо падінг між елементами на основі попередньої між ними відстані
+    //     // щоб ціна не скакала вгору
+    //     $('ul.products li.product')
+    //         // .each((_, product) => {
+    //         //     const pLink = $(product).find('.product_item__wrapper > .woocommerce-loop-product__link')[0]
+    //         //     $(pLink).css({ paddingBottom: 0 })
+    //         // })
+    //         .each((_, product) => {
+    //             if (product.closest(hotProductsClass)) {
+    //                 hotProductMaxHeight = Math.max(hotProductMaxHeight, product.getBoundingClientRect().height)
+    //             }
+    //         })
+    //         .each((_, product) => {
+    //             const pLink = $(product).find('.product_item__wrapper > .woocommerce-loop-product__link')[0]
+    //             const pPrice = $(product).find('.price')[0]
+    //             let padding = Math.round( distanceBetweenElements(pLink, pPrice) )
+    //
+    //             if (padding === 0) {
+    //                 if (product.closest(hotProductsClass)) {
+    //                     padding = hotProductMaxHeight - product.getBoundingClientRect().height
+    //                 }
+    //             }
+    //
+    //             $(pLink).css({ paddingBottom: padding + 'px' })
+    //         })
+    // }
 
     const productsLists = document.querySelectorAll('ul.products')
-    const products = document.querySelectorAll('ul.products li.product')
+    const products = document.querySelectorAll('ul.products li.product .product_item__wrapper')
 
     productsLists.forEach(productsList => {
         productsList.addEventListener('mouseenter', beforeHoverHandler)
@@ -137,7 +137,7 @@ const yabaHover = () => {
 
 
     const resize = () => {
-        setPaddingToBetweenElements()
+        // setPaddingToBetweenElements()
         productsListResize()
     }
     onWindowResize(resize)

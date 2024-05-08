@@ -1,5 +1,5 @@
 {
-  "name": "shopde",
+  "name": "yaba",
   "version": "1.0.0",
   "description": "",
   "type": "module",
@@ -42,7 +42,6 @@
     "yargs": "^17.7.2"
   },
   "dependencies": {
-    "gsap": "^3.12.5",
     "ismobilejs": "^1.1.1",
     "jquery-zoom": "^1.7.21",
     "select2": "^4.1.0-rc.0",

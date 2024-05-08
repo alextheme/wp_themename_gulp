@@ -8,10 +8,18 @@
             <!-- Вивід постів, функцій цикла: the_title() і т.п -->
             <?php
             $page_name = '';
-            if (function_exists('is_account_page') && is_account_page()) $page_name = 'my_account_page';
-            if (function_exists('is_cart') && is_cart()) $page_name = 'cart_page';
-            if (is_page('cart-classic')) $page_name = 'cart_classic_page';
-            if (function_exists('is_checkout') && is_checkout()) $page_name = 'checkout_page';
+            if (function_exists('is_account_page') && is_account_page()) {
+                $page_name = 'my_account_page';
+            }
+            if (function_exists('is_cart') && is_cart()) {
+                $page_name = 'cart_page';
+            }
+            if (is_page('cart-classic')) {
+                $page_name = 'cart_classic_page';
+            }
+            if (function_exists('is_checkout') && is_checkout()) {
+                $page_name = 'checkout_page';
+            }
             ?>
 
             <section class="section <?php echo esc_attr($page_name); ?>">
@@ -24,15 +32,23 @@
                     'checkout', '_checkout',
                 ])) { ?>
                     <h2><?php the_title(); ?></h2>
-                <?php } ?>
+                <?php }
 
-                <?php the_content(); ?>
+                if ( $page_name === 'cart_page' ) {
+                    echo do_shortcode('[woocommerce_cart]');
+                } elseif ( $page_name === 'checkout_page' ) {
+                    echo do_shortcode('[woocommerce_checkout]');
+                } else {
+                    the_content();
+                } ?>
+
+
 
                 </div>
             </section>
 
         <?php endwhile; else: ?>
-            Записів немає
+            Es gibt keine Aufzeichnungen
         <?php endif; ?>
 
 

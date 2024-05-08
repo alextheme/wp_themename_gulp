@@ -7,7 +7,7 @@ $max_wid: 122rem;
 
 .section.my_account_page {
   @include bp($point_2, min) {
-    height: calc( 100vh - var(--height-header) );
+    min-height: calc(100vh - var(--height-header));
   }
 
   @include bp($point_3) {

@@ -6,17 +6,6 @@ const $ = jQuery
 
 const yaba = () => {
 
-    const elNav = '<li id="menu-item-243" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat current-product-ancestor menu-item-243"><a href="//localhost:3000/yaba/product-category/chips/"><span>Chips</span><img src="//localhost:3000/yaba/wp-content/uploads/2024/04/cat-chips.png" alt="" width="762" height="365"></a></li>'
-    $('#menu-home-categories-section').append(elNav)
-    $('#menu-home-categories-section').append(elNav)
-    $('#menu-home-categories-section').append(elNav)
-    $('#menu-home-categories-section').append(elNav)
-    $('#menu-home-categories-section').append(elNav)
-    $('#menu-home-categories-section').append(elNav)
-    $('#menu-home-categories-section').append(elNav)
-    $('#menu-home-categories-section').append(elNav)
-    $('#menu-home-categories-section').append(elNav)
-
     $(document).on( 'click', 'button.plus, button.minus', function() {
         var qty = $( this ).parent( '.quantity' ).find( '.qty' );
         var val = parseFloat(qty.val());
@@ -104,6 +93,8 @@ const yaba = () => {
         infinite: true,
         swipe: true,
         dots: true,
+        // autoplay: true,
+        // autoplaySpeed: 2000,
 
         responsive: [
             {
@@ -121,8 +112,10 @@ const yaba = () => {
         slidesToScroll: 3,
         arrows: true,
         infinite: true,
-        swipe: true,
+        swipe: false,
         dots: true,
+        // autoplay: true,
+        // autoplaySpeed: 2000,
 
         responsive: [
             {
