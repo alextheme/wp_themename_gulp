@@ -1305,7 +1305,7 @@ Home Question - Answers
       color: $blue_prime;
 
       @include bp($point_2, min) {
-
+        font-size: 3rem;
       }
 
       @include bp($point_3) {

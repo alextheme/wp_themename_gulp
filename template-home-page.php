@@ -250,8 +250,8 @@ get_header();  ?>
                     <?php echo wp_kses_post( get_field( 'about', 'option' ) ); ?>
                 </div>
                 <button type="button" class="home_about__content_button js-home_about_show_more">
-                    <span>Show more</span>
-                    <span>Hide</span>
+                    <span>Mehr anzeigen</span>
+                    <span>Ausblenden</span>
                 </button>
             </div>
         </div>
