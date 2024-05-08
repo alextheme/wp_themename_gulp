@@ -24,7 +24,7 @@ if (array_key_exists('filterby', $_GET) && $_GET['filterby'] === 'featured') {
     <div class="header_in">
 
         <div class="header__row">
-            <button class="header__top_button">Händler Account anfragen</button>
+            <a href="<?php echo esc_url( get_field( 'request_a_dealer_account', 'option' )['page_link'] ); ?>" class="header__top_button">Händler Account anfragen</a>
         </div>
 
         <div class="header__row">

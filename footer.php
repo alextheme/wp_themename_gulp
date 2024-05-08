@@ -48,7 +48,9 @@
                     'container' => false,
                 ))
                 ?>
-                <button class="footer__button footer__button--mob">Händler Account anfragen</button>
+
+                <a href="<?php echo esc_url( get_field( 'request_a_dealer_account', 'option' )['page_link'] ); ?>" class="footer__button footer__button--mob">Händler Account anfragen</a>
+
             </div>
 
             <div class="footer__col">
@@ -71,7 +73,7 @@
 
                 </ul>
 
-                <button class="footer__button footer__button--desktop">Händler Account anfragen</button>
+                <a href="<?php echo esc_url( get_field( 'request_a_dealer_account', 'option' )['page_link'] ); ?>" class="footer__button footer__button--desktop">Händler Account anfragen</a>
             </div>
         </div>
 
