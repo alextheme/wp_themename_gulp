@@ -5,7 +5,7 @@
     </div>
     <div class="ic-cart-sidebar-wrapper_body">
         <div class="widget_shopping_cart_content">
-            <?php woocommerce_mini_cart( [ 'list_class' => 'my-css-class' ] ); ?>
+            <?php woocommerce_mini_cart(); ?>
         </div>
     </div>
 </div>

@@ -14,9 +14,6 @@
             if (function_exists('is_cart') && is_cart()) {
                 $page_name = 'cart_page';
             }
-            if (is_page('cart-classic')) {
-                $page_name = 'cart_classic_page';
-            }
             if (function_exists('is_checkout') && is_checkout()) {
                 $page_name = 'checkout_page';
             }
@@ -28,8 +25,8 @@
                 <?php if (!is_page([
                     'my-account',
                     'wishlist',
-                    'cart', '_cart', 'cart-classic',
-                    'checkout', '_checkout',
+//                    'cart', '_cart', 'cart-classic',
+//                    'checkout', '_checkout',
                 ])) { ?>
                     <h2><?php the_title(); ?></h2>
                 <?php }

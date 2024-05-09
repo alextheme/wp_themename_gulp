@@ -39,7 +39,7 @@ form.checkout {
 
   h3,
   h3 span {
-    @extend %h2;
+    @extend %h3;
 
     margin: 2rem 0;
 
@@ -255,6 +255,25 @@ Form Coupon
   }
 }
 
+.woocommerce form.checkout_coupon {
+  @include bp($point_4) {
+    padding: 2rem 1rem;
+  }
+
+  .form-row-first,
+  .form-row-last {
+    @include bp($point_4) {
+      width: 100%;
+    }
+  }
+
+  .form-row-last .button {
+    @include bp($point_4) {
+      width: 100%;
+    }
+  }
+}
+
 
 /*
 Form Info
@@ -358,7 +377,9 @@ Table
         color: $pink_prime;
       }
       td:first-child {
-        min-width: 25rem;
+        @include bp($point_2, min) {
+          min-width: 25rem;
+        }
       }
     }
   }
