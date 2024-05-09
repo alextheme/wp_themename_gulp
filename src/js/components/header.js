@@ -1,5 +1,6 @@
 import {onWindowResize, onWindowScroll} from '../utils/index.js';
 import {css} from "../utils/functions.js";
+const $ = jQuery
 
 const header = () => {
     const closeOnClickOutsideElement = (element$, fn = null) => {
@@ -38,6 +39,25 @@ const header = () => {
         }
 
         prevScrollPos = currentScrollPos;
+    })
+
+
+    $(document).on('click', '.js-header__link_menu', function (event) {
+        event.preventDefault()
+        $(document.body).toggleClass('body--open_menu_category')
+    })
+
+
+    // Close elements
+    $(document.body).on('click', function (e) {
+        const $this = $(e.target)
+
+        // Close Menu Header
+        if ( ! ( $this.closest('.js-header__link_menu').length ||
+            $this.closest('#header_nav_menu_category').length )
+        ) {
+            $(document.body).removeClass('body--open_menu_category')
+        }
     })
 
 

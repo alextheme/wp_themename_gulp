@@ -125,3 +125,104 @@ a {
 }
 
 //------------------------------------------------------------base styles###
+
+
+.content {
+	@include bp($point_2, min) {
+		padding-top: 5rem;
+		padding-bottom: 5rem;
+	}
+
+	@include bp($point_3) {
+		padding-top: 2.4rem;
+		padding-bottom: 2.4rem;
+	}
+
+	.section_in {
+		max-width: 70rem;
+		margin: 0 auto;
+	}
+}
+
+.section_in {
+	h2 {
+		@extend %h2;
+		text-align: center;
+		line-height: 1.1;
+
+		@include bp($point_2, min) {
+			padding: 1rem 0;
+		}
+
+		@include bp($point_3) {
+			font-size: 3rem;
+			padding: .8rem 0;
+		}
+	}
+
+	h3 {
+		@extend %h3;
+
+		line-height: 1.1;
+
+		@include bp($point_2, min) {
+			padding: 1rem 0;
+		}
+
+		@include bp($point_3) {
+			font-size: 2.4rem;
+			padding: .6rem 0;
+		}
+	}
+
+	h4 {
+		@extend %h4;
+
+		line-height: 1.1;
+
+		@include bp($point_2, min) {
+			padding: 1rem 0;
+		}
+
+		@include bp($point_3) {
+			font-size: 2rem;
+			padding: .6rem 0;
+		}
+	}
+
+	p {
+		@extend %body;
+
+		line-height: 1.6;
+		text-indent: 1rem;
+
+		&:not(:last-child) {
+			margin-bottom: 1rem;
+		}
+	}
+
+	ul {
+		margin: 0 0 1rem 2rem;
+
+		li {
+			@extend %body;
+
+			line-height: 1.6;
+
+			&:not(:last-child) {
+				margin-bottom: 1rem;
+			}
+
+			&:before {
+				content:"\A";
+				width:.7rem;
+				height:.7rem;
+				border-radius:50%;
+				background: $grey3;
+				display:inline-block;
+				margin-right: 1.4rem;
+				margin-bottom: .2rem;
+			}
+		}
+	}
+}

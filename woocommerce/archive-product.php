@@ -35,7 +35,10 @@ do_action( 'woocommerce_before_main_content' );
 				<?php
 				if (array_key_exists( 'filterby', $_GET ) && $_GET['filterby'] === 'featured') {
 					echo __( 'Featured', 'woocommerce' );
+				} elseif (array_key_exists( 'new_products', $_GET ) && $_GET['new_products'] === 'new_products') {
+					echo __( 'New Products', 'woocommerce' );
 				} else {
+
 					woocommerce_page_title();
 				} ?>
 			</h1>

@@ -7,9 +7,18 @@
 //}
 
 .home_page {
+
   #main {
     max-width: 100%;
     overflow-x: hidden;
+  }
+
+  li {
+    margin-bottom: 0 !important;
+
+    &:before {
+      content: unset !important;
+    }
   }
 }
 
@@ -95,6 +104,9 @@ Hero Section
   }
 
   .hero_slider_item {
+    &:before {
+      content: unset;
+    }
     @include bp($point_2, min) {
       width: 50%;
       height: 46.8rem;

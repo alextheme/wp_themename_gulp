@@ -30,14 +30,7 @@ const yaba = () => {
             $( this ).closest( '.product' ).find( '.button.add_to_cart_button' )
                 .attr('data-quantity', qty.val() )
         }
-
-
     });
-
-    $(document).on('click', '.js-header__link_menu', function (event) {
-        event.preventDefault()
-        $(document.body).toggleClass('body--open_menu_category')
-    })
 
     $('form.woocommerce-ordering select.orderby').hide().select2()
 
@@ -67,13 +60,6 @@ const yaba = () => {
                  $this.closest('.header__search_mob').length )
         ) {
             $('.header__search_form_wrap').removeClass('header__search_form_wrap--open')
-        }
-
-        // Close Menu Header
-        if ( ! ( $this.closest('.js-header__link_menu').length ||
-                 $this.closest('.header_nav_menu_category').length )
-        ) {
-            $(document.body).removeClass('body--open_menu_category')
         }
     })
 

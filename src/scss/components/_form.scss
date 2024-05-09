@@ -133,6 +133,8 @@ Select
   height: 4rem;
   //user-select: none;
   //-webkit-user-select: none;
+
+  @extend %flex_row_wrap_flex_start_center;
 }
 
 .select2-container--default .select2-selection--single .select2-selection__rendered {
@@ -144,7 +146,7 @@ Select
 .select2-container .select2-selection--single .select2-selection__rendered {
   //display: block;
   padding-left: 1.4rem;
-  padding-right: 1.4rem;
+  padding-right: 3.4rem;
   //overflow: hidden;
   //text-overflow: ellipsis;
   //white-space: nowrap;
@@ -153,9 +155,20 @@ Select
 .select2-container--default .select2-selection--single .select2-selection__arrow {
   //height: 26px;
   //position: absolute;
-  top: 2rem;
-  right: 0;
+  //top: 2rem;
+  //right: 0;
   //width: 20px;
+
+  height: 4rem;
+  margin-right: 1rem;
+}
+
+.select2-container--open .select2-dropdown--below {
+  border-color: $grey3;
+}
+
+.select2-container--default .select2-results__option--highlighted[aria-selected], .select2-container--default .select2-results__option--highlighted[data-selected] {
+  background-color: $blue_prime;
 }
 
 
@@ -437,6 +450,12 @@ Payment
 
   margin-bottom: .7rem;
   color: $blue_prime;
+
+  &:before {
+    width: 0;
+    height: 0;
+    margin: 0;
+  }
 }
 
 #add_payment_method #payment ul.payment_methods li input, .woocommerce-cart #payment ul.payment_methods li input, .woocommerce-checkout #payment ul.payment_methods li input {
@@ -489,11 +508,20 @@ Payment
 /*
 Shipping
  */
-.woocommerce ul#shipping_method li input {
-  //margin: 3px .4375em 0 0;
-  //vertical-align: top;
+.woocommerce ul#shipping_method {
+  li {
 
-  @extend %form_el_radio;
+    &:before {
+      display: none;
+    }
+
+    input {
+      //margin: 3px .4375em 0 0;
+      //vertical-align: top;
+
+      @extend %form_el_radio;
+    }
+  }
 }
 
 

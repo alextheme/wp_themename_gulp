@@ -61,12 +61,12 @@ class Yaba_Categories_Section extends Walker_Nav_Menu {
 
         $title = apply_filters( 'nav_menu_item_title', $title, $menu_item, $args, $depth );
         $thumbnail_id = get_term_meta( $menu_item->object_id, 'thumbnail_id', true );
-        $image = wp_get_attachment_url( $thumbnail_id );
+        $image_url = wp_get_attachment_url( $thumbnail_id );
 
         $item_output  = $args->before;
         $item_output .= '<a' . $attributes . '>';
         $item_output .= '<span>' . $args->link_before . $title . $args->link_after . '</span>';
-        $item_output .= "<img src='{$image}' alt='' width='762' height='365' />";
+        $item_output .= $image_url ? "<img src='{$image_url}' alt='' width='762' height='365' />" : '';
         $item_output .= '</a>';
         $item_output .= $args->after;
 

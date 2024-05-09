@@ -33,11 +33,11 @@ if (array_key_exists('filterby', $_GET) && $_GET['filterby'] === 'featured') {
                 <?php /* Alle Produkte */
                 if (function_exists('wc_get_page_id')) {
                     $shop_page_url = get_permalink( wc_get_page_id( 'shop' ) ); ?>
-                    <a class="header__link_menu js-header__link_menu" href="<?php echo esc_url($shop_page_url); ?>" aria-label="Alle Produkte">
+                    <button type="button" class="header__link_menu js-header__link_menu" href="<?php echo esc_url($shop_page_url); ?>" aria-label="Alle Produkte">
                         <span class="icon-menu"></span>
                         <span class="label">Alle Produkte</span>
                         <span class="icon-arrow_down"></span>
-                    </a>
+                    </button>
                 <?php } ?>
 
                 <?php // Search Form //get_search_form();
@@ -87,7 +87,7 @@ if (array_key_exists('filterby', $_GET) && $_GET['filterby'] === 'featured') {
                 <?php /* Mini Cart Link */
                 if (!is_cart()) { ?>
                     <div class="header__link_wrapper header__mini_cart">
-                        <a class="header__mini_cart_button ic-cart-header-btn" href="#<?php //echo esc_url( get_permalink( wc_get_page_id( 'cart' ) ) )?>" aria-label="Warenkorb">
+                        <a class="header__mini_cart_button ic-cart-header-btn" href="#" aria-label="Warenkorb">
                             <span class="icon-shop"></span>
                             <span class="label">Warenkorb</span>
                             <?php if (function_exists('is_cart') && !is_cart()) { ?>
@@ -115,10 +115,33 @@ if (array_key_exists('filterby', $_GET) && $_GET['filterby'] === 'featured') {
     <nav id="header_nav_menu_category">
         <?php wp_nav_menu(
             array(
-                'theme_location' => 'category_section',
+                'theme_location' => 'header_menu',
                 'container_class' => 'menu_category',
                 'walker' => new Yaba_Categories_Section(),
             )
         ) ?>
+
+        <div class="header_nav_menu_footer">
+            <div class="header_nav_menu_footer__in">
+                <a class="footer__link tel" href="tel:+6517489523"><?php the_field('phone', 'option'); ?></a>
+                <a class="footer__link mail" href="mailto:examle@gmail.com"><?php the_field('email', 'option'); ?></a>
+                <p class="footer__descr"><?php the_field('description', 'option'); ?></p>
+                <ul class="footer__socials">
+                    <?php
+                    $array_socials = get_field('socials_links', 'option');
+
+                    foreach ($array_socials as $social => $link) {
+                        if ($link) { ?>
+                            <li>
+                                <a href="<?= esc_url($link) ?>" aria-label="link <?= $social ?>">
+                                    <span class="icon-<?php echo $social; ?>"></span>
+                                </a>
+                            </li>
+                        <?php } } ?>
+
+                </ul>
+                <a class="footer__button footer__button--mobile_menu" href="<?php echo esc_url( get_field( 'request_a_dealer_account', 'option' )['page_link'] ); ?>">Händler Account anfragen</a>
+            </div>
+        </div>
     </nav>
 </header>
