@@ -314,7 +314,7 @@
           margin-bottom: 1.5rem;
 
           @include bp($point_2, min) {
-            margin-top: -2rem;
+            //margin-top: -2rem;
           }
           @include bp($point_3) {
             min-height: 12.6rem;

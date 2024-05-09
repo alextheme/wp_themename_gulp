@@ -763,6 +763,7 @@ body.body--open_menu_category {
 			display: block;
 			margin-left: auto;
 			margin-right: auto;
+			white-space: nowrap;
 
 			&:focus,
 			&:hover {

@@ -76,8 +76,6 @@ get_header();  ?>
                     ?>
                 .home_cat .menu .menu-item:nth-child(<?= $inx + 1 ?>) {
                     border-color: <?= $clr; ?>;
-                    background: <?= $clr; ?>;
-                    background-image: url("<?= $bgr; ?>");
                     background-image: url("<?= $bgr; ?>"), linear-gradient(#fff, <?= $clr; ?>);
                 }
                 <?php $inx++; } ?>
