@@ -450,14 +450,19 @@ table.tinvwl-table-manage-list {
 
   thead {
     tr {
-      th:not(.product-cb) {
-        @include bp($point_3) {
-          display: none !important;
+      th {
+        @extend %text;
+
+        &:not(.product-cb) {
+          @include bp($point_3) {
+            display: none !important;
+          }
         }
       }
 
       .product-cb {
         @include bp($point_3) {
+          display: block !important;
           text-align: left !important;
           padding-left: .8rem;
         }
