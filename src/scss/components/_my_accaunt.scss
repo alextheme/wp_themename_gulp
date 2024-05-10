@@ -258,6 +258,7 @@ $max_wid: 122rem;
 
         @include bp($point_3) {
           min-width: 8rem;
+          margin-bottom: 0;
           padding: 0 2rem 2rem 0;
         }
 
@@ -277,8 +278,18 @@ $max_wid: 122rem;
 
         }
 
+        &:before {
+          @include bp($point_3) {
+            display: none;
+          }
+        }
+
         &.is-active {
           color: $pink_prime;
+
+          &:before {
+            background: $pink_prime;
+          }
         }
       }
     }
@@ -380,6 +391,358 @@ $max_wid: 122rem;
     }
   }
 
+}
+
+
+/**
+Wishlist
+ */
+.tinv-wishlist tfoot .tinvwl-to-left:not(:empty) {
+  @include bp($point_2, min) {
+    width: 100%;
+    margin-right: 0;
+  }
+
+  @include bp($point_3) {
+
+  }
+}
+
+.tinv-wishlist tfoot .tinvwl-to-left + .tinvwl-to-right {
+  @include bp($point_2, min) {
+    width: 100%;
+    margin: 0;
+  }
+
+  @include bp($point_3) {
+
+  }
+
+  button[type='submit'] {
+    width: 100%;
+    margin-left: 0;
+    white-space: pre-wrap;
+    padding: 1rem;
+    height: auto;
+
+    @include bp($point_2, min) {
+      max-width: 41rem;
+    }
+
+    @include bp($point_3) {
+      max-width: 37.5rem;
+    }
+  }
+}
+
+.tinv-wishlist .tinvwl-to-left .tinvwl-input-group .form-control+.tinvwl-input-group-btn {
+  @include bp($point_2, min) {
+
+  }
+
+  @include bp($point_3) {
+    padding-left: 0;
+    padding-top: 1rem;
+  }
+}
+
+table.tinvwl-table-manage-list {
+
+  thead {
+    tr {
+      th:not(.product-cb) {
+        @include bp($point_3) {
+          display: none !important;
+        }
+      }
+
+      .product-cb {
+        @include bp($point_3) {
+          text-align: left !important;
+          padding-left: .8rem;
+        }
+
+        .input-checkbox {
+          accent-color: $pink_prime;
+          cursor: pointer;
+
+          @include bp($point_2, min) {
+            width: 2rem;
+            height: 2rem;
+          }
+
+          @include bp($point_3) {
+            position: relative;
+            width: 1.6rem;
+            height: 1.6rem;
+            margin-right: auto;
+
+            &:before {
+              position: absolute;
+              top: -.3rem;
+              right: -12.6rem;
+
+              font-family: $font_2;
+              font-size: 1.6rem;
+              font-weight: 700;
+              line-height: 1.5;
+              white-space: nowrap;
+
+              content: 'Alle auswählen';
+            }
+          }
+        }
+      }
+    }
+  }
+
+  tbody {
+    @include bp($point_3) {
+      display: block;
+    }
+
+    .wishlist_item {
+      @include bp($point_2, min) {}
+
+      @include bp($point_3) {
+        display: grid;
+        grid-template-columns: max(20%, 12rem) 1fr;
+        //gap: 1rem max(2rem, 2.4%);
+
+        position: relative;
+
+        min-height: 12rem;
+        padding: 1.6rem;
+        margin-bottom: 1rem;
+
+        outline: 1px solid $grey3;
+        outline-offset: -1px;
+        border-radius: 1rem;
+      }
+
+      // td
+      .product-cb, .product-remove, .product-thumbnail, .product-name, .product-price, .product-date, .product-stock, .product-action {
+        @include bp($point_2, min) {}
+
+        @include bp($point_3) {
+          margin: 0;
+          padding: 0;
+        }
+
+      }
+
+      .product-cb {
+        @include bp($point_2, min) {}
+
+        @include bp($point_3) {
+          width: 0;
+          max-width: 0;
+        }
+
+        .input-checkbox {
+          accent-color: $pink_prime;
+
+          @include bp($point_2, min) {
+            width: 2rem;
+            height: 2rem;
+          }
+
+          @include bp($point_3) {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 10;
+
+            width: 1.6rem;
+            height: 1.6rem;
+            margin: 1rem;
+            cursor: pointer;
+          }
+        }
+      }
+
+      .product-remove {
+        @include bp($point_2, min) {
+
+        }
+
+        @include bp($point_3) {
+          width: 0;
+          max-width: 0;
+        }
+
+        button {
+          @include bp($point_2, min) {
+
+          }
+
+          @include bp($point_3) {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 1.8rem;
+            height: 1.8rem;
+            margin: 1rem;
+            cursor: pointer;
+          }
+        }
+      }
+
+      .product-thumbnail {
+        @include bp($point_2, min) {}
+
+        @include bp($point_3) {
+          display: flex;
+
+          width: 100%;
+          height: 100%;
+          max-width: 100%;
+          min-width: 0;
+          grid-row-start: 1;
+          grid-row-end: span 6;
+
+          a {
+            position: relative;
+
+            display: block;
+            width: 100%;
+            max-width: 100%;
+            padding-top: 100%;
+            margin: auto 0;
+          }
+
+          img {
+            position: absolute;
+            top: 0;
+            left: 0;
+
+            display: block;
+            width: 100%;
+            height: 100%;
+            max-width: 100%;
+            object-fit: contain;
+          }
+        }
+      }
+
+      .product-name,
+      .product-price,
+      .product-date,
+      .product-stock {
+        @extend %body;
+
+        @include bp($point_2, min) {}
+
+        @include bp($point_3) {
+          display: block;
+          width: 100%;
+          max-width: 100%;
+          text-align: left;
+          padding: .8rem 1.6rem;
+
+          .stock {
+            margin: 0;
+            text-align: left;
+
+            span {
+              display: inline;
+            }
+
+            .tinvwl-txt {
+              margin-left: .5rem;
+            }
+          }
+        }
+      }
+
+      .product-name {
+        font-size: 1.8rem;
+        font-weight: 800;
+
+        a:hover {
+          color: $pink_prime;
+        }
+      }
+
+      .product-price {
+        color: $pink_prime;
+      }
+
+      .product-action {
+        @include bp($point_2, min) {}
+
+        @include bp($point_3) {
+          width: 100%;
+          max-width: 100%;
+          padding-top: 1rem;
+
+          grid-column-end: span 2;
+
+          .button {
+            max-width: max(21rem, 40%);
+            margin: 0 auto;
+
+            .tinvwl-txt {
+              display: inline;
+            }
+          }
+        }
+      }
+
+    }
+  }
+
+  tfoot {
+
+    .tinvwl-input-group {
+      display: block;
+
+      @include bp($point_2, min) {}
+
+      @include bp($point_3) {
+        max-width: 37.5rem;
+        width: 100%;
+      }
+
+      select.tinvwl-break-input-filed {
+        @include bp($point_2, min) {
+          max-width: 20rem;
+        }
+
+        @include bp($point_3) {}
+
+        option {
+          padding: 5px 1rem;
+        }
+      }
+    }
+
+    select#tinvwl_product_actions {
+      border-radius: 2rem;
+      height: 4rem;
+      padding: 0 1rem;
+
+      @include bp($point_2, min) {
+        width: 100%;
+        max-width: 20rem;
+      }
+
+      @include bp($point_3) {
+
+      }
+    }
+
+    button {
+      @include bp($point_2, min) {
+        min-width: 20rem;
+      }
+
+      @include bp($point_3) {
+        max-width: 37.5rem;
+        width: 100%;
+      }
+    }
+  }
 }
 
 

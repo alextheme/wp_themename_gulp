@@ -108,7 +108,7 @@ body {
 
 	width: 100%;
 	max-width: $page_width;
-	padding: var(--height-header) 0 0;
+	padding: var(--height-header) 0 5rem;
 	margin: 0 auto;
 
 	flex: 1 0 auto;
@@ -147,7 +147,6 @@ a {
 .section_in {
 	h2 {
 		@extend %h2;
-		text-align: center;
 		line-height: 1.1;
 
 		@include bp($point_2, min) {
@@ -194,7 +193,6 @@ a {
 		@extend %body;
 
 		line-height: 1.6;
-		text-indent: 1rem;
 
 		&:not(:last-child) {
 			margin-bottom: 1rem;

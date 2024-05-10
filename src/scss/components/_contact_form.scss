@@ -2,11 +2,24 @@
 form#request_dealer_account {
   max-width: 50rem;
   margin: 0 auto;
-  padding: 5rem 0;
+
+  @include bp($point_2, min) {
+    padding: 5rem 0 0;
+  }
+
+  @include bp($point_3) {
+    padding: 3rem 0 0;
+  }
 
   p {
-    &:not(:last-child) {
-      margin-bottom: 1rem;
+    position: relative;
+
+    .wpcf7-spinner {
+      @extend %vert_centr;
+
+      position: absolute;
+      left: 0;
+      z-index: 1;
     }
   }
 
@@ -14,6 +27,12 @@ form#request_dealer_account {
     @extend %text;
 
     color: $blue_prime;
+  }
+
+  .required {
+    font-size: 1.8rem;
+    color: $pink_prime;
+    padding: 0 .3rem;
   }
 
   .wpcf7-form-control-wrap {
@@ -32,6 +51,7 @@ form#request_dealer_account {
   input {
     @extend %body;
 
+    display: block;
     width: 100%;
     padding: 0 1.4rem;
     line-height: 4rem;
@@ -39,6 +59,11 @@ form#request_dealer_account {
 
     border: 1px solid $grey3;
     border-radius: 2rem;
+  }
+
+  textarea {
+    padding: 1.4rem;
+    line-height: 2rem;
   }
 
   input[type='checkbox'] {
@@ -59,5 +84,30 @@ form#request_dealer_account {
     @include bp($point_3) {
       font-size: 1.6rem;
     }
+  }
+
+  .wpcf7-form-control-wrap {
+
+    .wpcf7-form-control {
+      display: block;
+    }
+
+    .wpcf7-list-item.first.last {
+      display: block;
+    }
+
+    .wpcf7-list-item-label {
+      display: block;
+      text-indent: 0;
+      line-height: 2.2rem;
+    }
+
+    .wpcf7-list-item {
+      margin: 0;
+    }
+  }
+
+  .wpcf7-response-output {
+    margin-bottom: .5rem;
   }
 }

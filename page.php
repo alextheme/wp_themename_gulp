@@ -17,6 +17,9 @@
             if (function_exists('is_checkout') && is_checkout()) {
                 $page_name = 'checkout_page';
             }
+            if (is_page_template( 'template-home-page.php' )) {
+                $page_name = 'home_page';
+            }
             ?>
 
             <section class="section <?php echo esc_attr($page_name); ?>">

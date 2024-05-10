@@ -506,11 +506,10 @@ ul.variations_form__var_list {
 
     .woocommerce-tabs {
       width: 100%;
-      max-width: 75rem;
       margin-bottom: 4rem;
 
-      @include bp($point_3) {
-        max-width: 100%;
+      @include bp($point_2, min) {
+        max-width: 75rem;
       }
 
       ul.tabs {
@@ -592,6 +591,16 @@ ul.variations_form__var_list {
 
       .panel {
         margin: 0;
+
+        p {
+          @extend %body;
+
+          line-height: 1.5;
+
+          &:not(:last-child) {
+            margin-bottom: 1rem;
+          }
+        }
       }
 
     }

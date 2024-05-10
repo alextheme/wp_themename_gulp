@@ -251,10 +251,25 @@ body {
 		.aws-search-field {
 			@extend %body;
 
-			font-weight: 700;
 			padding-left: .8rem;
 			padding-right: 1.4rem;
+
+			color: $blue_prime;
+			font-weight: 700;
 			border: 0;
+
+			&::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+				color: $grey;
+			}
+			&::-moz-placeholder { /* Firefox 19+ */
+				color: $grey;
+			}
+			&:-ms-input-placeholder { /* IE 10+ */
+				color: $grey;
+			}
+			&:-moz-placeholder { /* Firefox 18- */
+				color: $grey;
+			}
 		}
 	}
 }

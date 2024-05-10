@@ -68,7 +68,11 @@ function _themename_add_menu_categories() { ?>
  * Featured Product List in Shop
  */
 add_action( 'woocommerce_after_main_content', '_themename_add_featured_products_list', 5 );
-function _themename_add_featured_products_list() { ?>
+function _themename_add_featured_products_list() {
+    if ( array_key_exists( 'filterby', $_GET ) && $_GET['filterby'] === 'featured') { ?>
+        <div class="shop__before_featured_products_padding"></div>
+    <?php }?>
+
     <div class="shop__featured_products_wrapper js-slick-products">
 
         <header class="woocommerce-products-header">
@@ -96,13 +100,12 @@ function _themename_add_featured_products_list() { ?>
 add_filter('woocommerce_default_catalog_orderby_options', '_thememane_woocommerce_catalog_orderby');
 add_filter('woocommerce_catalog_orderby', '_thememane_woocommerce_catalog_orderby');
 function _thememane_woocommerce_catalog_orderby($sortby) {
-    $sortby['menu_order'] = 'Sorted by';
-    $sortby['popularity'] = 'Popularity';
-    $sortby['price'] = 'Price (Decreasing)';
-    $sortby['price-desc'] = 'Price (Increasing)';
+    $sortby['menu_order'] = 'Sortiert nach'; // \e904 Sorted by
+    $sortby['popularity'] = 'Beliebtheit'; // Popularity
+    $sortby['price'] = 'Preis (abnehmend)'; // Price (Decreasing)
+    $sortby['price-desc'] = 'Preis (Steigend)'; // Price (Increasing)
     unset($sortby['rating']);
     unset($sortby['date']);
-
 
 //    $sortby['featured'] = __( 'Featured', 'woocommerce' );
 

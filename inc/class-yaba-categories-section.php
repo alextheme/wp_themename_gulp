@@ -1,7 +1,6 @@
 <?php
 
 class Yaba_Categories_Section extends Walker_Nav_Menu {
-
     public function start_el( &$output, $data_object, $depth = 0, $args = null, $current_object_id = 0 ) {
         // Restores the more descriptive, specific name for use within this method.
         $menu_item = $data_object;
@@ -65,7 +64,7 @@ class Yaba_Categories_Section extends Walker_Nav_Menu {
 
         $item_output  = $args->before;
         $item_output .= '<a' . $attributes . '>';
-        $item_output .= '<span>' . $args->link_before . $title . $args->link_after . '</span>';
+        $item_output .= '<span class="title_catecory">' . $args->link_before . $title . $args->link_after . '</span>';
         $item_output .= $image_url ? "<img src='{$image_url}' alt='' width='762' height='365' />" : '';
         $item_output .= '</a>';
         $item_output .= $args->after;

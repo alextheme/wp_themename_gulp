@@ -6,7 +6,23 @@
 //  mask: var(--mask);
 //}
 
+
+
 .home_page {
+
+  .section {
+    position: relative;
+
+    width: 100%;
+    padding: 5rem var(--gl-indent);
+
+    font-size: $font_size_base;
+    overflow: hidden;
+
+    @include bp($point_3) {
+      padding: 2rem var(--gl-indent);
+    }
+  }
 
   #main {
     max-width: 100%;
@@ -250,17 +266,15 @@ Menu Category Section
 
     .menu {
       display: grid;
-
+      margin: 0;
 
       @include bp($point_2, min) {
         grid-template-columns: 1fr 1fr 1fr;
-        grid-template-rows: 28rem 28rem;
         grid-gap: 2rem;
       }
 
       @include bp($point_3) {
         grid-template-columns: 1fr 1fr;
-        grid-template-rows: 9rem 9rem;
         grid-gap: 1.6rem;
       }
 
@@ -270,80 +284,72 @@ Menu Category Section
         width: 100%;
         height: 100%;
 
-        border: .5rem solid $blue_prime;
-        background: linear-gradient($white, $blue_prime);
-        overflow: hidden;
-
         @include bp($point_2, min) {
-          border-radius: 3rem;
+          padding-bottom: calc( 100% * (279 / 493) );
         }
 
         @include bp($point_3) {
-          border-radius: 1rem;
-          border-width: .2rem;
-        }
-
-        &:not(:first-child) {
-          @include bp($point_2, min) {
-            max-height: 28rem;
-          }
-
-          @include bp($point_3) {
-            max-height: 9rem;
-          }
+          padding-bottom: calc( 100% * (90 / 160) );
         }
 
         &:nth-child(1) {
-          grid-column-start: 1;
-          grid-column-end: 2;
-          grid-row-start: 1;
           grid-row-end: span 2;
         }
 
-        &:hover {
-          border-color: $pink_prime;
-          background-color: $pink_prime;
+        a.item_link {
+          @extend %stretch;
 
-          span {
-            color: $pink_prime;
-          }
-        }
+          .title_catecory {
+            @extend %transition_color;
+            @extend %h3;
 
-        a {
-          @extend %transition_all;
+            position: relative;
+            z-index: 1;
 
-          position: relative;
+            display: block;
+            margin: 2rem;
 
-          display: block;
-          width: 100%;
-          height: 100%;
+            color: inherit;
+            font-weight: 800;
+            line-height: 1.4;
 
-          span {
-            @extend %transition_all;
-            @extend %h2;
+            @include bp($point_4) {
+              margin: 1rem;
 
-            position: absolute;
-            top: 0;
-            left: 0;
-
-            margin: 20px 0 0 20px;
-
-            @include bp($point_2, min) {
-
-            }
-
-            @include bp($point_3) {
               font-size: 1.2rem;
               font-weight: 800;
             }
           }
 
-          img {
+          .img {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
-            object-fit: contain;
-            object-position: right bottom;
+
+            //object-fit: contain;
+            object-position: top left;
+
+            .img_desktop {
+              @include bp($point_3) {
+                display: none;
+              }
+            }
+
+            .img_mobile {
+              @include bp($point_2, min) {
+                display: none;
+              }
+            }
           }
+
+          &:hover,
+          &:focus {
+            color: $pink_prime;
+          }
+
+
         }
       }
     }

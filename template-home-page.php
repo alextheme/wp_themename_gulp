@@ -13,7 +13,7 @@ get_header();  ?>
         <div class="section_in">
 
             <div class="section_header">
-                <h2 class="section_title">The sweetest store in Germany</h2>
+                <h2 class="section_title">Der süßeste Laden in Deutschland</h2>
                 <a href="<?php echo esc_url( get_permalink( wc_get_page_id( 'shop' ) ) )?>">Alle Marken</a>
             </div>
 
@@ -61,7 +61,7 @@ get_header();  ?>
         <div class="section_in">
 
             <div class="section_header">
-                <h2 class="section_title">The sweetest store in Germany</h2>
+                <h2 class="section_title">Der süßeste Laden in Deutschland</h2>
                 <a href="<?php echo esc_url( get_permalink( wc_get_page_id( 'shop' ) ) )?>">Alle Kategorien</a>
             </div>
 
@@ -69,26 +69,23 @@ get_header();  ?>
             $category_styles = get_field( 'home_category_nav_styles', 'option' );
             if ($category_styles && count($category_styles) > 0) {
             ?>
-            <style>
-                <?php $inx = 0; foreach ($category_styles as $style) {
-                    $clr = $category_styles[ $inx ]['color'];
-                    $bgr = $category_styles[ $inx ]['background_image'];
-                    ?>
-                .home_cat .menu .menu-item:nth-child(<?= $inx + 1 ?>) {
-                    border-color: <?= $clr; ?>;
-                    background-image: url("<?= $bgr; ?>"), linear-gradient(#fff, <?= $clr; ?>);
-                }
-                <?php $inx++; } ?>
-            </style>
-            <?php } ?>
+                <div class="home_nav_category">
 
-            <?php wp_nav_menu(
-                array(
-                    'theme_location' => 'category_section',
-                    'container_class' => 'home_nav_category',
-                    'walker' => new Yaba_Categories_Section(),
-                )
-            ) ?>
+                    <ul id="menu-home-categories-section" class="menu">
+                        <?php foreach ($category_styles as $style) { ?>
+                        <li id="menu-item-<?= $style['category_url']->term_id; ?>" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-<?= $style['category_url']->term_id; ?>">
+                            <a class="item_link" href="<?= get_term_link( $style['category_url']->term_id, 'product_cat' ); ?>">
+                                <span class="title_catecory"><?= $style['category_url']->name; ?></span>
+                                <img class="img img_desktop" src="<?= $style['desktop_image']; ?>" alt="" />
+                                <img class="img img_mobile" src="<?= $style['mobile_image']; ?>" alt="" />
+                            </a>
+                        </li>
+                        <?php } ?>
+                    </ul>
+
+                </div>
+
+            <?php } ?>
 
             <div class="section_footer">
                 <a href="<?php echo esc_url( get_permalink( wc_get_page_id( 'shop' ) ) )?>">Alle Kategorien</a>
