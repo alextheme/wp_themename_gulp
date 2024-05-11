@@ -79,8 +79,8 @@ const yaba = () => {
         infinite: true,
         swipe: true,
         dots: true,
-        // autoplay: true,
-        // autoplaySpeed: 2000,
+        autoplay: true,
+        autoplaySpeed: 4000,
 
         responsive: [
             {
@@ -93,15 +93,27 @@ const yaba = () => {
         ]
     })
 
+    $('.js-hero_brands_slider').slick({
+        slidesToShow: 5,
+        slidesToScroll: 2,
+        arrows: false,
+        infinite: true,
+        variableWidth: true,
+        swipe: true,
+        dots: false,
+        autoplay: true,
+        autoplaySpeed: 3000,
+    })
+
     $('.js-slick-home_products ul.products').slick({
         slidesToShow: 6,
         slidesToScroll: 3,
         arrows: true,
         infinite: true,
-        swipe: false,
+        swipe: true,
         dots: true,
-        // autoplay: true,
-        // autoplaySpeed: 2000,
+        autoplay: true,
+        autoplaySpeed: 5000,
 
         responsive: [
             {

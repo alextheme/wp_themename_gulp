@@ -34,16 +34,12 @@ get_header();  ?>
                 </div>
             <?php } ?>
 
-<!--            <div class="section_footer">-->
-<!--                <a href="--><?php //echo esc_url( get_permalink( wc_get_page_id( 'shop' ) ) )?><!--">Alle Marken</a>-->
-<!--            </div>-->
-
         </div>
     </section><!-- .hero -->
 
     <?php if (count($hero_brands) > 0) { ?>
         <div class="hero_brands">
-            <ul class="hero_brands_list">
+            <ul class="hero_brands_list js-hero_brands_slider">
                 <?php for ($i = 0; $i < 3; $i++) { ?>
                     <?php foreach ($hero_brands as $item) { ?>
                         <li class="hero_brands_item">
@@ -200,7 +196,7 @@ get_header();  ?>
     <section class="section home_category_buttons">
         <div class="section_in">
             <div class="section_header">
-                <h2 class="section_title">We have candy of every kind </h2>
+                <h2 class="section_title">Wir haben Süßigkeiten aller Art</h2>
                 <p class="section_description">Wonach suchst du?</p>
             </div>
 

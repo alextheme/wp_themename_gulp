@@ -199,6 +199,7 @@ body {
 
           position: relative;
           max-width: 9rem;
+          width: 100%;
 
           button {
             @extend %transition_background;
@@ -212,21 +213,62 @@ body {
             height: 2.5rem;
             padding: 0;
 
-            font-size: 1.8rem;
+            font-size: 0;
+            color: $blue_prime;
 
             border: 1px solid $grey3;
             border-radius: 50%;
             cursor: pointer;
 
-            &:hover {
-              background: $grey3;
+            &.minus {
+              left: 0;
+
+              &:before {
+                background-image: url('data:image/svg+xml,<svg viewBox="0 0 10.1 10.1" xmlns="http://www.w3.org/2000/svg"><path fill="%23252F6C" d="M9.1,6.1H1c-0.6,0-1-0.4-1-1v0c0-0.6,0.4-1,1-1h8.1c0.6,0,1,0.4,1,1v0C10.1,5.6,9.7,6.1,9.1,6.1z"/></svg>');
+              }
+              //&:after {
+              //  background-image: url('data:image/svg+xml,<svg viewBox="0 0 10.1 10.1" xmlns="http://www.w3.org/2000/svg"><path fill="%23ffffff" d="M9.1,6.1H1c-0.6,0-1-0.4-1-1v0c0-0.6,0.4-1,1-1h8.1c0.6,0,1,0.4,1,1v0C10.1,5.6,9.7,6.1,9.1,6.1z"/></svg>');
+              //}
             }
 
-            &:first-child {
-              left: 0;
-            }
-            &:last-child {
+            &.plus {
               right: 0;
+
+              &:before {
+                background-image: url('data:image/svg+xml,<svg viewBox="0 0 10.1 10.1" xmlns="http://www.w3.org/2000/svg"><path fill="%23252F6C" d="M9.1,4h-3V1c0-0.6-0.4-1-1-1C4.5,0,4,0.4,4,1v3H1C0.4,4,0,4.5,0,5c0,0.6,0.4,1,1,1h3v3c0,0.6,0.4,1,1,1c0.6,0,1-0.4,1-1v-3h3c0.6,0,1-0.4,1-1C10.1,4.5,9.7,4,9.1,4z"/></svg>');
+              }
+              //&:after {
+              //  background-image: url('data:image/svg+xml,<svg viewBox="0 0 10.1 10.1" xmlns="http://www.w3.org/2000/svg"><path fill="%23ffffff" d="M9.1,4h-3V1c0-0.6-0.4-1-1-1C4.5,0,4,0.4,4,1v3H1C0.4,4,0,4.5,0,5c0,0.6,0.4,1,1,1h3v3c0,0.6,0.4,1,1,1c0.6,0,1-0.4,1-1v-3h3c0.6,0,1-0.4,1-1C10.1,4.5,9.7,4,9.1,4z"/></svg>');
+              //}
+            }
+
+            &:before,
+            &:after {
+              @extend %hor_vert_centr;
+
+              position: absolute;
+
+              width: 1rem;
+              height: 1rem;
+
+              content: '';
+              background-position: center;
+              background-repeat: no-repeat;
+            }
+
+            //&:after {
+            //  opacity: 0;
+            //}
+
+            &:hover {
+              background: $grey3;
+
+              //&:before {
+              //  opacity: 0;
+              //}
+              //&:after {
+              //  opacity: 1;
+              //}
             }
           }
 

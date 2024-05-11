@@ -1,27 +1,12 @@
-//.conic_gradient_example {
-//  --mask:
-//          linear-gradient(red, red) padding-box,
-//          conic-gradient(red 10deg 45deg, blue 45deg 180deg, transparent 180deg) border-box;
-//  -webkit-mask: var(--mask);
-//  mask: var(--mask);
-//}
-
-
-
 .home_page {
+  background-size: auto;
+  background:
+          #fff
+          url('data:image/svg+xml,<svg viewBox="0 0 1921 951" xmlns="http://www.w3.org/2000/svg"><path d="M248.5 82C161.3 82 46.5 54.6667 0 41V537C46.5 523.333 161.3 496 248.5 496C357.5 496 607.5 578 744.5 578C881.5 578 1097.5 495 1245 495C1392.5 495 1576.5 578 1737 578C1818.5 578 1920.5 553.5 1920.5 553.5V24.5C1920.5 24.5 1818.5 0 1737 0C1576.5 0 1392.5 83 1245 83C1097.5 83 881.5 0 744.5 0C607.5 0 357.5 82 248.5 82Z" fill="%2360CBE8" fill-opacity="0.1"/></svg>')
+          repeat fixed top center;
 
   .section {
-    position: relative;
-
-    width: 100%;
     padding: 5rem var(--gl-indent);
-
-    font-size: $font_size_base;
-    overflow: hidden;
-
-    @include bp($point_3) {
-      padding: 2rem var(--gl-indent);
-    }
   }
 
   #main {
@@ -53,7 +38,7 @@
    }
 }
 
-.section_title {
+.section .section_title {
   @extend %h1;
 
   @include bp($point_3) {
@@ -65,7 +50,7 @@
 /*
 Hero Section
  */
-.hero {
+.section.hero {
 
   @include bp($point_2, min) {
 
@@ -73,6 +58,7 @@ Hero Section
 
   @include bp($point_3) {
     padding-top: 1.4rem;
+    padding-bottom: 2.6rem;
     line-height: 1.1;
   }
 
@@ -186,7 +172,6 @@ Hero Section
   .hero_brands_list {
     @extend %flex_row_wrap_flex_start_center;
 
-    width: max-content;
     margin: 0 -2rem -2rem 0;
   }
 
@@ -218,13 +203,14 @@ Hero Section
 /*
 Menu Category Section
  */
-.home_cat {
+.section.home_cat {
   @include bp($point_2, min) {
+    padding-top: 10rem;
     padding-bottom: 9.2rem;
   }
 
   @include bp($point_3) {
-    padding-top: 4rem;
+    padding-top: 3.2rem;
     padding-bottom: 5rem;
   }
 
@@ -360,8 +346,8 @@ Menu Category Section
 Hot Prod Section
 New Prod Section
  */
-.hot_products,
-.new_products {
+.section.hot_products,
+.section.new_products {
   position: relative;
 
   @include bp($point_2, min) {
@@ -479,6 +465,8 @@ New Prod Section
 
     ul.slick-dots {
       @extend %slick_dots;
+
+      text-align: center;
 
       @include bp($point_2, min) {
         transform: translateY(5rem);
@@ -637,9 +625,9 @@ New Prod Section
 /*
 Feature Section
  */
-.features_section {
+.section.features_section {
   @include bp($point_2, min) {
-    padding-top: 14rem;
+    padding-top: 7rem;
     padding-bottom: 14rem;
   }
 
@@ -952,7 +940,7 @@ Feature Section
 /*
 Home Category Buttons
  */
-.home_category_buttons {
+.section.home_category_buttons {
   @include bp($point_2, min) {
     padding-top: 14rem;
     padding-bottom: 10rem;
@@ -1178,7 +1166,7 @@ Home Category Buttons
 /*
 Home About
  */
-.home_about {
+.section.home_about {
   padding-top: 1rem;
   padding-bottom: 1rem;
 
@@ -1301,10 +1289,7 @@ Home About
 /*
 Home Question - Answers
  */
-.home_accordion {
-  position: relative;
-
-
+.section.home_accordion {
   @include bp($point_2, min) {
     padding-top: 8rem;
     padding-bottom: 10rem;
@@ -1313,6 +1298,7 @@ Home Question - Answers
   @include bp($point_3) {
     padding-top: 5rem;
     padding-bottom: 5rem;
+    margin-bottom: -5rem;
   }
 
   &:before {
@@ -1329,125 +1315,135 @@ Home Question - Answers
     border: .5rem solid $pink_prime;
     background: linear-gradient(160deg, $white 0%, $pink_prime 100%);
   }
-}
 
-.home_accordion__wrap {
-  max-width: 75rem;
-  width: 100%;
-  margin: 0 auto;
-}
-
-.home_accordion__list {
-
-  background: $white;
-  border-radius: 3rem;
-
-  @include bp($point_2, min) {
-    padding: 5rem 5rem 1.7rem;
+  .home_accordion__wrap {
+     max-width: 75rem;
+     width: 100%;
+     margin: 0 auto;
   }
 
-  @include bp($point_3) {
-    padding: 2.2rem 1.6rem .6rem 1.6rem;
-  }
-}
+  .home_accordion__list {
+    margin: 0;
 
-.home_accordion__item {
-
-  &.home_accordion__item--open {
-    .acc_header h3:before {
-      transform: scaleY(-1);
-    }
-  }
-
-  .acc_header {
-    width: 100%;
-    text-align: left;
-
-    cursor: pointer;
+    background: $white;
+    border-radius: 3rem;
 
     @include bp($point_2, min) {
-      padding: 0 0 3.3rem 0;
+      padding: 5rem 5rem 1.7rem;
     }
 
     @include bp($point_3) {
-      padding: 0 0 1.6rem 0;
+      padding: 2.2rem 1.6rem .6rem 1.6rem;
+    }
+  }
+
+  .home_accordion__item {
+
+    &.home_accordion__item--open {
+      .acc_header h3:before {
+        transform: scaleY(-1);
+      }
     }
 
-    h3 {
-      @extend %h2;
+    .acc_header {
+      width: 100%;
+      text-align: left;
 
-      position: relative;
-      padding-right: 3rem;
-
-      color: $blue_prime;
+      cursor: pointer;
 
       @include bp($point_2, min) {
-        font-size: 3rem;
+        padding: 0 0 3.3rem 0;
       }
 
       @include bp($point_3) {
-        font-size: 2rem;
-        font-weight: 800;
+        padding: 0 0 1.6rem 0;
       }
 
-      &:before {
-        @extend %transition_transform;
+      h3 {
+        @extend %h2;
 
-        position: absolute;
-        top: 0;
-        right: 0;
+        position: relative;
+        padding-right: 3rem;
 
-        width: 1.5rem;
-        height: 1.4rem;
-
-
-        content: '';
-        background: url('data:image/svg+xml,<svg width="15" height="14" viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.41812 13.3209C7.95844 14.1509 6.76508 14.1509 6.3054 13.3209L0.329261 2.53026C-0.116483 1.72542 0.46559 0.737667 1.38562 0.737667L13.3379 0.737668C14.2579 0.737668 14.84 1.72542 14.3943 2.53026L8.41812 13.3209Z" fill="%23252F6C"/></svg>');
+        color: $blue_prime;
 
         @include bp($point_2, min) {
-          margin-top: 1.5rem;
+          font-size: 3rem;
         }
 
         @include bp($point_3) {
-          margin-top: .3rem;
-          width: 10px;
-          height: 10px;
-          background-size: 100% 100%;
+          font-size: 2rem;
+          font-weight: 800;
+        }
+
+        &:before {
+          @extend %transition_transform;
+
+          position: absolute;
+          top: 0;
+          right: 0;
+
+          width: 1.5rem;
+          height: 1.4rem;
+
+
+          content: '';
+          background: url('data:image/svg+xml,<svg width="15" height="14" viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.41812 13.3209C7.95844 14.1509 6.76508 14.1509 6.3054 13.3209L0.329261 2.53026C-0.116483 1.72542 0.46559 0.737667 1.38562 0.737667L13.3379 0.737668C14.2579 0.737668 14.84 1.72542 14.3943 2.53026L8.41812 13.3209Z" fill="%23252F6C"/></svg>');
+
+          @include bp($point_2, min) {
+            margin-top: 1.5rem;
+          }
+
+          @include bp($point_3) {
+            margin-top: .3rem;
+            width: 10px;
+            height: 10px;
+            background-size: 100% 100%;
+          }
         }
       }
     }
-  }
 
-  .acc_content {
-    @extend %body;
+    .acc_content {
+      @extend %body;
 
-    //max-width: 80%;
-    margin: 0 auto;
+      //max-width: 80%;
+      margin: 0 auto;
 
-    color: $blue_prime;
+      color: $blue_prime;
 
-    overflow: hidden;
+      overflow: hidden;
 
-    transition: height .3s ease;
-    will-change: height;
+      transition: height .3s ease;
+      will-change: height;
 
-    div {
-      padding-bottom: 3.3rem;
-    }
-  }
+      div {
+        @include bp($point_2, min) {
+          padding-bottom: 3.3rem;
+        }
 
-  .acc_content_wrapper {
-    @include bp($point_2, min) {
-      p:not(:last-child) {
-        margin-bottom: 1.8rem;
+        @include bp($point_3) {
+          padding-bottom: 2.4rem;
+        }
       }
     }
 
-    @include bp($point_3) {
-      p:not(:last-child) {
-        margin-bottom: 1.2rem;
+    .acc_content_wrapper {
+      @include bp($point_2, min) {
+        p:not(:last-child) {
+          margin-bottom: 1.8rem;
+        }
+      }
+
+      @include bp($point_3) {
+        p:not(:last-child) {
+          margin-bottom: 1.2rem;
+        }
       }
     }
   }
 }
+
+
+
 
