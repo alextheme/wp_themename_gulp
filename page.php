@@ -22,6 +22,8 @@
             }
             ?>
 
+        <?php woocommerce_breadcrumb(); ?>
+
             <section class="section <?php echo esc_attr($page_name); ?>">
                 <div class="section_in">
 

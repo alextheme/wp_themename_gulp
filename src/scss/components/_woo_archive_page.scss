@@ -1,5 +1,6 @@
 // archive shop
 
+.breadcrumb.woocommerce-breadcrumb,
 .page-template-template-wishlist .woocommerce-breadcrumb,
 .woocommerce:where(body:not(.woocommerce-uses-block-theme)) .woocommerce-breadcrumb {
   @extend %flex_row_wrap_flex_start_center;
