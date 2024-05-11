@@ -581,7 +581,7 @@ body.body--open_menu_category {
 
 		height: calc( 100vh - var(--height-header) );
 
-		padding: 2.6rem 4rem 2rem;
+		padding: 2rem;
 
 		background: $white;
 		overflow-y: auto;
@@ -667,6 +667,8 @@ body.body--open_menu_category {
 		a {
 			@extend %transition_all;
 
+			position: relative;
+
 			display: block;
 			width: 100%;
 
@@ -681,7 +683,22 @@ body.body--open_menu_category {
 			}
 
 			@include bp($point_3) {
-				padding: .6rem 4.4rem .6rem 2rem;
+				padding: 0 4.4rem 0 2rem;
+
+				&:after {
+					position: absolute;
+					right: 2rem;
+					top: 50%;
+
+					width: .6rem;
+					height: .6rem;
+
+					border-right: .2rem solid $blue_prime;
+					border-bottom: .2rem solid $blue_prime;
+
+					content: '';
+					transform: translate(0, -50%) rotate(-45deg);
+				}
 			}
 
 			&:focus,
@@ -691,10 +708,14 @@ body.body--open_menu_category {
 				-webkit-box-shadow: var(--shadow_link);
 				-moz-box-shadow: var(--shadow_link);
 				box-shadow: /* inset */ var(--shadow_link);
+
+				&:after {
+					border-color: $pink_prime;
+				}
 			}
 
 			span {
-				@extend %h4;
+				@extend %text;
 
 				@include bp($point_2, min) {
 					position: absolute;
@@ -712,8 +733,7 @@ body.body--open_menu_category {
 				}
 
 				@include bp($point_3) {
-					font-size: 1.2rem;
-					font-weight: 800;
+					line-height: 4.2rem;
 				}
 			}
 
@@ -762,23 +782,18 @@ body.body--open_menu_category {
 		  	text-align: center;
 		}
 
-		.footer__descr {
-			@include bp($point_2, min) {
-
-			}
-
-			@include bp($point_3) {
-				color: $blue_prime;
-				margin-bottom: 3rem;
-			}
-		}
-
 		.footer__link {
 			width: min-content;
 			display: block;
 			margin-left: auto;
 			margin-right: auto;
 			white-space: nowrap;
+
+			&.mail {
+				@include bp($point_3) {
+					margin-bottom: 3rem;
+				}
+			}
 
 			&:focus,
 			&:hover {

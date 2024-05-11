@@ -125,7 +125,6 @@ if (array_key_exists('filterby', $_GET) && $_GET['filterby'] === 'featured') {
             <div class="header_nav_menu_footer__in">
                 <a class="footer__link tel" href="tel:+6517489523"><?php the_field('phone', 'option'); ?></a>
                 <a class="footer__link mail" href="mailto:examle@gmail.com"><?php the_field('email', 'option'); ?></a>
-                <p class="footer__descr"><?php the_field('description', 'option'); ?></p>
                 <ul class="footer__socials">
                     <?php
                     $array_socials = get_field('socials_links', 'option');
