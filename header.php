@@ -49,7 +49,6 @@ if (array_key_exists('filterby', $_GET) && $_GET['filterby'] === 'featured') {
 
             </div>
 
-
             <div class="header__col_center">
                 <a class="header__logo" href="<?php echo esc_url(home_url('/')) ?>" aria-label="logo">
                     <?php if ( get_field('logo_color', 'option') ) { ?>
@@ -109,7 +108,6 @@ if (array_key_exists('filterby', $_GET) && $_GET['filterby'] === 'featured') {
 
             </div>
         </div>
-    </div>
     </div>
 
     <nav id="header_nav_menu_category">
