@@ -1,17 +1,145 @@
 $max_wid: 122rem;
 
+.woocommerce-lost-password {
+  .woocommerce {
+    form.woocommerce-ResetPassword {
+      max-width: 50rem;
+      margin: 0 auto;
+
+      .form-row {
+        width: 100%;
+
+        label {
+          margin-bottom: 1rem;
+        }
+
+        input {
+          width: 100%;
+          margin-bottom: 1rem;
+        }
+      }
+    }
+  }
+}
+
+.woocommerce-form__input-checkbox {
+  @extend %form_el_checkbox;
+}
+
+.woocommerce-account {
+  #primary {
+    min-height: 0;
+  }
+
+  .woocommerce-breadcrumb {
+    margin-bottom: 4rem;
+  }
+
+  .woocommerce > h2 {
+    display: none;
+  }
+
+  #customer_login {
+    .col-1,
+    .col-2 {
+      h2 {
+        font-size: 3rem;
+        max-width: 50rem;
+        margin: 0 auto;
+      }
+    }
+  }
+
+  .woocommerce-form-login__rememberme {
+    display: block;
+    width: 100%;
+
+    @include bp($point_2, min) {
+      margin-bottom: 2rem;
+    }
+
+    @include bp($point_3) {
+      margin-bottom: 1rem;
+    }
+
+    span {
+      display: block;
+
+      font-weight: 400;
+      text-transform: lowercase;
+    }
+  }
+
+  .lost_password {
+    @extend %transition_opacity;
+    @extend %text;
+
+    color: $blue_prime;
+
+    &:hover {
+      opacity: .6;
+    }
+  }
+
+  .form-row {
+    @include bp($point_2, min) {
+      &:not(:last-child) {
+        margin-bottom: 2rem;
+      }
+    }
+
+    @include bp($point_3) {
+      &:not(:last-child) {
+        margin-bottom: 1rem;
+      }
+    }
+  }
+
+  button[type='submit'] {
+    min-width: 15rem;
+    padding: 0 4rem;
+    margin-right: 0;
+
+    @include bp($point_2, min) {
+
+    }
+
+    @include bp($point_3) {
+      width: 100%;
+      height: 5rem;
+    }
+  }
+}
+
+.woocommerce form.checkout_coupon p,
+.woocommerce form.login p,
+.woocommerce form.register p {
+  margin-bottom: 1rem;
+}
+
+
 .section.my_account_page .section_in {
   max-width: 122rem;
   height: 100%;
+
+  & > h2 {
+    @include bp($point_2, min) {
+      margin-bottom: 2rem;
+    }
+
+    @include bp($point_3) {
+      margin-bottom: 2rem;
+    }
+  }
 }
 
 .section.my_account_page {
   @include bp($point_2, min) {
-    min-height: calc(100vh - var(--height-header));
+    //min-height: calc(100vh - var(--height-header));
   }
 
   @include bp($point_3) {
-    padding-top: 4rem;
+    //padding-top: 4rem;
   }
 
   .woocommerce {
@@ -40,15 +168,11 @@ $max_wid: 122rem;
         width: calc( (100% - 3rem) / 2 );
         margin: auto 0;
       }
-
-      @include bp($point_3) {
-        padding: 3rem 0;
-      }
     }
 
-    .col-1 {
+    .col-2 {
       @include bp($point_3) {
-        margin-bottom: 1.2rem;
+        margin-top: 4rem;
       }
     }
 
@@ -78,83 +202,12 @@ $max_wid: 122rem;
       }
     }
 
-    .form-row {
-      @include bp($point_2, min) {
-        &:not(:last-child) {
-          margin-bottom: 2rem;
-        }
-      }
-
-      @include bp($point_3) {
-        &:not(:last-child) {
-          margin-bottom: 1rem;
-        }
-      }
-    }
-
-    .woocommerce-form-login__rememberme {
-      width: 100%;
-
-      @include bp($point_2, min) {
-        margin-bottom: 2rem;
-      }
-
-      @include bp($point_3) {
-        margin-bottom: 1rem;
-      }
-
-      span {
-        display: block;
-
-        font-weight: 400;
-        text-transform: lowercase;
-      }
-    }
-
-    .woocommerce-form__input-checkbox {
-      @extend %form_el_checkbox;
-    }
-
-    .lost_password {
-      @extend %transition_opacity;
-      @extend %text;
-
-      color: $blue_prime;
-
-      &:hover {
-        opacity: .6;
-      }
-
-      @include bp($point_2, min) {
-
-      }
-
-      @include bp($point_3) {
-        text-align: center;
-      }
-    }
-
     .woocommerce-privacy-policy-text {
       margin-bottom: 2rem;
       font-size: 1.2rem;
 
       p {
         font-size: inherit;
-      }
-    }
-
-    button[type='submit'] {
-      min-width: 15rem;
-      padding: 0 4rem;
-      margin-right: 0;
-
-      @include bp($point_2, min) {
-
-      }
-
-      @include bp($point_3) {
-        width: 100%;
-        height: 5rem;
       }
     }
 
@@ -212,29 +265,14 @@ $max_wid: 122rem;
 
       max-width: 31rem;
       width: 100%;
-      padding-right: 3rem;
-
-      &:before {
-        content: '';
-        position: absolute;
-        top: 0;
-        right: 3rem;
-        width: 1px;
-        height: 200%;
-        background: $grey3;
-      }
+      padding-right: 6rem;
     }
 
     @include bp($point_3) {
-
+      margin-bottom: 3rem;
     }
 
     ul {
-
-      @include bp($point_2, min) {
-
-      }
-
       @include bp($point_3) {
         display: flex;
         flex-direction: row;
@@ -242,6 +280,10 @@ $max_wid: 122rem;
         justify-content: center;
 
         margin: 0 -2rem -2rem 0;
+      }
+
+      @include bp($point_6) {
+        margin: 0 -.5rem -.5rem 0;
       }
 
       li {
@@ -262,18 +304,23 @@ $max_wid: 122rem;
           padding: 0 2rem 2rem 0;
         }
 
+        @include bp($point_6) {
+          width: 100%;
+          padding: 0 .5rem .5rem 0;
+        }
+
         a {
           color: inherit;
-
-          @include bp($point_2, min) {
-
-          }
 
           @include bp($point_3) {
             display: block;
             padding: .5rem;
             text-align: center;
             font-size: 1.2rem;
+          }
+
+          @include bp($point_4) {
+            padding: 0;
           }
 
         }
@@ -296,16 +343,23 @@ $max_wid: 122rem;
   }
 
   .woocommerce-MyAccount-content {
+    position: relative;
+
+    &:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -4rem;
+      width: 1px;
+      height: 100%;
+      background: $grey3;
+    }
 
     @include bp($point_2, min) {
       float: left;
 
-      max-width: 59.5rem;
+      max-width: calc( 100% - 31rem );
       width: 100%;
-    }
-
-    @include bp($point_3) {
-
     }
 
     form {
@@ -313,6 +367,13 @@ $max_wid: 122rem;
       .form-row-first {
         float: unset;
         width: 100%;
+      }
+
+      #account_display_name + span em {
+        font-family: $font_2;
+        font-size: 1.4rem;
+        font-weight: 400;
+        line-height: 1;
       }
 
       button[type='submit'] {
@@ -323,29 +384,33 @@ $max_wid: 122rem;
       fieldset {
         position: relative;
 
-        padding: 6rem 3rem 3rem;
+        @include bp($point_4 + 1, min) {
+          padding: 8rem 3rem 3rem;
+        }
 
-        border-radius: 2.5rem;
-        border: 1px solid $grey3;
+        @include bp($point_4) {
+          padding: 8rem 2rem 2rem;
+        }
 
         &:before {
-          @extend %hor_centr;
-
-          content: '';
+          content: "";
           position: absolute;
-          top: -2.8rem;
-          width: calc(100% - 6rem);
-          height: 1px;
-          background: $grey3;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          border-radius: 2.5rem;
+          border: 1px solid $grey3;
+          z-index: -1;
         }
 
 
         legend {
-          @extend %h2;
+          @extend %h3;
 
           color: $blue_prime;
 
-          transform: translateY(4.4rem);
+          transform: translateY(5.8rem);
         }
       }
     }

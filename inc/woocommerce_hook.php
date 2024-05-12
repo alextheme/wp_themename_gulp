@@ -142,7 +142,7 @@ add_filter( 'woocommerce_breadcrumb_defaults', function () {
         'wrap_after'  => '</nav>',
         'before'      => '',
         'after'       => '',
-        'home'        => __( 'Home', 'woostudy' ),
+        'home'        => __( 'Home', 'woocommerce' ),
     );
 } );
 
@@ -373,14 +373,35 @@ add_action( 'woocommerce_checkout_after_order_review', '_themename_woocommerce_c
 
 
 /**
- * User Role
+ * My Account Redirect
  */
-function _themename_add_custom_user_role() {
-    remove_role('partner_user');
+add_action('template_redirect', '_themename_my_account_redirect');
 
-    $role = get_role('customer');
+function _themename_my_account_redirect() {
+        // // Orders
+        // $orders_url = wc_get_account_endpoint_url( get_option( 'woocommerce_myaccount_orders_endpoint', 'orders' ) );
+        // // Downloads
+        // $downloads_url = wc_get_account_endpoint_url( get_option( 'woocommerce_myaccount_downloads_endpoint', 'downloads' ) );
+        // // Edit Address
+        // $edit_address = wc_get_account_endpoint_url( get_option( 'woocommerce_myaccount_edit_address_endpoint', 'edit-address' ) );
+        // // Payment Methods
+        // $payment_methods = wc_get_account_endpoint_url( get_option( 'woocommerce_myaccount_payment_methods_endpoint', 'payment-methods' ) );
+        // // Edit Account
+        // $edit_account = wc_get_account_endpoint_url( get_option( 'woocommerce_myaccount_edit_account_endpoint', 'edit-account' ) );
+        // // Customer Logout
+        // $customer_logout = wc_get_account_endpoint_url( get_option( 'woocommerce_logout_endpoint', 'customer-logout' ) );
 
-    add_role( 'partner_user','Partner User', $role);
+    if (is_page('mein-konto')) {
+        $my_account_url = get_permalink( get_option('woocommerce_myaccount_page_id') );
+        $my_account_order_url = wc_get_account_endpoint_url( get_option( 'woocommerce_myaccount_orders_endpoint', 'orders' ) );
+        $current_url = home_url($_SERVER['REQUEST_URI']);
+
+        // Check if the current URL exactly matches the specified URL
+        if ( is_user_logged_in() && $current_url === $my_account_url ) {
+            // Redirect to another URL
+            wp_redirect($my_account_order_url);
+            exit();
+        }
+    }
 }
-add_action('init', '_themename_add_custom_user_role');
 

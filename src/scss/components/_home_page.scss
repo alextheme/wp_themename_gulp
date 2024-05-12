@@ -279,7 +279,9 @@ Menu Category Section
         }
 
         &:nth-child(1) {
-          grid-row-end: span 2;
+          @include bp($point_2, min) {
+            grid-row-end: span 2;
+          }
         }
 
         a.item_link {
@@ -317,13 +319,13 @@ Menu Category Section
             //object-fit: contain;
             object-position: top left;
 
-            .img_desktop {
+            &.img_desktop {
               @include bp($point_3) {
                 display: none;
               }
             }
 
-            .img_mobile {
+            &.img_mobile {
               @include bp($point_2, min) {
                 display: none;
               }

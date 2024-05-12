@@ -1,21 +1,11 @@
-#primary_4040 {
-
-  padding: var(--height-header) 0 5rem;
+#primary_404 {
   background: rgb(255,255,255);
   background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(96,203,232,1) 100%);
-
-  @include bp($point_2, min) {
-    min-height: 100vh;
-  }
-
-  @include bp($point_3) {
-    padding-bottom: 11rem;
-  }
 }
 
 .error_404 {
   @include bp($point_2, min) {
-    padding-top: 14rem;
+    padding-top: 10.8rem;
   }
 
   @include bp($point_3) {
@@ -23,8 +13,16 @@
     padding-bottom: 3rem;
   }
 
+  .breadcrumb_wrapper {
+    max-width: $page_width;
+    padding: 0 var(--gl-indent);
+    margin: 0 auto;
+  }
+
   .section_in {
     @extend %flex_column_nowrap_center_center;
+
+    padding-bottom: 5rem;
   }
 
   .number_404 {

@@ -40,7 +40,7 @@
             </div>
 
             <div class="footer__col">
-                <h3 class="footer__col_title">Officials</h3>
+                <h3 class="footer__col_title">Rechtliches</h3>
                 <?php
                 wp_nav_menu(array(
                     'theme_location' => 'footer_menu',

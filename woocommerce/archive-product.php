@@ -32,15 +32,7 @@ do_action( 'woocommerce_before_main_content' );
 	<header class="woocommerce-products-header">
 		<?php if ( apply_filters( 'woocommerce_show_page_title', true ) ) : ?>
 			<h1 class="woocommerce-products-header__title page-title">
-				<?php
-				if (array_key_exists( 'filterby', $_GET ) && $_GET['filterby'] === 'featured') {
-					echo __( 'Featured', 'woocommerce' );
-				} elseif (array_key_exists( 'new_products', $_GET ) && $_GET['new_products'] === 'new_products') {
-					echo __( 'New Products', 'woocommerce' );
-				} else {
-
-					woocommerce_page_title();
-				} ?>
+				<?php echo Yaba::products_title() ? Yaba::products_title() : woocommerce_page_title(); ?>
 			</h1>
 		<?php endif; ?>
 

@@ -23,6 +23,7 @@
             ?>
 
         <?php woocommerce_breadcrumb(); ?>
+        <?php //Yaba::breadcrumbs(); ?>
 
             <section class="section <?php echo esc_attr($page_name); ?>">
                 <div class="section_in">

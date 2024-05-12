@@ -8,11 +8,15 @@
  */
 
 get_header();
+//Yaba::breadcrumbs();
 ?>
 
 	<main id="primary_404" class="site-main">
 
 		<section class="section error_404">
+			<div class="breadcrumb_wrapper">
+				<?php woocommerce_breadcrumb(); ?>
+			</div>
 			<div class="section_in">
 				<p class="subtitle">Oops</p>
 				<div class="number_404">

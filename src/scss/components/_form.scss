@@ -61,6 +61,11 @@ Label
   color: $blue_prime;
 }
 
+.woocommerce .woocommerce-form-login .woocommerce-form-login__rememberme {
+  display: block;
+  margin-bottom: 1rem;
+}
+
 .woocommerce form .form-row label, .woocommerce-page form .form-row label {
   //display: block;
 }
@@ -242,10 +247,11 @@ Buttons
 /*
 Form Coupon
  */
+
 .woocommerce form.checkout_coupon, .woocommerce form.login, .woocommerce form.register {
   border: 1px solid $grey3;
   padding: 2rem;
-  margin: 2rem 0;
+  margin: 0;
   text-align: left;
   border-radius: 2rem;
 
@@ -274,6 +280,11 @@ Form Coupon
   }
 }
 
+.woocommerce form.login,
+.woocommerce form.register {
+  max-width: 50rem;
+  margin: 0 auto;
+}
 
 /*
 Form Info
@@ -298,6 +309,9 @@ Form Info
   &:before {
     @extend %iconmoon_font;
 
+    top: 50%;
+    transform: translateY(-50%);
+
     content: '\e903';
   }
 
@@ -312,8 +326,14 @@ Form Info
   }
 }
 .woocommerce-info {
+  @extend %flex_row_wrap_flex_start_center;
+
   position: relative;
   border-color: rgba( $blue_prime, .6 );
+
+  .woocommerce-Button.button {
+    margin: 1rem 0 1rem auto;
+  }
 }
 
 

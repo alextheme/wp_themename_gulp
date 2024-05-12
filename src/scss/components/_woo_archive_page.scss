@@ -1,13 +1,13 @@
 // archive shop
-
-.breadcrumb.woocommerce-breadcrumb,
+.woocommerce-breadcrumb,
+.woocommerce-account .woocommerce-breadcrumb,
 .page-template-template-wishlist .woocommerce-breadcrumb,
 .woocommerce:where(body:not(.woocommerce-uses-block-theme)) .woocommerce-breadcrumb {
   @extend %flex_row_wrap_flex_start_center;
   @extend %add;
 
   min-height: 3.2rem;
-  padding: 0 3.2rem;
+  padding: 0 2rem;
   margin-bottom: 4rem;
 
   line-height: 3.1rem;

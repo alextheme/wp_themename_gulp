@@ -101,7 +101,8 @@ if (array_key_exists('filterby', $_GET) && $_GET['filterby'] === 'featured') {
                 <?php } ?>
 
                 <?php /* Profil */ ?>
-                <a class="header__link header__profil" href="<?php echo esc_url( get_permalink( wc_get_page_id( 'myaccount' ) ) . 'orders/' )?>" aria-label="Profil">
+
+                <a class="header__link header__profil" href="<?php echo esc_url( get_permalink( get_option('woocommerce_myaccount_page_id') ) )?>" aria-label="Profil">
                     <span class="icon-profil"></span>
                     <span class="label">Profil</span>
                 </a>
