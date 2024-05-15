@@ -336,9 +336,6 @@ function _themename_add_variation_product_list_buttons_variable() {
                 $variation_attributes = Yaba::replace_array_keys($variation['attributes']);
 
                 if ( Yaba::compare_arrays($default_attr, $variation_attributes) ) {
-                    echo '<pre style="width:100%;min-height:10px;background: #e7e7e7;margin-bottom:5px;">';
-                    print_r($variation);
-                    echo '</pre>';
                     $variation_data_localize['default_variation_id'] = $variation['variation_id'];
                     $variation_data_localize['price_html'] = $variation['price_html'];
                     $variation_data_localize['image'] = $variation['image']['full_src'];

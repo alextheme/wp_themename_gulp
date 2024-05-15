@@ -1,0 +1,78 @@
+
+// wholesale_customer
+.woocommerce {
+  ul.products {
+    li.product {
+      .price {
+
+        // wholesale_customer
+        .original-computed-price {
+          display: none;
+        }
+        .wholesale_price_container {
+          display: block;
+          width: 100%;
+          text-align: center;
+
+          // Hide Title "Wholesale Price"
+          .wholesale_price_title {
+            display: none;
+          }
+        }
+
+      }
+    }
+  }
+
+  div.product {
+
+    div.summary {
+      .product_single_price_wrapper {
+        @extend %flex_row_nowrap_flex_start_center;
+
+        width: 100%;
+
+        @include bp($point_2, min) {
+          margin-bottom: 3.4rem;
+        }
+
+        @include bp($point_3) {
+          margin-bottom: 2rem;
+        }
+
+        // Wholesale_Customer
+        .original-computed-price {
+          display: none;
+        }
+        .wholesale_price_container {
+          display: block;
+          width: 100%;
+          text-align: center;
+
+          color: #f09350;
+
+          ins {
+            margin-right: 0;
+          }
+
+          // Hide Title "Wholesale Price"
+          .wholesale_price_title {
+            display: none;
+          }
+        }
+
+      }
+    }
+
+    form.cart {
+      // hide standard select variation & price
+      table.variations, .woocommerce-variation-price {
+        display: none;
+      }
+    }
+  }
+}
+
+
+
+

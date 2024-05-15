@@ -478,21 +478,6 @@
         ins {
           margin: 0 auto;
         }
-
-        // wholesale_customer
-        .original-computed-price {
-          display: none;
-        }
-        .wholesale_price_container {
-          display: block;
-          width: 100%;
-          text-align: center;
-
-          .wholesale_price_title {
-            display: none;
-          }
-        }
-
       }
 
       &:not(.product-type-simple) {

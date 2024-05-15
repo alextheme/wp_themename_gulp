@@ -4,8 +4,6 @@
     <main id="main" class="site-main" role="main">
 
         <?php if ( have_posts() ) : while ( have_posts() ) : the_post();  ?>
-
-            <!-- Вивід постів, функцій цикла: the_title() і т.п -->
             <?php
             $page_name = 'default_page';
             if (function_exists('is_account_page') && is_account_page()) {
@@ -16,6 +14,9 @@
             }
             if (function_exists('is_checkout') && is_checkout()) {
                 $page_name = 'checkout_page';
+            }
+            if (function_exists('is_wishlist') && is_wishlist()) {
+                $page_name = 'wishlist_page';
             }
             if (is_page_template( 'template-home-page.php' )) {
                 $page_name = 'home_page';
