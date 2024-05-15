@@ -7,7 +7,7 @@
 
             <!-- Вивід постів, функцій цикла: the_title() і т.п -->
             <?php
-            $page_name = '';
+            $page_name = 'default_page';
             if (function_exists('is_account_page') && is_account_page()) {
                 $page_name = 'my_account_page';
             }

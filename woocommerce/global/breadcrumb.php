@@ -29,6 +29,7 @@ if ( ! empty( $breadcrumb ) ) {
     $is_wishlist_page = -1;
 
     foreach ( $breadcrumb as $i => $bread ) {
+
         $array = array_filter(explode('/', parse_url($bread[1])['path']));
         $path = end($array);
 
@@ -38,6 +39,10 @@ if ( ! empty( $breadcrumb ) ) {
 
         if ( $path === 'wunschzettel' ) {
             $is_wishlist_page = $i;
+        }
+
+        if ( $path === 'kasse' ) {
+            $breadcrumb[$i][0] = 'Kasse';
         }
     }
 

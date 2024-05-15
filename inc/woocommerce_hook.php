@@ -169,6 +169,91 @@ add_action( 'woocommerce_before_shop_loop_item_title', function () { echo '</div
  * SINGLE PRODUCT
  */
 remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_meta', 40 );
+remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_upsell_display', 15 );
+remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20 );
+
+
+function _themename_add_before_price_info() { ?>
+
+    <?php $user = wp_get_current_user();
+
+    if ( in_array( 'wholesale_customer', (array) $user->roles ) ) { ?>
+        <span class="single_product_price_info single_product_price_info--netto">netto</span>
+    <?php } ?>
+
+<?php }
+add_action( 'woocommerce_single_product_summary', '_themename_add_before_price_info', 10 );
+
+
+/* PAYS list in single page product */
+function _themename_pay_service_list_and_close_div() { ?>
+
+    <?php $user = wp_get_current_user();
+
+    if ( in_array( 'wholesale_customer', (array) $user->roles ) ) { ?>
+        <span class="single_product_price_info single_product_price_info--no_tax">exkl. Steuern, exkl. Versandkosten</span>
+    <?php } else { ?>
+        <span class="single_product_price_info single_product_price_info--tax">Inkl. Steuern, exkl. Versandkosten</span>
+    <?php } ?>
+
+    <?php
+    $array_pays_icons = array( 'visa', 'mastercard', 'gpay', 'paypal', 'apay' );
+    $array_pays_icons = get_field('pay_services', 'option');
+    if ($array_pays_icons && count($array_pays_icons) > 0) { ?>
+
+        <ul class="pay_services_list">
+
+            <?php foreach ($array_pays_icons as $icon) { ?>
+                <li>
+                        <span class="pay_service pay_service__<?= $icon ?>" aria-label="pay service <?= $icon ?>">
+                            <span class="icon_wrap">
+                                <svg class="icon icon--size_mod">
+                                    <use xlink:href="<?php echo get_template_directory_uri() . '/assets/images/icons/sprite.svg#' . $icon . '2' ?>"></use>
+                                </svg>
+                            </span>
+                        </span>
+                </li>
+            <?php } ?>
+
+        </ul>
+    <?php } ?>
+
+    </div><!-- .add_to_cart_button__wrapper -->
+
+    <?php
+}
+add_action( 'woocommerce_after_add_to_cart_button', '_themename_pay_service_list_and_close_div', 10 );
+
+/* close DIV */
+function _themename_close_div_product_summary_footer() {
+    echo '</div><!-- .product_summary_footer -->';
+}
+add_action( 'woocommerce_after_add_to_cart_button', '_themename_close_div_product_summary_footer', 20 );
+
+
+/* Price Wrapper */
+function _themename_price_wrapper_start() {
+    echo '<div class="product_single_price_wrapper">';
+}
+function _themename_price_wrapper_end() {
+    echo '</div><!-- .product_single_price_wrapper -->';
+}
+add_action( 'woocommerce_single_product_summary', '_themename_price_wrapper_start', 9 );
+add_action( 'woocommerce_single_product_summary', '_themename_price_wrapper_end', 11 );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /*
  * Add buttons PLUS & MINUS Quantity
@@ -251,6 +336,9 @@ function _themename_add_variation_product_list_buttons_variable() {
                 $variation_attributes = Yaba::replace_array_keys($variation['attributes']);
 
                 if ( Yaba::compare_arrays($default_attr, $variation_attributes) ) {
+                    echo '<pre style="width:100%;min-height:10px;background: #e7e7e7;margin-bottom:5px;">';
+                    print_r($variation);
+                    echo '</pre>';
                     $variation_data_localize['default_variation_id'] = $variation['variation_id'];
                     $variation_data_localize['price_html'] = $variation['price_html'];
                     $variation_data_localize['image'] = $variation['image']['full_src'];
@@ -260,7 +348,7 @@ function _themename_add_variation_product_list_buttons_variable() {
             foreach ( $variations as $variation ) {
 
                 $variation_data_localize['price_base_html'] = '<span class="price">' . $product->get_price_html() . '</span>';
-                wp_localize_script( '_themename-scripts', 'variationData', $variation_data_localize);
+                wp_localize_script( '_themename-scripts', 'yabaVariationData', $variation_data_localize);
 
                 $array_data_variation = array(
                     'attributes' => $variation['attributes'],
@@ -292,53 +380,6 @@ function _themename_add_variation_product_list_buttons_variable() {
 <?php
 }
 
-add_action( 'woocommerce_after_add_to_cart_button', '_themename_pay_service_list_and_close_div', 10 );
-add_action( 'woocommerce_after_add_to_cart_button', '_themename_close_div_product_summary_footer', 20 );
-
-/*
- * Pays list in single page product
- */
-function _themename_pay_service_list_and_close_div() { ?>
-
-        <?php
-        $array_pays_icons = array( 'visa', 'mastercard', 'gpay', 'paypal', 'apay' );
-        $array_pays_icons = get_field('pay_services', 'option');
-        if ($array_pays_icons && count($array_pays_icons) > 0) { ?>
-
-            <ul class="pay_services_list">
-
-                <?php foreach ($array_pays_icons as $icon) { ?>
-                    <li>
-                        <span class="pay_service pay_service__<?= $icon ?>" aria-label="pay service <?= $icon ?>">
-                            <span class="icon_wrap">
-                                <svg class="icon icon--size_mod">
-                                    <use xlink:href="<?php echo get_template_directory_uri() . '/assets/images/icons/sprite.svg#' . $icon . '2' ?>"></use>
-                                </svg>
-                            </span>
-                        </span>
-                    </li>
-                <?php } ?>
-
-            </ul>
-        <?php } ?>
-
-    </div><!-- .add_to_cart_button__wrapper -->
-
-    <?php
-}
-function _themename_close_div_product_summary_footer() {
-    echo '</div><!-- .product_summary_footer -->';
-}
-
-/*
- * Remove Upsell & Related products list in Single page
- */
-remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_upsell_display', 15 );
-remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20 );
-/*
- * Featured Product List in Single page
- */
-//add_action( 'woocommerce_after_single_product_summary', '_themename_add_featured_products_list', 10 );
 
 /*
  * My Account

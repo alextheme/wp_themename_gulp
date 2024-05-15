@@ -1,7 +1,5 @@
 // archive shop
 .woocommerce-breadcrumb,
-.woocommerce-account .woocommerce-breadcrumb,
-.page-template-template-wishlist .woocommerce-breadcrumb,
 .woocommerce:where(body:not(.woocommerce-uses-block-theme)) .woocommerce-breadcrumb {
   @extend %flex_row_wrap_flex_start_center;
   @extend %add;
@@ -24,6 +22,11 @@
   @include bp($point_3) {
     border-radius: 0;
     margin: 0 calc(-1 * var(--gl-indent)) 1.8rem;
+  }
+
+  .page &,
+  .woocommerce-account & {
+    margin-bottom: 4rem;
   }
 
   a {
@@ -352,26 +355,28 @@
         @extend %h4;
 
         width: 100%;
+        min-height: 4.8rem;
 
         padding-top: 0;
         padding-bottom: 0;
+
         overflow: hidden;
         text-overflow: ellipsis;
         display: -webkit-box;
-
         -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
 
         text-align: center;
 
-        @include bp($point_4 + 1, min) {
-          min-height: 4.8rem;
-          -webkit-line-clamp: 3;
-        }
-
-        @include bp($point_4) {
-          min-height: 3rem;
-          -webkit-line-clamp: 2;
-        }
+        //@include bp($point_4 + 1, min) {
+        //  min-height: 7.2rem;
+        //  -webkit-line-clamp: 3;
+        //}
+        //
+        //@include bp($point_4) {
+        //  min-height: 4.8rem;
+        //  -webkit-line-clamp: 2;
+        //}
 
         @include bp($point_2, min) {
           margin-bottom: 1.2rem;
@@ -473,6 +478,21 @@
         ins {
           margin: 0 auto;
         }
+
+        // wholesale_customer
+        .original-computed-price {
+          display: none;
+        }
+        .wholesale_price_container {
+          display: block;
+          width: 100%;
+          text-align: center;
+
+          .wholesale_price_title {
+            display: none;
+          }
+        }
+
       }
 
       &:not(.product-type-simple) {
@@ -899,13 +919,13 @@ span.wishlist_products_counter.top_wishlist-custom.no-txt img {
 }
 
 .woocommerce-checkout {
-  .select2-dropdown--above {
-    transform: translateY(-32px);
-  }
-
-  .select2-dropdown--below {
-    transform: translateY(-28px);
-  }
+  //.select2-dropdown--above {
+  //  transform: translateY(-32px);
+  //}
+  //
+  //.select2-dropdown--below {
+  //  transform: translateY(-28px);
+  //}
 }
 
 .select2-dropdown {

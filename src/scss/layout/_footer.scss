@@ -290,10 +290,10 @@
 
 	&.footer__button--mob {
 		display: none;
-		min-width: 33.5rem;
+		width: 100%;
 
 		@include bp($point_3) {
-			display: block;
+			display: flex;
 		}
 	}
 }

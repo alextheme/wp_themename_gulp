@@ -31,10 +31,6 @@ $max_wid: 122rem;
     min-height: 0;
   }
 
-  .woocommerce-breadcrumb {
-    margin-bottom: 4rem;
-  }
-
   .woocommerce > h2 {
     display: none;
   }
@@ -123,6 +119,14 @@ $max_wid: 122rem;
   height: 100%;
 
   & > h2 {
+    max-width: 50rem;
+    margin: 0 auto;
+
+    .logged-in & {
+      max-width: 100%;
+    }
+
+
     @include bp($point_2, min) {
       margin-bottom: 2rem;
     }
@@ -411,6 +415,10 @@ $max_wid: 122rem;
           color: $blue_prime;
 
           transform: translateY(5.8rem);
+
+          @include bp($point_3) {
+            font-size: 2.4rem;
+          }
         }
       }
     }
@@ -652,7 +660,7 @@ table.tinvwl-table-manage-list {
             right: 0;
             width: 1.8rem;
             height: 1.8rem;
-            margin: 1rem;
+            margin: .5rem 1rem;
             cursor: pointer;
           }
         }
@@ -810,6 +818,42 @@ table.tinvwl-table-manage-list {
       @include bp($point_3) {
         max-width: 37.5rem;
         width: 100%;
+      }
+    }
+  }
+}
+
+.tinv-wishlist {
+
+  .tinv-header {
+    margin: 0;
+    h2 { padding: 0; }
+  }
+
+
+  // Modal Window
+  .tinv-modal .tinv-modal-inner {
+    border-radius: 2rem;
+    overflow: hidden;
+  }
+
+  .tinvwl_added_to_wishlist .tinv-txt {
+    @extend %text;
+    line-height: 1.5;
+  }
+
+  .tinvwl-buttons-group {
+    button {
+      @extend %base_btn;
+      @extend %pink_bg;
+
+      min-height: 4rem;
+
+      i.ftinvwl-heart-o::before,
+      i.ftinvwl-key::before,
+      i.ftinvwl-times::before {
+        position: relative;
+        top: 0;
       }
     }
   }

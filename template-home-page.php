@@ -260,7 +260,7 @@ get_header();  ?>
                         <?php foreach ($questions as $question) { ?>
                             <li class="home_accordion__item acc_item">
                                 <button class="acc_header" type="button">
-                                    <span><?php echo $question['question']; ?></span>
+                                    <span class="acc_title"><?php echo $question['question']; ?></span>
                                 </button>
                                 <div class="acc_content">
                                     <div class="acc_content_wrapper"><?php echo $question['answer']; ?></div>

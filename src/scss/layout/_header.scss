@@ -685,20 +685,20 @@ body.body--open_menu_category {
 			@include bp($point_3) {
 				padding: 0 4.4rem 0 2rem;
 
-				&:after {
-					position: absolute;
-					right: 2rem;
-					top: 50%;
-
-					width: .6rem;
-					height: .6rem;
-
-					border-right: .2rem solid $blue_prime;
-					border-bottom: .2rem solid $blue_prime;
-
-					content: '';
-					transform: translate(0, -50%) rotate(-45deg);
-				}
+				//&:after {
+				//	position: absolute;
+				//	right: 2rem;
+				//	top: 50%;
+				//
+				//	width: .6rem;
+				//	height: .6rem;
+				//
+				//	border-right: .2rem solid $blue_prime;
+				//	border-bottom: .2rem solid $blue_prime;
+				//
+				//	content: '';
+				//	transform: translate(0, -50%) rotate(-45deg);
+				//}
 			}
 
 			&:focus,

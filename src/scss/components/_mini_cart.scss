@@ -396,4 +396,17 @@ body {
   }
 }
 
+.woocommerce form .form-row label.checkbox,
+.woocommerce-page form .form-row label.checkbox {
 
+}
+
+#order_review {
+  #payment {
+    .form-row.place-order {
+      .woocommerce-form__label-for-checkbox.checkbox {
+        display: none;
+      }
+    }
+  }
+}
