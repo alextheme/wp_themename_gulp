@@ -173,12 +173,13 @@ remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_upsell_d
 remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20 );
 
 
-function _themename_add_before_price_info() { ?>
+function _themename_add_before_price_info() {
+    global $product;
+    $user = wp_get_current_user();
 
-    <?php $user = wp_get_current_user();
-
-    if ( in_array( 'wholesale_customer', (array) $user->roles ) ) { ?>
-        <span class="single_product_price_info single_product_price_info--netto">netto</span>
+    if ( in_array( 'wholesale_customer', (array) $user->roles ) ) {
+        $wholesale_price = $product->get_meta( 'wholesale_customer_wholesale_price' ); ?>
+        <span class="single_product_wholesale_price"><?php echo '(' . $wholesale_price . ' netto)'; ?></span>
     <?php } ?>
 
 <?php }
@@ -188,13 +189,7 @@ add_action( 'woocommerce_single_product_summary', '_themename_add_before_price_i
 /* PAYS list in single page product */
 function _themename_pay_service_list_and_close_div() { ?>
 
-    <?php $user = wp_get_current_user();
-
-    if ( in_array( 'wholesale_customer', (array) $user->roles ) ) { ?>
-        <span class="single_product_price_info single_product_price_info--no_tax">exkl. Steuern, exkl. Versandkosten</span>
-    <?php } else { ?>
-        <span class="single_product_price_info single_product_price_info--tax">Inkl. Steuern, exkl. Versandkosten</span>
-    <?php } ?>
+    <span class="single_product_price_info">Inkl. Steuern, exkl. Versandkosten</span>
 
     <?php
     $array_pays_icons = array( 'visa', 'mastercard', 'gpay', 'paypal', 'apay' );
@@ -328,8 +323,7 @@ function _themename_add_variation_product_list_buttons_variable() {
             $default_attr = $product->get_default_attributes();
             $variation_data_localize = array(
                 'default_variation_id' => 0,
-                'price_html' => '',
-                'image' => '',
+                'default_variation_price_html' => '',
             );
 
             foreach ( $variations as $variation ) {
@@ -337,8 +331,7 @@ function _themename_add_variation_product_list_buttons_variable() {
 
                 if ( Yaba::compare_arrays($default_attr, $variation_attributes) ) {
                     $variation_data_localize['default_variation_id'] = $variation['variation_id'];
-                    $variation_data_localize['price_html'] = $variation['price_html'];
-                    $variation_data_localize['image'] = $variation['image']['full_src'];
+                    $variation_data_localize['default_variation_price_html'] = $variation['price_html'];
                 }
             }
 
@@ -352,12 +345,10 @@ function _themename_add_variation_product_list_buttons_variable() {
                     'product_id' => $product->get_id(),
                     'price_html' => $variation['price_html'],
                     'variation_id' => $variation['variation_id'],
-                    'image' => $variation['image']['full_src'],
-                    'image_html' => wc_get_gallery_image_html( $variation['image_id'], true ),
                 );
 
                 ?>
-                <li class="variations_form__var_item <?php echo esc_attr( $variation_data_localize['default_variation_id'] === $variation['variation_id'] ? 'variations_form__var_item--active' : '' ); ?>">
+                <li class="variations_form__var_item js-variation_item <?php echo esc_attr( $variation_data_localize['default_variation_id'] === $variation['variation_id'] ? 'variations_form__var_item--active' : '' ); ?>">
                     <button type="button" class="variations_form__var_btn"
                             data-json_data="<?php echo htmlspecialchars( json_encode($array_data_variation) ); ?>"
                     >
@@ -441,5 +432,20 @@ function _themename_my_account_redirect() {
             exit();
         }
     }
+}
+
+
+/**
+ * Shipping Rates -  Delivery.
+ * Kurier               - flat_rate:2
+ * Kostenlose Lieferung - free_shipping:3
+ */
+add_filter( 'woocommerce_package_rates', '_themename_woocommerce_manage_shipping', 10, 2 );
+function _themename_woocommerce_manage_shipping( $rates, $package ) {
+    $threshold = 49.90;
+    if ( WC()->cart->subtotal >= $threshold ) {
+        unset( $rates['flat_rate:2'] );
+    }
+    return $rates;
 }
 

@@ -6,7 +6,8 @@ form.checkout {
   .col2-set {
     @include bp(1261px, min) {
       float: left;
-      width: 59.75%;
+      //width: 59.75%;
+      width: 50%;
       padding: 0 3rem 0 0;
     }
 
@@ -28,7 +29,8 @@ form.checkout {
   .yaba_order_review_wrapper {
     @include bp(1261px, min) {
       float: right;
-      width: 40.25%;
+      //width: 40.25%;
+      width: 50%;
     }
 
     @include bp(1260px, $point_3) {
@@ -406,26 +408,92 @@ Table
   .woocommerce {
 
     table.shop_table {
+      display: block;
+      width: 100%;
+
       tbody {
+        display: block;
+        width: 100%;
+        margin-bottom: 3rem;
+
         tr {
-          td:last-child {
-            text-align: right;
-            color: $pink_prime;
-          }
-          td:first-child {
-            @include bp($point_2, min) {
-              min-width: 25rem;
+          display: block;
+          width: 100%;
+
+          td {
+            position: relative;
+            display: block;
+            width: 100%;
+
+            &:first-child {
+              padding-bottom: .2rem;
+
+              &:before {
+                content: '';
+                width: 96%;
+                height: .1rem;
+                position: absolute;
+                bottom: 0;
+                left: 50%;
+                transform: translateX(-50%);
+                background-color: $grey3;
+              }
+
+              @include bp($point_2, min) {
+                min-width: 25rem;
+              }
+            }
+
+            &:last-child {
+              text-align: right;
+              color: $pink_prime;
+              padding-top: .2rem;
             }
           }
         }
       }
 
       tfoot {
-        tr {
-          td {
-            text-align: right;
-            .amount {
+        display: block;
+        width: 100%;
 
+        tr {
+          display: block;
+          width: 100%;
+
+          th {
+            position: relative;
+            display: block;
+            width: 100%;
+            padding-bottom: .2rem;
+
+            &:before {
+              content: '';
+              height: .1rem;
+              position: absolute;
+              bottom: 0;
+              left: 50%;
+              transform: translateX(-50%);
+              background-color: $grey3;
+
+              @include bp($point_2, min) {
+                width: 96%;
+              }
+
+              @include bp($point_3) {
+                width: 97.5%;
+              }
+            }
+          }
+
+          td {
+            display: block;
+            width: 100%;
+            padding-top: .2rem;
+
+            text-align: right;
+
+            .amount {
               color: $pink_prime;
             }
           }
@@ -556,7 +624,9 @@ Payment
   }
 }
 
-#add_payment_method #payment ul.payment_methods li input, .woocommerce-cart #payment ul.payment_methods li input, .woocommerce-checkout #payment ul.payment_methods li input {
+#add_payment_method #payment ul.payment_methods li input,
+.woocommerce-cart #payment ul.payment_methods li input,
+.woocommerce-checkout #payment ul.payment_methods li input {
   //margin: 0 1em 0 0;
 
   @extend %form_el_radio;
@@ -618,6 +688,10 @@ Shipping
       //vertical-align: top;
 
       @extend %form_el_radio;
+
+      & + label {
+        display: inline;
+      }
     }
   }
 }

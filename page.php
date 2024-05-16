@@ -5,42 +5,52 @@
 
         <?php if ( have_posts() ) : while ( have_posts() ) : the_post();  ?>
             <?php
-            $page_name = 'default_page';
+            $section_classes = 'default_page';
             if (function_exists('is_account_page') && is_account_page()) {
-                $page_name = 'my_account_page';
+                $section_classes = 'my_account_page';
             }
             if (function_exists('is_cart') && is_cart()) {
-                $page_name = 'cart_page';
+                $section_classes = 'cart_page';
             }
             if (function_exists('is_checkout') && is_checkout()) {
-                $page_name = 'checkout_page';
+                $section_classes = 'checkout_page';
             }
             if (function_exists('is_wishlist') && is_wishlist()) {
-                $page_name = 'wishlist_page';
+                $section_classes = 'wishlist_page';
             }
             if (is_page_template( 'template-home-page.php' )) {
-                $page_name = 'home_page';
+                $section_classes = 'home_page';
             }
+            if ( is_page() ) {
+                $path = array_filter(explode('/', $_SERVER['REQUEST_URI'] ));
+                $section_classes .= ' ' . end($path) . '_page';
+            }
+
             ?>
 
         <?php woocommerce_breadcrumb(); ?>
         <?php //Yaba::breadcrumbs(); ?>
 
-            <section class="section <?php echo esc_attr($page_name); ?>">
+            <section class="section <?php echo esc_attr($section_classes); ?>">
                 <div class="section_in">
 
-                <?php if (!is_page([
-                    'my-account',
-                    'wishlist',
-//                    'cart', '_cart', 'cart-classic',
-//                    'checkout', '_checkout',
-                ])) { ?>
-                    <h2><?php the_title(); ?></h2>
-                <?php }
+                    <?php
+                    if ( str_contains( $section_classes, 'passwort-vergessen' ) ) { ?>
 
-                if ( $page_name === 'cart_page' ) {
+                        <h2>Passwort vergessen</h2>
+
+                    <?php  } elseif (!is_page([
+                        'my-account',
+                        'wishlist',
+    //                    'cart', '_cart', 'cart-classic',
+    //                    'checkout', '_checkout',
+                    ])) { ?>
+                        <h2><?php the_title(); ?></h2>
+                    <?php }
+
+                if ( function_exists('is_cart') && is_cart() ) {
                     echo do_shortcode('[woocommerce_cart]');
-                } elseif ( $page_name === 'checkout_page' ) {
+                } elseif ( function_exists('is_checkout') && is_checkout() ) {
                     echo do_shortcode('[woocommerce_checkout]');
                 } else {
                     the_content();

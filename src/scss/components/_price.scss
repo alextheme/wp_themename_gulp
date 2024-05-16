@@ -1,6 +1,10 @@
 
 // wholesale_customer
+
 .woocommerce {
+
+  // Loop Products
+
   ul.products {
     li.product {
       .price {
@@ -24,13 +28,23 @@
     }
   }
 
+  // Single Product
+
   div.product {
 
     div.summary {
       .product_single_price_wrapper {
-        @extend %flex_row_nowrap_flex_start_center;
+        @extend %flex_row_nowrap_flex_start_baseline;
 
         width: 100%;
+
+        .single_product_wholesale_price {
+          @extend %small;
+
+          text-align: left;
+          margin-left: 1rem;
+          color: $blue_prime;
+        }
 
         @include bp($point_2, min) {
           margin-bottom: 3.4rem;
@@ -49,7 +63,7 @@
           width: 100%;
           text-align: center;
 
-          color: #f09350;
+          color: $green_prime;
 
           ins {
             margin-right: 0;

@@ -167,52 +167,13 @@
         margin-bottom: 2.1rem;
       }
 
-      //.product_single_price_wrapper {
-      //  @extend %flex_row_nowrap_flex_start_center;
-      //
-      //  width: 100%;
-      //
-      //  @include bp($point_2, min) {
-      //    margin-bottom: 3.4rem;
-      //  }
-      //
-      //  @include bp($point_3) {
-      //    margin-bottom: 2rem;
-      //  }
-      //
-      //  // wholesale_customer
-      //  .original-computed-price {
-      //    display: none;
-      //  }
-      //  .wholesale_price_container {
-      //    display: block;
-      //    width: 100%;
-      //    text-align: center;
-      //
-      //    color: #33ff00;
-      //
-      //    ins {
-      //      margin-right: 0;
-      //    }
-      //
-      //    .wholesale_price_title {
-      //      //display: none;
-      //    }
-      //  }
-      //}
-
-      .single_product_price_info--netto {
-        align-self: flex-end;;
-        margin-left: 2rem;
-        line-height: 4rem;
-      }
-
       .price {
         @extend %flex_row_wrap_center_center;
         @extend %h2;
 
         margin-bottom: 0;
         color: $pink_prime;
+        font-weight: 700;
 
         @include bp($point_4) {
           margin: 0 auto;
@@ -369,6 +330,9 @@
               height: 7.2rem;
               margin: 0;
 
+              //outline: 2px solid $pink_prime;
+              //border-radius: 50%;
+
               @include bp($point_3) {
                 width: 4.4rem;
                 height: 4.4rem;
@@ -411,19 +375,17 @@
         .single_product_price_info {
           @extend %small;
 
-          &.single_product_price_info--tax,
-          &.single_product_price_info--no_tax {
-            width: 100%;
-            text-align: center;
+          width: 100%;
+          text-align: center;
 
-            @include bp($point_4 + 1, min) {
-              margin-bottom: 1.6rem;
-            }
-
-            @include bp($point_4) {
-              margin-bottom: 1.6rem;
-            }
+          @include bp($point_4 + 1, min) {
+            margin-bottom: 1.6rem;
           }
+
+          @include bp($point_4) {
+            margin-bottom: 1.6rem;
+          }
+
         }
       }
     }

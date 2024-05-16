@@ -33,15 +33,19 @@
 	margin: 0 auto;
 
 	.default_page & {
-		@include bp($point_6 + 1, min) {
+		@include bp($point_4 + 1, min) {
 			max-width: 80%;
 		}
 	}
 
+	.zusammenarbeit_page &,
+	.request-a-dealer-account_page &,
+	.page-id-647 &,
 	.page-id-570 & {
 		& > h2 {
 			max-width: 50rem;
 			margin: 0 auto;
+			text-align: center;
 		}
 	}
 }
