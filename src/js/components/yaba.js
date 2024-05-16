@@ -6,6 +6,7 @@ const $ = jQuery
 
 const yaba = () => {
 
+    // Button Plus / Minus
     $(document).on( 'click', 'button.plus, button.minus', function() {
         var qty = $( this ).parent( '.quantity' ).find( '.qty' );
         var val = parseFloat(qty.val());
@@ -31,6 +32,7 @@ const yaba = () => {
                 .attr('data-quantity', qty.val() )
         }
     });
+
 
     $('form.woocommerce-ordering select.orderby').hide().select2()
 
@@ -63,68 +65,71 @@ const yaba = () => {
         }
     })
 
-    $('.js-slick-products .featured_products_mobile ul.products').slick({
-        slidesToShow: 2,
-        slidesToScroll: 2,
-        arrows: false,
-        infinite: true,
-        swipe: true,
-        dots: true,
-    })
+    // Sliders
+    ;(() => {
+        $('.js-slick-products .featured_products_mobile ul.products').slick({
+            slidesToShow: 2,
+            slidesToScroll: 2,
+            arrows: false,
+            infinite: true,
+            swipe: true,
+            dots: true,
+        })
 
-    $('.js-hero_slider').slick({
-        slidesToShow: 2,
-        slidesToScroll: 2,
-        arrows: false,
-        infinite: true,
-        swipe: true,
-        dots: true,
-        autoplay: true,
-        autoplaySpeed: 4000,
+        $('.js-hero_slider').slick({
+            slidesToShow: 2,
+            slidesToScroll: 2,
+            arrows: false,
+            infinite: true,
+            swipe: true,
+            dots: true,
+            autoplay: true,
+            autoplaySpeed: 4000,
 
-        responsive: [
-            {
-                breakpoint: 1024,
-                settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 1,
+            responsive: [
+                {
+                    breakpoint: 1024,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1,
+                    }
                 }
-            }
-        ]
-    })
+            ]
+        })
 
-    $('.js-hero_brands_slider').slick({
-        slidesToShow: 5,
-        slidesToScroll: 2,
-        arrows: false,
-        infinite: true,
-        variableWidth: true,
-        swipe: true,
-        dots: false,
-        autoplay: true,
-        autoplaySpeed: 3000,
-    })
+        $('.js-hero_brands_slider').slick({
+            slidesToShow: 5,
+            slidesToScroll: 2,
+            arrows: false,
+            infinite: true,
+            variableWidth: true,
+            swipe: true,
+            dots: false,
+            autoplay: true,
+            autoplaySpeed: 3000,
+        })
 
-    $('.js-slick-home_products ul.products').slick({
-        slidesToShow: 6,
-        slidesToScroll: 3,
-        arrows: true,
-        infinite: true,
-        swipe: true,
-        dots: true,
-        autoplay: true,
-        autoplaySpeed: 5000,
+        $('.js-slick-home_products ul.products').slick({
+            slidesToShow: 6,
+            slidesToScroll: 3,
+            arrows: true,
+            infinite: true,
+            swipe: true,
+            dots: true,
+            autoplay: true,
+            autoplaySpeed: 5000,
 
-        responsive: [
-            {
-                breakpoint: 1024,
-                settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 2,
+            responsive: [
+                {
+                    breakpoint: 1024,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 2,
+                    }
                 }
-            }
-        ]
-    })
+            ]
+        })
+    })()
 
     // Home About Show Content
     ;(() => {
@@ -177,35 +182,28 @@ const yaba = () => {
 
     // Product Variations Events
     ;(() => {
-        const setColHeight = () => {
-            if (window.innerWidth <= 1024) return
+        const priceSelector = '.product .summary .product_single_price_wrapper > .price'
 
-            $('.product .woocommerce-product-gallery')
-                .css( { height: $('.product .summary').outerHeight() } )
-
-            $('.product .woocommerce-product-gallery a')
-                .css( { height: $('.product .summary').outerHeight() } )
-        }
-        onWindowResize(() => { setTimeout(() => setColHeight(), 200) })
-
-        if (typeof variationData !== 'undefined') {
-            if (variationData.default_variation_id > 0) {
-                $('.product .summary > .price').replaceWith(variationData['price_html'])
+        // Set Price Html for Default Variation
+        if (typeof yabaVariationData !== 'undefined') {
+            if (yabaVariationData['default_variation_id'] > 0) {
+                $( priceSelector ).replaceWith(yabaVariationData['default_variation_price_html'])
             } else {
-                $('.product .summary > .price').replaceWith(variationData['price_base_html'])
+                $( priceSelector ).replaceWith(yabaVariationData['price_base_html'])
             }
         }
 
+        // Reset Variations
         $('.reset_variations').on('click', () => {
             $('.variations_form__var_item').removeClass('variations_form__var_item--active')
 
-            const priceHtml = typeof variationData !== 'undefined' ? variationData['price_base_html'] : ''
+            const priceHtml = typeof yabaVariationData !== 'undefined' ? yabaVariationData['price_base_html'] : ''
             if (priceHtml) {
-                $('.product .summary > .price').replaceWith( priceHtml )
+                $( priceSelector ).replaceWith( priceHtml )
             }
         })
 
-        $('.variations_form__var_list .variations_form__var_item').on('click', 'button', function (e) {
+        $('.js-variation_item').on('click', 'button', function (e) {
             e.preventDefault()
 
             $('.variations_form__var_item--active').removeClass('variations_form__var_item--active')
@@ -223,50 +221,38 @@ const yaba = () => {
             $('select#' + attributes[0].key).val(attributes[0].value).trigger('change')
             $('select#' + attributes[1].key).val(attributes[1].value).trigger('change')
 
-            $('.product .summary > .price').replaceWith(jsonData['price_html'])
+            $( priceSelector ).replaceWith(jsonData['price_html'])
 
-            //imageZoom(jsonData['image'])
+            imageZoomFunc()
         })
 
     })()
 
     // Image Zoom
-    ;(() => {
-        // window.imageZoomInstans = null
-        //
-        // const image = $('.woocommerce-product-gallery__image')
-        // const imgIns = image.find('img')
-        // const src = imgIns.length ? imgIns.attr('src') : undefined
-        // imgIns.on('click', e => e.preventDefault())
-        // console.log('111')
-        // if (!src) return
-        //
-        // const url = img || ( typeof variationData !== 'undefined'
-        //     ? variationData['image'] : imgIns.attr('src') )
-        //
-        // console.log('222')
-        // const iimg = $(imageZoomInstans).find('img.zoomImg')
-        // if (iimg.length) {
-        //     iimg.attr('src', url)
-        // } else {
-        //     imageZoomInstans = image
-        //         // .wrap('<span class="zoomImgWrapper" style="display:block"></span>')
-        //         // .css('display', 'block')// for img
-        //         // .parent()
-        //         // .on('click', e => e.preventDefault())
-        //         .zoom({
-        //             url : url,
-        //             duration: 300,
-        //             /*on: 'mouseover', //mouseover, grab, click, toggle */ })
-        // }
-    })()
+    $('.woocommerce-product-gallery__image a').on('click', e => e.preventDefault())
+    const imageZoomFunc = () => {
+        if (window.imageZoomInstans) {
+            window.imageZoomInstans = null
+            $('.zoomImg').remove()
 
+            createImageZoomInstans()
+        } else {
+            setTimeout(() => {
+                createImageZoomInstans()
+            }, 300)
+        }
+    }
+    imageZoomFunc()
+    const createImageZoomInstans = () => {
+        const url = $('.woocommerce-product-gallery__image img').attr( 'data-large_image' )
+        window.imageZoomInstans = $('.woocommerce-product-gallery__image').zoom({
+            url : url,
+            duration: 300,
+            on: 'mouseover', //mouseover, grab, click, toggle
+        })
+    }
 
-
-
-
-
-    // Woocommerce Events
+    // Woocommerce Events :TODO temp JS - Detect Woocommerce Events
     ;(() => {
         jQuery(document.body).on(
             "init_checkout " +
