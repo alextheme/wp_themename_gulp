@@ -21,9 +21,8 @@ const header = () => {
 
     let prevScrollPos = 0;
 
-    onWindowScroll(() => {
+    onWindowScroll(currentScrollPos => {
         const bodyElement = document.body
-        const currentScrollPos = document.documentElement.scrollTop || bodyElement.scrollTop
 
         if (currentScrollPos > 20) {
             bodyElement.classList.add('body--scrolled_down')

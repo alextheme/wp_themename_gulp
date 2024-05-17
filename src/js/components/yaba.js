@@ -67,14 +67,7 @@ const yaba = () => {
 
     // Sliders
     ;(() => {
-        $('.js-slick-products .featured_products_mobile ul.products').slick({
-            slidesToShow: 2,
-            slidesToScroll: 2,
-            arrows: false,
-            infinite: true,
-            swipe: true,
-            dots: true,
-        })
+        const sliderAutoplay = true
 
         $('.js-hero_slider').slick({
             slidesToShow: 2,
@@ -83,8 +76,8 @@ const yaba = () => {
             infinite: true,
             swipe: true,
             dots: true,
-            autoplay: true,
-            autoplaySpeed: 4000,
+            autoplay: sliderAutoplay,
+            autoplaySpeed: 2100,
 
             responsive: [
                 {
@@ -105,8 +98,8 @@ const yaba = () => {
             variableWidth: true,
             swipe: true,
             dots: false,
-            autoplay: true,
-            autoplaySpeed: 3000,
+            autoplay: sliderAutoplay,
+            autoplaySpeed: 1800,
         })
 
         $('.js-slick-home_products ul.products').slick({
@@ -116,7 +109,7 @@ const yaba = () => {
             infinite: true,
             swipe: true,
             dots: true,
-            autoplay: true,
+            autoplay: sliderAutoplay,
             autoplaySpeed: 5000,
 
             responsive: [
@@ -128,6 +121,17 @@ const yaba = () => {
                     }
                 }
             ]
+        })
+
+        $('.js-slick-products .featured_products_mobile ul.products').slick({
+            slidesToShow: 2,
+            slidesToScroll: 2,
+            arrows: false,
+            infinite: true,
+            swipe: true,
+            dots: true,
+            autoplay: sliderAutoplay,
+            autoplaySpeed: 1800,
         })
     })()
 

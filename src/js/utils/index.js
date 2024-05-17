@@ -92,7 +92,7 @@ export const onWindowScroll = cb => {
 	if (!cb && !isFunction(cb)) return;
 
 	const handleScroll = () => {
-		cb(window.pageYOffset);
+		cb(document.documentElement.scrollTop || document.body.scrollTop);
 	};
 
 	window.addEventListener('scroll', debounce(15, handleScroll));
