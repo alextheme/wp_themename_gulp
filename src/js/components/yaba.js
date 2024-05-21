@@ -69,6 +69,16 @@ const yaba = () => {
     ;(() => {
         const sliderAutoplay = true
 
+        onWindowResize(() => {
+            if (window.innerWidth > 768) {
+                $('.js-hero_slider li a img').each( (_, item) => {
+                    if (item.src !== item.dataset.url_desctop) {
+                        item.src = item.dataset.url_desctop
+                    }
+                })
+            }
+        })
+
         $('.js-hero_slider').slick({
             slidesToShow: 2,
             slidesToScroll: 2,

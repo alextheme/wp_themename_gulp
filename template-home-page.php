@@ -20,13 +20,28 @@ get_header();  ?>
             <?php $hero_slider = get_field('hero_slider', 'option'); ?>
             <?php $hero_brands = get_field('hero_brands', 'option'); ?>
 
+
+            <?php
+            // Clone items if items < 3
+            if (count($hero_slider) > 0 && count($hero_slider) < 3) {
+                $iteration_count = 3 - count($hero_slider);
+                $array_copy = $hero_slider;
+
+                for ( $i = 0; $i < $iteration_count; $i++ ) {
+                    $hero_slider = array_merge( $hero_slider, $array_copy );
+                }
+            }
+            ?>
+
             <?php if (count($hero_slider) > 0) { ?>
                 <div class="hero_slider">
                     <ul class="hero_slider_list js-hero_slider">
-                        <?php foreach ($hero_slider as $item) { ?>
+                        <?php foreach ($hero_slider as $item) {
+                            $url_img_mob = empty($item['image_mobile']) ? $item['image'] : $item['image_mobile'];
+                            ?>
                             <li class="hero_slider_item">
                                 <a href="<?php echo esc_url( $item['link'] ); ?>">
-                                    <img src="<?php echo esc_url( $item['image'] ); ?>" alt="">
+                                    <img data-url_desctop="<?php echo esc_attr( $item['image'] ); ?>" src="<?php echo esc_url( $url_img_mob ); ?>" alt="" loading="lazy" />
                                 </a>
                             </li>
                         <?php } ?>
