@@ -13,7 +13,7 @@ get_header();  ?>
         <div class="section_in">
 
             <div class="section_header">
-                <h2 class="section_title">Der süßeste Laden in Deutschland</h2>
+                <h1 class="section_title">Der süßeste Laden in Deutschland</h1>
                 <a href="<?php echo esc_url( get_permalink( wc_get_page_id( 'shop' ) ) )?>">Alle Marken</a>
             </div>
 

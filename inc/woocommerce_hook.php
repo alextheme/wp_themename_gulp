@@ -76,9 +76,9 @@ function _themename_add_featured_products_list() {
     <div class="shop__featured_products_wrapper js-slick-products">
 
         <header class="woocommerce-products-header">
-            <h1 class="woocommerce-products-header__title page-title">
+            <h2 class="woocommerce-products-header__title page-title">
                 <?php echo esc_html( 'Angesehene Produkte' ); ?>
-            </h1>
+            </h2>
         </header>
 
         <?php // Show Featured Products Block ?>
