@@ -5,7 +5,8 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script src="https://unpkg.com/js-image-zoom@0.7.0/js-image-zoom.js" type="application/javascript"></script>
+    <script type="application/javascript" src="https://unpkg.com/js-image-zoom@0.7.0/js-image-zoom.js"></script>
+    <script type="application/javascript" src="https://sdp.eu.usercentrics.eu/latest/uc-block.bundle.js"></script>
     <?php wp_head(); ?>
 </head>
 
@@ -18,7 +19,6 @@ if (array_key_exists('filterby', $_GET) && $_GET['filterby'] === 'featured') {
 
 <body <?php body_class( $body_class ); ?>>
 <?php wp_body_open(); ?>
-
 
 <header class="header">
     <div class="header_in">
