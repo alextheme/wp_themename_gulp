@@ -444,6 +444,20 @@
           top: 0;
           right: 0;
 
+          display: block;
+          text-decoration: none;
+
+          &:before {
+            content: '';
+            position: absolute;
+            top: 1.3rem;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background-color: $red;
+            //transform: rotate(-10deg);
+          }
+
           @include bp($point_2, min) {
             margin-top: .8rem;
           }
@@ -454,14 +468,7 @@
 
           .amount {
             color: $grey;
-
-            @include bp($point_2, min) {
-              font-size: 2.2rem;
-            }
-
-            @include bp($point_3) {
-              font-size: 1.4rem;
-            }
+            font-size: 1.4rem;
           }
 
           @include bp($point_2, min) {

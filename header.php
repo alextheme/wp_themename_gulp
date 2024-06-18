@@ -20,10 +20,6 @@ if (array_key_exists('filterby', $_GET) && $_GET['filterby'] === 'featured') {
 <body <?php body_class( $body_class ); ?>>
 <?php wp_body_open(); ?>
 
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M3NMJDJT"
-                  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
 
 <header class="header">
     <div class="header_in">
